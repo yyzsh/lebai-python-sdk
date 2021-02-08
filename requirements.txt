@@ -1,1 +1,3 @@
 grpcio
+pep517
+setuptools

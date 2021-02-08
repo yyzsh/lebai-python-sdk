@@ -26,3 +26,4 @@ pip install -r requirements.txt
 ```
 
 - [https://grpc.io/docs/languages/python/quickstart/]()
+- [https://setuptools.readthedocs.io/en/latest/userguide/quickstart.html]()

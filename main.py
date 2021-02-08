@@ -3,7 +3,7 @@
 
 import logging
 
-from src.robotic import LebaiRobot
+from lebai import LebaiRobot
 
 def run():
     rb = LebaiRobot("192.168.3.218")
