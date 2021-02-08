@@ -65,14 +65,14 @@ class LebaiRobot:
         '''
         # TODO: await Sync
         req = rc.MoveJRequest(
-            pose_is_joint_angle=pos.is_joint,
+            pose_is_joint_angle=getattr(pos, 'is_joint', False),
             acceleration=a,
             velocity=v,
             time=t,
             blend_radius=r
         )
         req.joint_pose_to[:] = pos.pos
-        if hasattr(pos, 'base') and pos.base is not None:
+        if getattr(pos, 'base', None):
             req.pose_base = msg.PR(position=pos.base[0:3],rotation=pos.base[3:6])
         self.rcs.MoveJ(req)
 
