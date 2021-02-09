@@ -83,6 +83,8 @@ service RobotController {
   //    rpc Force(google.protobuf.Empty) returns (Force);
   // implement later
   rpc GetTcpForce(google.protobuf.Empty) returns (ForceTorque);
+  rpc SetClaw(ClawInfo) returns (ClawInfo);
+  rpc GetClaw(google.protobuf.Empty) returns (ClawInfo);
 
   // 3. Motion control commands
   rpc SetPos(JPose) returns (CmdId);
@@ -478,6 +480,8 @@ message MoveCRequest {
   double time = 9;
   // 相对坐标系，仅pose_is_joint_angle=false时有效。世界坐标系为{0,0,0,0,0,0}
   PR pose_base = 10;
+  // 弧度 (rad)
+  double rad = 11;
 }
 
 message MoveJRequest {

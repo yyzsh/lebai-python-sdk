@@ -3,10 +3,12 @@ import logging
 import asyncio
 from enum import Enum, unique
 
-from .pb2 import robot_controller_pb2_grpc
-from .pb2 import robot_controller_pb2 as rc
 from .pb2 import messages_pb2 as msg
 from google.protobuf.empty_pb2 import Empty
+from .pb2 import robot_controller_pb2_grpc
+from .pb2 import robot_controller_pb2 as rc
+from .pb2 import private_controller_pb2_grpc
+from .pb2 import private_controller_pb2 as pc
 
 class RobotState(Enum):
     '''机器人状态
@@ -66,6 +68,15 @@ class CartesianPose:
         r = msg.Rotation(r=self.pos[3], p=self.pos[4], y=self.pos[5])
         return msg.PR(position=p,rotation=r)
 
+    def base_set_PR(self, pr):
+        if self.base is not None:
+            pr.position.x = self.base[0]
+            pr.position.y = self.base[1]
+            pr.position.z = self.base[2]
+            pr.rotation.r = self.base[3]
+            pr.rotation.p = self.base[4]
+            pr.rotation.y = self.base[5]
+
 class JointPose:
     '''关节位置
     
@@ -88,41 +99,39 @@ class LebaiRobot:
         self.rcc = grpc.aio.insecure_channel(f'{ip}:5181')
         self.rcs = robot_controller_pb2_grpc.RobotControllerStub(self.rcc)
 
+        self.pcc = grpc.aio.insecure_channel(f'{ip}:5182')
+        self.pcs = private_controller_pb2_grpc.RobotPrivateControllerStub(self.pcc)
+
     async def start_sys(self):
-        pass
+        await self.rcs.StartSys(Empty())
 
     async def stop_sys(self):
-        pass
+        await self.rcs.StopSys(Empty())
 
     async def powerdown(self):
         await self.rcs.PowerDown(Empty)
-        return True
 
     async def stop(self):
-        pass
+        await self.rcs.Stop(Empty())
 
     async def estop(self):
-        pass
+        await self.rcs.EStop(Empty())
 
     async def teach_mode(self):
         await self.rcs.TeachMode(Empty)
-        return True
 
     async def end_teach_mode(self):
         await self.rcs.EndTeachMode(Empty)
-        return True
-
-    async def wait(self):
-        pass
 
     async def resume(self):
-        pass
+        await self.rcs.Resume(Empty())
 
     async def pause(self):
-        pass
+        await self.rcs.Pause(Empty())
 
     async def get_robot_mode(self):
-        pass
+        res = await self.rcs.GetRobotMode(Empty())
+        return RobotState(res.mode)
 
     async def get_velocity_factor(self):
         res = await self.rcs.GetVelocityFactor(Empty())
@@ -130,7 +139,6 @@ class LebaiRobot:
 
     async def set_velocity_factor(self, factor):
         await self.rcs.SetVelocityFactor(rc.Factor(value=factor))
-        return True
 
     async def set_gravity(self, x=0, y=0, z=-9.8):
         if type(x) is tuple or type(x) is list:
@@ -138,7 +146,6 @@ class LebaiRobot:
             z = x[2]
             x = x[0]
         await self.rcs.SetGravity(msg.Coordinate(x=x,y=y,z=z))
-        return True
 
     async def get_gravity(self):
         res = await self.rcs.GetGravity(Empty())
@@ -154,7 +161,6 @@ class LebaiRobot:
             y = x[1]
             x = x[0]
         await self.rcs.SetPayload(msg.Payload(mass=mass, cog=msg.Coordinate(x=x,y=y,z=z)))
-        return True
 
     async def get_payload(self):
         res = await self.rcs.GetPayload(Empty())
@@ -162,7 +168,6 @@ class LebaiRobot:
 
     async def set_payload_mass(self, mass):
         await self.rcs.SetPayloadMass(msg.PayloadMass(mass=mass))
-        return True
 
     async def get_payload_mass(self):
         res = await self.rcs.GetPayloadMass(Empty())
@@ -174,7 +179,6 @@ class LebaiRobot:
             z = x[2]
             x = x[0]
         await self.rcs.SetPayloadCog(msg.PayloadCog(cog=msg.Coordinate(x=x,y=y,z=z)))
-        return True
 
     async def get_payload_cog(self):
         res = await self.rcs.GetPayloadCog(Empty())
@@ -183,19 +187,32 @@ class LebaiRobot:
     async def set_tcp(self, x=0, y=0, z=0, rz=0, ry=0, rx=0):
         tcp = CartesianPose(x, y, z, rz, ry, rx)
         await self.rcs.SetTcp(tcp.to_PR())
-        return True
 
     async def get_tcp(self):
         res = await self.rcs.GetTcp(Empty())
         return CartesianPose(res)
 
-    async def get_claw_aio(self):
-        pass
+    async def get_claw_aio(self, pin):
+        pin = pin.lower()
+        if pin == 'force':
+            res = await self.rcs.GetClawHoldOn(Empty())
+            return res.hold_on
+        elif pin == 'weight':
+            res = await self.rcs.GetClawWeight(Empty())
+            return res.weight
+        else: # pin == 'amplitude':
+            res = await self.rcs.GetClawAmplitude(Empty())
+            return res.amplitude
 
-    async def set_claw_aio(self):
-        pass
+    async def set_claw_aio(self, pin, value=0):
+        pin = pin.lower()
+        if pin == 'force':
+            await self.rcs.SetClawForce(rc.Force(force=value))
+        else: # pin == 'amplitude':
+            await self.rcs.SetClawAmplitude(rc.Amplitude(amplitude=value))
 
-    async def set_claw(self):
+    async def set_claw(self, force=0, amplitude=0):
+        # TODO: RC
         pass
 
     async def movej(self, p, a=0, v=0, t=0, r=0):
@@ -211,29 +228,52 @@ class LebaiRobot:
         '''
         req = rc.MoveJRequest(
             joint_pose_to = list(p.pos),
+            pose_is_joint_angle=getattr(p, 'is_joint', True),
+            acceleration=a,
+            velocity=v,
+            time=t,
+            blend_radius=r
+        )
+        if type(p) is CartesianPose:
+            p.base_set_PR(req.pose_base)
+        await self.rcs.MoveJ(req)
+
+    async def movel(self, p, a=0, v=0, t=0, r=0):
+        req = rc.MoveLRequest(
+            pose_to = list(p.pos),
             pose_is_joint_angle=getattr(p, 'is_joint', False),
             acceleration=a,
             velocity=v,
             time=t,
             blend_radius=r
         )
-        if getattr(p, 'base', None) is not None:
-            req.pose_base.position.x = p.base[0]
-            req.pose_base.position.y = p.base[1]
-            req.pose_base.position.z = p.base[2]
-            req.pose_base.rotation.r = p.base[3]
-            req.pose_base.rotation.p = p.base[4]
-            req.pose_base.rotation.y = p.base[5]
-        res = await self.rcs.MoveJ(req)
-        return res
+        if type(p) is CartesianPose:
+            p.base_set_PR(req.pose_base)
+        await self.rcs.MoveL(req)
+
+    async def movec(self, via, p, rad=0, a=0, v=0, t=0, r=0):
+        req = rc.MoveCRequest(
+            pose_via = list(via.pos),
+            pose_via_is_joint=getattr(via, 'is_joint', False),
+            pose_to = list(p.pos),
+            pose_to_is_joint=getattr(p, 'is_joint', False),
+            acceleration=a,
+            velocity=v,
+            time=t,
+            blend_radius=r,
+            rad=rad
+        )
+        if type(p) is CartesianPose:
+            p.base_set_PR(req.pose_base)
+        await self.rcs.MoveC(req)
+
+    async def stop_move(self):
+        await self.rcs.StopMove(Empty())
 
     async def movej_until(self):
         pass
 
     async def movej_until_rt(self):
-        pass
-
-    async def movel(self):
         pass
 
     async def movel_until(self):
@@ -242,16 +282,10 @@ class LebaiRobot:
     async def movel_until_rt(self):
         pass
 
-    async def movec(self):
-        pass
-
     async def movec_until(self):
         pass
 
     async def movec_until_rt(self):
-        pass
-
-    async def stop_move(self):
         pass
 
     async def kinematics_forward(self):
@@ -275,24 +309,31 @@ class LebaiRobot:
         return JointPose(*res.joints)
 
     async def get_target_joint_positions(self):
-        pass
+        res = await self.rcs.GetTargetJointPositions(Empty())
+        return JointPose(*res.joints)
 
     async def get_actual_joint_speeds(self):
-        pass
+        res = await self.rcs.GetActualJointSpeeds(Empty())
+        return tuple(res.joints)
 
     async def get_target_joint_speeds(self):
-        pass
+        res = await self.rcs.GetTargetJointSpeeds(Empty())
+        return tuple(res.joints)
 
     async def get_joint_torques(self):
-        pass
+        res = await self.rcs.GetJointTorques(Empty())
+        return tuple(res.joints)
 
     async def get_actual_joint_torques(self):
+        # TODO: RC
         pass
 
     async def get_target_joint_torques(self):
+        # TODO: RC
         pass
 
     async def get_joint_temperatures(self):
+        # TODO: RC
         pass
 
     async def get_joint_temp(self, joint):
@@ -314,7 +355,8 @@ class LebaiRobot:
         return CartesianPose(*res.vector)
 
     async def get_target_tcp_pose(self):
-        pass
+        res = await self.rcs.GetTargetTcpPose(Empty())
+        return CartesianPose(*res.vector)
 
     async def get_robot_poses(self):
         pass
@@ -388,11 +430,12 @@ class LebaiRobot:
     async def reset_joint_backlash_params(self):
         pass
 
-    async def set_dio(self):
-        pass
+    async def set_dio(self, pin, value):
+        await self.rcs.SetDIO(msg.DIO(pin=pin, value=value))
 
-    async def get_dio(self):
-        pass
+    async def get_dio(self, pin):
+        res = await self.rcs.GetDIO(msg.IOPin(pin=pin))
+        return res.value
 
     async def set_aio(self):
         pass
@@ -451,18 +494,6 @@ class LebaiRobot:
     async def get_external_ios(self):
         pass
 
-    async def set_ioboard_dio(self):
-        pass
-
-    async def get_ioboard_dio(self):
-        pass
-
-    async def set_ioboard_aio(self):
-        pass
-
-    async def get_ioboard_aio(self):
-        pass
-
     async def set_led(self):
         pass
 
@@ -472,38 +503,17 @@ class LebaiRobot:
     async def set_fan(self):
         pass
 
-    async def signal_set(self):
+    async def set_signal(self):
         pass
 
-    async def signal_get(self):
+    async def get_signal(self):
         pass
 
-    async def signal_wait(self):
-        pass
-
-    async def signal_add(self):
-        pass
-
-    async def new_thread(self):
-        pass
-
-    async def new_coroutine(self):
+    async def add_signal(self):
         pass
 
     async def enable_joint_limits(self):
-        pass
+        await self.pcs.EnableJointLimit(pc.TrueOrFalse(val=True))
 
     async def disable_joint_limits(self):
-        pass
-
-    async def alert(self):
-        pass
-
-    async def confirm(self):
-        pass
-
-    async def input(self):
-        pass
-
-    async def select(self):
-        pass
+        await self.pcs.EnableJointLimit(pc.TrueOrFalse(val=False))

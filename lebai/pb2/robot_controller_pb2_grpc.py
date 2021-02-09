@@ -132,6 +132,16 @@ class RobotControllerStub(object):
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
                 response_deserializer=robot__controller__pb2.ForceTorque.FromString,
                 )
+        self.SetClaw = channel.unary_unary(
+                '/robotc.RobotController/SetClaw',
+                request_serializer=robot__controller__pb2.ClawInfo.SerializeToString,
+                response_deserializer=robot__controller__pb2.ClawInfo.FromString,
+                )
+        self.GetClaw = channel.unary_unary(
+                '/robotc.RobotController/GetClaw',
+                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                response_deserializer=robot__controller__pb2.ClawInfo.FromString,
+                )
         self.SetPos = channel.unary_unary(
                 '/robotc.RobotController/SetPos',
                 request_serializer=messages__pb2.JPose.SerializeToString,
@@ -709,6 +719,18 @@ class RobotControllerServicer(object):
         rpc Force(google.protobuf.Empty) returns (Force);
         implement later
         """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SetClaw(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetClaw(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -1416,6 +1438,16 @@ def add_RobotControllerServicer_to_server(servicer, server):
                     servicer.GetTcpForce,
                     request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                     response_serializer=robot__controller__pb2.ForceTorque.SerializeToString,
+            ),
+            'SetClaw': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetClaw,
+                    request_deserializer=robot__controller__pb2.ClawInfo.FromString,
+                    response_serializer=robot__controller__pb2.ClawInfo.SerializeToString,
+            ),
+            'GetClaw': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetClaw,
+                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                    response_serializer=robot__controller__pb2.ClawInfo.SerializeToString,
             ),
             'SetPos': grpc.unary_unary_rpc_method_handler(
                     servicer.SetPos,
@@ -2236,6 +2268,40 @@ class RobotController(object):
         return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/GetTcpForce',
             google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             robot__controller__pb2.ForceTorque.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SetClaw(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/SetClaw',
+            robot__controller__pb2.ClawInfo.SerializeToString,
+            robot__controller__pb2.ClawInfo.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetClaw(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/GetClaw',
+            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            robot__controller__pb2.ClawInfo.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
