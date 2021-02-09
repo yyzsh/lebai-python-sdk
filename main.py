@@ -21,9 +21,9 @@ async def run():
         print(e.code(), e.details())
     print(await rb.get_actual_joint_positions())
     base = await rb.get_actual_tcp_pose()
-    print('base=', base)
+    print('base=', base, type(base))
     p1 = CartesianPose(0.1, 0, 0, 0, 0, 0, base=base)
-    print(p1)
+    print(p1, p1.base)
     await rb.movej(p1, 0, 0, 1, 0)
     print(await rb.get_actual_tcp_pose())
 
