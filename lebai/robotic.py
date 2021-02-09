@@ -42,6 +42,14 @@ class CartesianPose:
             return 'CartesianPose' + str(self.pos)
         else:
             return f'CartesianPose({self.pos[0]}, {self.pos[1]}, {self.pos[2]}, {self.pos[3]}, {self.pos[4]}, {self.pos[5]}, base={self.base})'
+    
+    def __getattr__(self, key):
+        pos_idx_arr = ['x', 'y', 'z', 'rz', 'ry', 'rx']
+        if key in pos_idx_arr:
+            idx = pos_idx_arr.index(key)
+            return getattr(self, 'pos')[idx]
+        else:
+            return getattr(self, key)
 
 class JointPose:
     '''关节位置
