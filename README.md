@@ -34,3 +34,10 @@ pip install -r requirements.txt
 ```bash
 GRPC_TRACE=all GRPC_VERBOSITY=debug ./main.py
 ```
+
+## 构建和发布
+
+```bash
+python3 -m pip install --user --upgrade setuptools wheel
+python3 setup.py sdist bdist_wheel
+```
