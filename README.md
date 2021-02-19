@@ -38,6 +38,17 @@ GRPC_TRACE=all GRPC_VERBOSITY=debug ./main.py
 ## 构建和发布
 
 ```bash
-python3 -m pip install --user --upgrade setuptools wheel
+python3 -m pip install --user --upgrade setuptools wheel twine
 python3 setup.py sdist bdist_wheel
+python3 -m twine upload --repository testpypi dist/*
+
+python3 -m twine upload --repository pypi dist/*
+```
+
+## 从 PyPI 安装
+
+```bash
+python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps lebai
+
+pip install lebai
 ```

@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="lebai",
-    version="0.1.0",
+    version="0.1.1",
     author="kingfree",
     author_email="kingfree@toyama.moe",
     description="Lebai Robot Python SDK",
