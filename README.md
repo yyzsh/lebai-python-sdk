@@ -8,15 +8,18 @@ pip install lebai
 
 [API文档](http://lebai.py.kingfree.moe)
 
-提供基于 `async/await` 的异步 API，依赖如下：
+提供基于 `async/await` 的异步 API。
 
-- Python 3.7+
-- `grpcio`
-- `asyncio`
+安装依赖（Python 3.7+）：
+```bash
+pip install grpcio asyncio protobuf
+```
 
 示例：
 
 ```python
+import asyncio
+
 from lebai import LebaiRobot, CartesianPose, JointPose
 
 async def run():
@@ -53,11 +56,12 @@ python --version
 ```bash
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update
-sudo apt install python3.9
+sudo apt install python3.9 python3.9-distutils
 ```
 
 如果 Python 环境配置有问题：
 ```bash
+sudo ln -sf /usr/bin/python3.9 /usr/bin/python3
 sudo ln -sf /usr/bin/python3 /usr/bin/python
 sudo ln -sf /usr/bin/pip3 /usr/bin/pip
 python -m pip install --upgrade pip setuptools wheel

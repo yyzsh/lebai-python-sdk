@@ -1,12 +1,14 @@
 import setuptools
 
+from source.conf import release, author, project
+
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="lebai",
-    version="0.1.2",
-    author="kingfree",
+    name=project,
+    version=release,
+    author=author,
     author_email="kingfree@toyama.moe",
     description="Lebai Robot Python SDK",
     long_description=long_description,
