@@ -38,7 +38,6 @@ class CartesianPose:
         elif type(x) is CartesianPose:
             self.pos = x.pos[:]
             base = x.base
-            print(self.pos)
         else:
             self.pos = (x, y, z, rz, ry, rx)
         self.is_joint = False
@@ -86,7 +85,7 @@ class JointPose:
         self.is_joint = True
 
     def __str__(self):
-        return 'CartesianPose' + str(self.pos)
+        return 'JointPose' + str(self.pos)
 
 class LebaiRobot:
     '''
