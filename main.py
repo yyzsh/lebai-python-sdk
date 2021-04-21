@@ -21,6 +21,10 @@ async def run1():
     await rb.set_velocity_factor(60)
     logging.info(await rb.get_velocity_factor())
 
+    logging.info(await rb.get_robot_io_data())
+    return
+    logging.info(await rb.get_robot_data())
+
     g = await rb.get_gravity()
     await rb.set_gravity(g)
     assert(await rb.get_gravity() == g)

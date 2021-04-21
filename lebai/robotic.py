@@ -357,158 +357,94 @@ class LebaiRobot:
         return CartesianPose(*res.vector)
 
     async def get_robot_poses(self):
-        pass
+        res = await self.rcs.GetRobotData(Empty())
+        ret = {}
+        ret["actual_joint_pose"] = tuple(res.targetJoint.joints)
+        ret["target_joint_pose"] = tuple(res.actualJoint.joints)
+        ret["target_pose"] = tuple(res.targetTcpPose.vector)
+        ret["actual_pose"] = tuple(res.actualTcpPose.vector)
+        return ret
 
     async def get_robot_data(self):
-        pass
+        res = await self.rcs.GetRobotData(Empty())
+        ret = {}
+        ret["target_joint"] = tuple(res.targetJoint.joints)
+        ret["actual_joint"] = tuple(res.actualJoint.joints)
+        ret["target_pose"] = tuple(res.targetTcpPose.vector)
+        ret["actual_pose"] = tuple(res.actualTcpPose.vector)
+        ret["target_torque"] = tuple(res.targetTorque.joints)
+        ret["actual_torque"] = tuple(res.actualTorque.joints)
+        ret["target_vel"] = tuple(res.targetJointSpeed.joints)
+        ret["actual_vel"] = tuple(res.actualJointSpeed.joints)
+        ret["target_acc"] = tuple([]) # TODO: res.targetJointAcc.joints
+        ret["actual_acc"] = tuple([]) # TODO: res.actualJointAcc.joints
+        ret["temp"] = tuple(res.jointTemps.joints)
+        return ret
 
-    async def write_extra_servo_param(self):
-        pass
+    async def get_robot_io_data(self):
+        res = await self.rcs.GetRobotIOData([rc.RobotDataCmd()]).read()
+        ret = {}
+        ret["di"] = tuple(map(lambda dio: {"pin": dio.pin, "value": dio.value}, res.robotDIOIn))
+        ret["do"] = tuple(map(lambda dio: {"pin": dio.pin, "value": dio.value}, res.robotDIOOut))
+        ret["ai"] = tuple(map(lambda aio: {"pin": aio.pin, "value": aio.value}, res.robotAIOIn))
+        ret["ao"] = tuple(map(lambda aio: {"pin": aio.pin, "value": aio.value}, res.robotAIOOut))
+        ret["flange_di"] = tuple(map(lambda dio: {"pin": dio.pin, "value": dio.value}, res.tcpDIOIn))
+        ret["flange_do"] = tuple(map(lambda dio: {"pin": dio.pin, "value": dio.value}, res.tcpDIOOut))
+        return ret
 
-    async def read_extra_servo_param(self):
-        pass
-
-    async def reset_extra_servo_param(self):
-        pass
-
-    async def write_extra_servo_params(self):
-        pass
-
-    async def read_extra_servo_params(self):
-        pass
-
-    async def reset_extra_servo_params(self):
-        pass
-
-    async def write_joint_backlash(self):
-        pass
-
-    async def read_joint_backlash(self):
-        pass
-
-    async def reset_joint_backlash(self):
-        pass
-
-    async def write_joint_backlashes(self):
-        pass
-
-    async def read_joint_backlashes(self):
-        pass
-
-    async def reset_joint_backlashes(self):
-        pass
-
-    async def read_enable_joint_backlash(self):
-        pass
-
-    async def read_enable_joint_backlashes(self):
-        pass
-
-    async def write_enable_joint_backlash(self):
-        pass
-
-    async def write_enable_joint_backlashes(self):
-        pass
-
-    async def write_joint_backlash_param(self):
-        pass
-
-    async def read_joint_backlash_param(self):
-        pass
-
-    async def reset_joint_backlash_param(self):
-        pass
-
-    async def write_joint_backlash_params(self):
-        pass
-
-    async def read_joint_backlash_params(self):
-        pass
-
-    async def reset_joint_backlash_params(self):
-        pass
-
-    async def set_dio(self, pin, value):
+    async def set_do(self, pin, value):
         await self.rcs.SetDIO(msg.DIO(pin=pin, value=value))
 
-    async def get_dio(self, pin):
+    async def get_di(self, pin):
         res = await self.rcs.GetDIO(msg.IOPin(pin=pin))
         return res.value
 
-    async def set_aio(self):
-        pass
+    async def set_ao(self, pin, value):
+        await self.rcs.SetAIO(msg.AIO(pin=pin, value=value))
 
-    async def get_aio(self):
-        pass
+    async def get_ai(self, pin):
+        res = await self.rcs.GetAIO(msg.IOPin(pin=pin))
+        return res.value
 
-    async def set_tcp_dio(self):
-        pass
+    async def set_ai_mode(self, pin, mode):
+        await self.rcs.SetAInMode(msg.AIO(pin=pin, mode=mode))
 
-    async def get_tcp_dio(self):
-        pass
+    async def get_ai_mode(self, pin):
+        res = await self.rcs.GetAInMode(msg.IOPin(pin=pin))
+        return res.mode
 
-    async def set_tcp_aio(self):
-        pass
+    async def set_ao_mode(self, pin, mode):
+        await self.rcs.SetAOutMode(msg.AIO(pin=pin, mode=mode))
 
-    async def get_tcp_aio(self):
-        pass
+    async def get_ao_mode(self, pin):
+        res = await self.rcs.GetAOutMode(msg.IOPin(pin=pin))
+        return res.mode
 
-    async def set_external_do(self):
-        pass
+    async def set_flange_do(self, pin, value):
+        await self.rcs.SetTcpDIO(msg.DIO(pin=pin, value=value))
 
-    async def set_external_dos(self):
-        pass
+    async def get_flange_di(self):
+        res = await self.rcs.GetTcpDIO(msg.IOPin(pin=pin))
+        return res.value
 
-    async def get_external_do(self):
-        pass
+    async def set_led(self, mode, speed, color=[]):
+        await self.rcs.SetLED(msg.LEDStatus(mode=mode, speed=speed, color=color))
 
-    async def get_external_dos(self):
-        pass
+    async def set_voice(self, voice, volume):
+        await self.rcs.SetVoice(msg.VoiceStatus(voice=voice, volume=volume))
 
-    async def get_external_di(self):
-        pass
+    async def set_fan(self, on):
+        await self.rcs.SetFan(msg.FanStatus(fan=on))
 
-    async def get_external_dis(self):
-        pass
+    async def set_signal(self, pin, value):
+        await self.rcs.SetSignal(msg.SignalValue(index=pin, value=value))
 
-    async def set_external_ao(self):
-        pass
+    async def get_signal(self, pin):
+        res = await self.rcs.GetSignal(msg.SignalValue(index=pin))
+        return res.value
 
-    async def set_external_aos(self):
-        pass
-
-    async def get_external_ao(self):
-        pass
-
-    async def get_external_aos(self):
-        pass
-
-    async def get_external_ai(self):
-        pass
-
-    async def get_external_ais(self):
-        pass
-
-    async def get_external_ios(self):
-        pass
-
-    async def set_led(self):
-        pass
-
-    async def set_voice(self):
-        pass
-
-    async def set_fan(self):
-        pass
-
-    async def set_signal(self):
-        pass
-
-    async def get_signal(self):
-        pass
-
-    async def add_signal(self):
-        pass
+    async def add_signal(self, pin, delta):
+        await self.rcs.AddSignal(msg.SignalValue(index=pin, value=value))
 
     async def enable_joint_limits(self):
         await self.pcs.EnableJointLimit(pc.TrueOrFalse(val=True))
