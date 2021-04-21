@@ -21,9 +21,17 @@ async def run1():
     await rb.set_velocity_factor(60)
     logging.info(await rb.get_velocity_factor())
 
-    logging.info(await rb.get_robot_io_data())
+    p1 = JointPose(0, -0.5, math.pi/6, 0, 0, 0)
+    logging.info(p1)
+    p1_c = await rb.kinematics_forward(p1)
+    logging.info(p1_c)
+    logging.info(await rb.get_actual_joint_positions())
+    p1_j = await rb.kinematics_inverse(p1_c)
+    logging.info(p1_j)
+    logging.info(await rb.kinematics_forward(p1_j))
     return
-    logging.info(await rb.get_robot_data())
+    # logging.info(await rb.get_robot_io_data())
+    # logging.info(await rb.get_robot_data())
 
     g = await rb.get_gravity()
     await rb.set_gravity(g)

@@ -33,11 +33,15 @@ class CartesianPose:
     笛卡尔坐标描述的位姿
     '''
     def __init__(self, x=0, y=0, z=0, rz=0, ry=0, rx=0, base=None):
+        # print(x, hasattr(x, '__iter__'), hasattr(x, '__iter__'), type(x))
         if type(x) is msg.PR:
             self.pos = (x.position.x, x.position.y, x.position.z, x.rotation.r, x.rotation.p, x.rotation.y)
-        elif type(x) is CartesianPose:
+        elif hasattr(x, 'pos'):
             self.pos = x.pos[:]
-            base = x.base
+            if hasattr(x, 'base'):
+                base = x.base
+        elif hasattr(x, '__iter__') or type(x) is list:
+            self.pos = tuple(x)
         else:
             self.pos = (x, y, z, rz, ry, rx)
         self.is_joint = False
@@ -74,6 +78,9 @@ class CartesianPose:
             pr.rotation.r = self.base[3]
             pr.rotation.p = self.base[4]
             pr.rotation.y = self.base[5]
+    
+    def to_Vector(self):
+        return rc.Vector(vector=self.pos)
 
 class JointPose:
     '''关节位置
@@ -81,11 +88,19 @@ class JointPose:
     关节旋转角度描述的机器人姿态
     '''
     def __init__(self, *j):
-        self.pos = j
+        if hasattr(j[0], 'pos'):
+            self.pos = j[0].pos
+        elif hasattr(j[0], '__iter__'):
+            self.pos = tuple(j[0])
+        else:
+            self.pos = j
         self.is_joint = True
 
     def __str__(self):
         return 'JointPose' + str(self.pos)
+    
+    def to_Joint(self):
+        return rc.Joint(joints=self.pos)
 
 class LebaiRobot:
     '''
@@ -286,11 +301,15 @@ class LebaiRobot:
     async def movec_until_rt(self):
         pass
 
-    async def kinematics_forward(self):
-        pass
+    async def kinematics_forward(self, *p):
+        j = JointPose(*p)
+        res = await self.rcs.KinematicsForward(j.to_Joint())
+        return CartesianPose(*res.vector)
 
-    async def kinematics_inverse(self):
-        pass
+    async def kinematics_inverse(self, *p):
+        j = CartesianPose(*p)
+        res = await self.rcs.KinematicsInverse(j.to_Vector())
+        return JointPose(*res.joints)
 
     async def pose_times(self):
         pass
