@@ -1,16 +1,34 @@
-乐白机器人 Python SDK 文档
+乐白机器人
 =================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
-
-.. automodule:: lebai.robotic
+.. automodule:: lebai
    :members:
    :undoc-members:
    :show-inheritance:
 
+.. automodule:: lebai.type
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: lebai.robot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: lebai.scene
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: lebai.robot_async
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 索引
 ==================

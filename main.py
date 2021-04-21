@@ -7,11 +7,6 @@ import math
 
 from lebai import LebaiRobot, CartesianPose, JointPose
 
-def get_v(rb, n=10, sec=0.01):
-    for i in range(0, n):
-        logging.info(rb.get_actual_joint_speeds())
-        asyncio.sleep(sec)
-
 def run():
     rb = LebaiRobot("192.168.3.218")
     rb.start_sys()
@@ -73,7 +68,7 @@ def run():
     try:
         p = CartesianPose(-0.54, -0.2, 0.117, 0, math.pi / 2, math.pi / 2)
         rb.movej(p, 0, 0, 1, 0)
-    except AioRpcError as e:
+    except Exception as e:
         logging.info(e.code(), e.details())
 
     logging.info(rb.get_actual_joint_positions())
@@ -83,17 +78,14 @@ def run():
 
     p1 = CartesianPose(0, 0.1, 0, 0, 0, 0, base=base)
     # logging.info(p1, p1.base)
-    m1 = asyncio.create_task(rb.movej(p1, 0, 0, 1, 0))
-    m2 = asyncio.create_task(get_v(rb, 10, 0.1))
+    rb.movej(p1, 0, 0, 1, 0)
     # logging.info(rb.get_actual_tcp_pose())
-    m1
 
     p2 = CartesianPose(0.1, 0.2, 0, 0, 0, 0, base=base)
     rb.movel(p2, 0, 0, 2, 0)
     logging.info(rb.get_actual_tcp_pose())
 
     rb.movec(CartesianPose(0.1, 0, 0, 0, 0, 0), p1, rad=-math.pi/3, t=5)
-    m2
 
     rb.stop_sys()
 
