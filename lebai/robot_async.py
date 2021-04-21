@@ -348,7 +348,7 @@ class LebaiRobotAsync:
     async def set_flange_do(self, pin, value):
         await self.rcs.SetTcpDIO(msg.DIO(pin=pin, value=value))
 
-    async def get_flange_di(self):
+    async def get_flange_di(self, pin):
         res = await self.rcs.GetTcpDIO(msg.IOPin(pin=pin))
         return res.value
 

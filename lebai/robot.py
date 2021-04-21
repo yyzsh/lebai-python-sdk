@@ -352,7 +352,7 @@ class LebaiRobot:
     def set_flange_do(self, pin, value):
         self.rcs.SetTcpDIO(msg.DIO(pin=pin, value=value))
 
-    def get_flange_di(self):
+    def get_flange_di(self, pin):
         res = self.rcs.GetTcpDIO(msg.IOPin(pin=pin))
         return res.value
 
