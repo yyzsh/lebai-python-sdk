@@ -247,16 +247,17 @@ class LebaiRobot:
         return tuple(res.joints)
 
     async def get_actual_joint_torques(self):
-        # TODO: RC
-        pass
+        res = await self.rcs.GetRobotData(Empty())
+        return tuple(res.actualTorque.joints)
+        return ret
 
     async def get_target_joint_torques(self):
-        # TODO: RC
-        pass
+        res = await self.rcs.GetRobotData(Empty())
+        return tuple(res.targetTorque.joints)
 
     async def get_joint_temperatures(self):
-        # TODO: RC
-        pass
+        res = await self.rcs.GetRobotData(Empty())
+        return tuple(res.jointTemps.joints)
 
     async def get_joint_temp(self, joint):
         '''获取关节温度
