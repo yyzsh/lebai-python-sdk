@@ -8,12 +8,11 @@ pip install lebai
 
 [API 文档](http://lebai.py.kingfree.moe)
 
-- `LebaiRobotAsync`：提供基于 `async/await` 的异步 API。
 - `LebaiRobot`：提供同步的 API。
 
-安装依赖（Python 3.7+）：
+安装依赖（Python 3.5+）：
 ```bash
-pip install grpcio asyncio protobuf
+pip install grpcio protobuf
 ```
 
 示例：

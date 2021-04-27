@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import asyncio
 import math
 
 from lebai import LebaiRobot, CartesianPose, JointPose
@@ -14,6 +13,8 @@ def run():
 
     rb.set_velocity_factor(60)
     logging.info(rb.get_velocity_factor())
+    logging.info(rb.get_di(1))
+    rb.set_do(1, 1)
 
     logging.info(rb.get_actual_joint_torques())
     logging.info(rb.get_target_joint_torques())
@@ -39,6 +40,7 @@ def run():
 
     p = ((0.1, 0.2, 0.3), 0.12)
     rb.set_payload_mass(p[1])
+    logging.info(rb.get_payload_mass())
     assert(rb.get_payload_mass() == p[1])
     rb.set_payload_cog(p[0])
     assert(rb.get_payload_cog() == p[0])

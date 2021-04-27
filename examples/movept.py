@@ -3,7 +3,6 @@
 
 from lebai import rc, robot_controller_pb2_grpc
 import numpy as np
-import asyncio
 import grpc
 
 def generate_list(rcs, filename):

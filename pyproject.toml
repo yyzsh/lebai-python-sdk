@@ -2,7 +2,6 @@
 requires = [
     "setuptools",
     "wheel",
-    "grpcio",
-    "asyncio"
+    "grpcio"
 ]
 build-backend = "setuptools.build_meta"

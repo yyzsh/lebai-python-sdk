@@ -5,6 +5,5 @@
 """Lebai Robot Python SDK"""
 
 from .type import RobotState, TaskStatus, IODeviceType, CartesianPose, JointPose, Error, RequestError
-from .robot_async import LebaiRobotAsync
 from .robot import LebaiRobot
 from .scene import LebaiScene
