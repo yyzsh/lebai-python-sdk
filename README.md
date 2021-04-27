@@ -10,12 +10,8 @@ pip install lebai
 
 - `LebaiRobot`：提供同步的 API。
 
-安装依赖（Python 3.5+）：
-```bash
-pip install grpcio protobuf
-```
 
-示例：
+## 示例
 
 ```python
 import math
@@ -39,30 +35,11 @@ if __name__ == '__main__':
     run()
 ```
 
-### 安装 Python 和 pip
+## 版本要求
 
-查看 Python 版本：
-```bash
-python --version
-```
+- Python >= 3.5
 
-如果 Python 版本小于 3.7：
+安装依赖：
 ```bash
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt update
-sudo apt install python3.9 python3.9-distutils
-```
-
-Ubunutu 16.04
-```bash
-sudo apt remove python3-pip
-sudo python3.9 -m easy_install pip
-```
-
-如果 Python 环境配置有问题：
-```bash
-sudo ln -sf /usr/bin/python3.9 /usr/bin/python3
-sudo ln -sf /usr/bin/python3 /usr/bin/python
-sudo ln -sf /usr/bin/pip3 /usr/bin/pip
-python -m pip install --upgrade pip setuptools wheel
+pip install grpcio protobuf
 ```
