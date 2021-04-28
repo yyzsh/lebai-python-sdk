@@ -27,7 +27,10 @@ class LebaiRobot:
             self.sync()
 
     def sync(self):
-        self.rcs.Sync(Empty())
+        try:
+            self.rcs.Sync(Empty())
+        except grpc.RpcError:
+            pass
 
     def start_sys(self):
         self._sync()
