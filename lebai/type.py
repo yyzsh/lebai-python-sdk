@@ -76,12 +76,12 @@ class CartesianPose:
     def __eq__(self, other):
         return self.pos == other.pos and self.base == other.base
 
-    def to_PR(self):
+    def _to_PR(self):
         p = msg.Coordinate(x=self.pos[0], y=self.pos[1], z=self.pos[2])
         r = msg.Rotation(r=self.pos[3], p=self.pos[4], y=self.pos[5])
         return msg.PR(position=p,rotation=r)
 
-    def base_set_PR(self, pr):
+    def _base_set_PR(self, pr):
         if self.base is not None:
             pr.position.x = self.base[0]
             pr.position.y = self.base[1]
@@ -90,7 +90,7 @@ class CartesianPose:
             pr.rotation.p = self.base[4]
             pr.rotation.y = self.base[5]
     
-    def to_Vector(self):
+    def _to_Vector(self):
         return rc.Vector(vector=self.pos)
 
 class JointPose:
@@ -110,7 +110,7 @@ class JointPose:
     def __str__(self):
         return 'JointPose' + str(self.pos)
     
-    def to_Joint(self):
+    def _to_Joint(self):
         return rc.Joint(joints=self.pos)
 
 class Error(Exception):

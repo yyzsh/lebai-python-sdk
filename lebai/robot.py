@@ -138,7 +138,7 @@ class LebaiRobot:
     def set_tcp(self, x=0, y=0, z=0, rz=0, ry=0, rx=0):
         self._sync()
         tcp = CartesianPose(x, y, z, rz, ry, rx)
-        self.rcs.SetTcp(tcp.to_PR())
+        self.rcs.SetTcp(tcp._to_PR())
 
     def get_tcp(self):
         self._sync()
@@ -191,7 +191,7 @@ class LebaiRobot:
             blend_radius=r
         )
         if type(p) is CartesianPose:
-            p.base_set_PR(req.pose_base)
+            p._base_set_PR(req.pose_base)
         self.rcs.MoveJ(req)
 
     def movel(self, p, a=0, v=0, t=0, r=0):
@@ -204,7 +204,7 @@ class LebaiRobot:
             blend_radius=r
         )
         if type(p) is CartesianPose:
-            p.base_set_PR(req.pose_base)
+            p._base_set_PR(req.pose_base)
         self.rcs.MoveL(req)
 
     def movec(self, via, p, rad=0, a=0, v=0, t=0, r=0):
@@ -220,7 +220,7 @@ class LebaiRobot:
             rad=rad
         )
         if type(p) is CartesianPose:
-            p.base_set_PR(req.pose_base)
+            p._base_set_PR(req.pose_base)
         self.rcs.MoveC(req)
 
     def stop_move(self):
@@ -246,12 +246,12 @@ class LebaiRobot:
 
     def kinematics_forward(self, *p):
         j = JointPose(*p)
-        res = self.rcs.KinematicsForward(j.to_Joint())
+        res = self.rcs.KinematicsForward(j._to_Joint())
         return CartesianPose(*res.vector)
 
     def kinematics_inverse(self, *p):
         j = CartesianPose(*p)
-        res = self.rcs.KinematicsInverse(j.to_Vector())
+        res = self.rcs.KinematicsInverse(j._to_Vector())
         return JointPose(*res.joints)
 
     def pose_times(self):
