@@ -5,7 +5,7 @@ from lebai import LebaiRobot
 import numpy as np
 import grpc
 
-def generate_list(rcs, filename):
+def generate_list(filename):
     points = np.loadtxt(filename, delimiter=',')
     rc.movej(points[0], 1, 1)
     # print(np.shape(points))
@@ -16,9 +16,9 @@ def generate_list(rcs, filename):
     for i in n:
         vels[i+1, :] = (points[i, :] - points[i+1, :])/t
         data = {
-            "t": t,
-            "p": points[i],
-            "v": vels[i]
+            't': t,
+            'p': points[i],
+            'v': vels[i]
         }
         print(data)
         yield data
@@ -26,5 +26,5 @@ def generate_list(rcs, filename):
 if __name__ == '__main__':
     rc = LebaiRobot('192.168.3.218')
     
-    i = generate_list(rc, 'examples/pose.txt')
+    i = generate_list('examples/pose.txt')
     rc.move_pvts(i)

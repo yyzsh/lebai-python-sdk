@@ -261,7 +261,7 @@ class LebaiRobot:
         self.rcs.MovePVAT(rc.PVATRequest(duration=t, q=p, v=v, acc=a))
 
     def move_pvats(self, pvat_iter):
-        self.rcs.MovePVATStream((rc.PVATRequest(duration=s["t"], q=s["p"], v=s["v"], acc=s["a"]) for s in pvt_iter))
+        self.rcs.MovePVATStream((rc.PVATRequest(duration=s['t'], q=s['p'], v=s['v'], acc=s['a']) for s in pvt_iter))
 
     def move_pvt(self, p, v, t):
         '''指定位置、速度、时间的伺服移动
@@ -275,7 +275,7 @@ class LebaiRobot:
         self.rcs.MovePVT(rc.PVATRequest(duration=t, q=p, v=v))
 
     def move_pvts(self, pvt_iter):
-        self.rcs.MovePVTStream((rc.PVATRequest(duration=s["t"], q=s["p"], v=s["v"]) for s in pvt_iter))
+        self.rcs.MovePVTStream((rc.PVATRequest(duration=s['t'], q=s['p'], v=s['v']) for s in pvt_iter))
 
     def move_pt(self, p, t):
         '''指定位置和时间的伺服移动
@@ -288,24 +288,24 @@ class LebaiRobot:
         self.rcs.MovePT(rc.PVATRequest(duration=t, q=p))
 
     def move_pts(self, pt_iter):
-        self.rcs.MovePTStream((rc.PVATRequest(duration=s["t"], q=s["p"]) for s in pt_iter))
+        self.rcs.MovePTStream((rc.PVATRequest(duration=s['t'], q=s['p']) for s in pt_iter))
 
     def movej_until(self, p, a=0, v=0, t=0, cb=None):
         pass
 
-    def movej_until_rt(self, p, a=0, v=0, t=0, logic="AND", io={}, cb=None):
+    def movej_until_rt(self, p, a=0, v=0, t=0, logic='AND', io={}, cb=None):
         pass
 
     def movel_until(self, p, a=0, v=0, t=0, cb=None):
         pass
 
-    def movel_until_rt(self, p, a=0, v=0, t=0, logic="AND", io={}, cb=None):
+    def movel_until_rt(self, p, a=0, v=0, t=0, logic='AND', io={}, cb=None):
         pass
 
     def movec_until(self, via, p, rad=0, a=0, v=0, t=0, cb=None):
         pass
 
-    def movec_until_rt(self, via, p, rad=0, a=0, v=0, t=0, logic="AND", io={}, cb=None):
+    def movec_until_rt(self, via, p, rad=0, a=0, v=0, t=0, logic='AND', io={}, cb=None):
         pass
 
     def kinematics_forward(self, *p):
@@ -397,27 +397,27 @@ class LebaiRobot:
         self._sync()
         res = self.rcs.GetRobotData(Empty())
         ret = {}
-        ret["actual_joint_pose"] = tuple(res.targetJoint.joints)
-        ret["target_joint_pose"] = tuple(res.actualJoint.joints)
-        ret["target_pose"] = tuple(res.targetTcpPose.vector)
-        ret["actual_pose"] = tuple(res.actualTcpPose.vector)
+        ret['actual_joint_pose'] = tuple(res.targetJoint.joints)
+        ret['target_joint_pose'] = tuple(res.actualJoint.joints)
+        ret['target_pose'] = tuple(res.targetTcpPose.vector)
+        ret['actual_pose'] = tuple(res.actualTcpPose.vector)
         return ret
 
     def get_robot_data(self):
         self._sync()
         res = self.rcs.GetRobotData(Empty())
         ret = {}
-        ret["target_joint"] = tuple(res.targetJoint.joints)
-        ret["actual_joint"] = tuple(res.actualJoint.joints)
-        ret["target_pose"] = tuple(res.targetTcpPose.vector)
-        ret["actual_pose"] = tuple(res.actualTcpPose.vector)
-        ret["target_torque"] = tuple(res.targetTorque.joints)
-        ret["actual_torque"] = tuple(res.actualTorque.joints)
-        ret["target_vel"] = tuple(res.targetJointSpeed.joints)
-        ret["actual_vel"] = tuple(res.actualJointSpeed.joints)
-        ret["target_acc"] = tuple([]) # TODO: res.targetJointAcc.joints
-        ret["actual_acc"] = tuple([]) # TODO: res.actualJointAcc.joints
-        ret["temp"] = tuple(res.jointTemps.joints)
+        ret['target_joint'] = tuple(res.targetJoint.joints)
+        ret['actual_joint'] = tuple(res.actualJoint.joints)
+        ret['target_pose'] = tuple(res.targetTcpPose.vector)
+        ret['actual_pose'] = tuple(res.actualTcpPose.vector)
+        ret['target_torque'] = tuple(res.targetTorque.joints)
+        ret['actual_torque'] = tuple(res.actualTorque.joints)
+        ret['target_vel'] = tuple(res.targetJointSpeed.joints)
+        ret['actual_vel'] = tuple(res.actualJointSpeed.joints)
+        ret['target_acc'] = tuple([]) # TODO: res.targetJointAcc.joints
+        ret['actual_acc'] = tuple([]) # TODO: res.actualJointAcc.joints
+        ret['temp'] = tuple(res.jointTemps.joints)
         return ret
 
     def _generate_robot_data_cmd(self, n=1):
@@ -429,12 +429,12 @@ class LebaiRobot:
         res = self.rcs.GetRobotIOData(self._generate_robot_data_cmd())
         for io in res:
             ret = {}
-            ret["di"] = tuple(map(lambda dio: {"pin": dio.pin, "value": dio.value}, io.robotDIOIn))
-            ret["do"] = tuple(map(lambda dio: {"pin": dio.pin, "value": dio.value}, io.robotDIOOut))
-            ret["ai"] = tuple(map(lambda aio: {"pin": aio.pin, "value": aio.value}, io.robotAIOIn))
-            ret["ao"] = tuple(map(lambda aio: {"pin": aio.pin, "value": aio.value}, io.robotAIOOut))
-            ret["flange_di"] = tuple(map(lambda dio: {"pin": dio.pin, "value": dio.value}, io.tcpDIOIn))
-            ret["flange_do"] = tuple(map(lambda dio: {"pin": dio.pin, "value": dio.value}, io.tcpDIOOut))
+            ret['di'] = tuple(map(lambda dio: {'pin': dio.pin, 'value': dio.value}, io.robotDIOIn))
+            ret['do'] = tuple(map(lambda dio: {'pin': dio.pin, 'value': dio.value}, io.robotDIOOut))
+            ret['ai'] = tuple(map(lambda aio: {'pin': aio.pin, 'value': aio.value}, io.robotAIOIn))
+            ret['ao'] = tuple(map(lambda aio: {'pin': aio.pin, 'value': aio.value}, io.robotAIOOut))
+            ret['flange_di'] = tuple(map(lambda dio: {'pin': dio.pin, 'value': dio.value}, io.tcpDIOIn))
+            ret['flange_do'] = tuple(map(lambda dio: {'pin': dio.pin, 'value': dio.value}, io.tcpDIOOut))
             return ret
 
     def set_do(self, pin, value):
