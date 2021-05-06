@@ -32,6 +32,11 @@ class RobotControllerStub(object):
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
                 response_deserializer=robot__controller__pb2.CmdId.FromString,
                 )
+        self.SyncFor = channel.unary_unary(
+                '/robotc.RobotController/SyncFor',
+                request_serializer=robot__controller__pb2.SyncRequest.SerializeToString,
+                response_deserializer=robot__controller__pb2.CmdId.FromString,
+                )
         self.TeachMode = channel.unary_unary(
                 '/robotc.RobotController/TeachMode',
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
@@ -327,8 +332,18 @@ class RobotControllerStub(object):
                 request_serializer=messages__pb2.DIO.SerializeToString,
                 response_deserializer=robot__controller__pb2.CmdId.FromString,
                 )
+        self.SetExtraDIO = channel.unary_unary(
+                '/robotc.RobotController/SetExtraDIO',
+                request_serializer=messages__pb2.DIO.SerializeToString,
+                response_deserializer=robot__controller__pb2.CmdId.FromString,
+                )
         self.GetDIO = channel.unary_unary(
                 '/robotc.RobotController/GetDIO',
+                request_serializer=messages__pb2.IOPin.SerializeToString,
+                response_deserializer=messages__pb2.DIO.FromString,
+                )
+        self.GetExtraDIO = channel.unary_unary(
+                '/robotc.RobotController/GetExtraDIO',
                 request_serializer=messages__pb2.IOPin.SerializeToString,
                 response_deserializer=messages__pb2.DIO.FromString,
                 )
@@ -347,8 +362,18 @@ class RobotControllerStub(object):
                 request_serializer=messages__pb2.AIO.SerializeToString,
                 response_deserializer=robot__controller__pb2.CmdId.FromString,
                 )
+        self.SetExtraAIO = channel.unary_unary(
+                '/robotc.RobotController/SetExtraAIO',
+                request_serializer=messages__pb2.AIO.SerializeToString,
+                response_deserializer=robot__controller__pb2.CmdId.FromString,
+                )
         self.GetAIO = channel.unary_unary(
                 '/robotc.RobotController/GetAIO',
+                request_serializer=messages__pb2.IOPin.SerializeToString,
+                response_deserializer=messages__pb2.AIO.FromString,
+                )
+        self.GetExtraAIO = channel.unary_unary(
+                '/robotc.RobotController/GetExtraAIO',
                 request_serializer=messages__pb2.IOPin.SerializeToString,
                 response_deserializer=messages__pb2.AIO.FromString,
                 )
@@ -357,8 +382,18 @@ class RobotControllerStub(object):
                 request_serializer=messages__pb2.AIO.SerializeToString,
                 response_deserializer=robot__controller__pb2.CmdId.FromString,
                 )
+        self.SetExtraAInMode = channel.unary_unary(
+                '/robotc.RobotController/SetExtraAInMode',
+                request_serializer=messages__pb2.AIO.SerializeToString,
+                response_deserializer=robot__controller__pb2.CmdId.FromString,
+                )
         self.GetAInMode = channel.unary_unary(
                 '/robotc.RobotController/GetAInMode',
+                request_serializer=messages__pb2.IOPin.SerializeToString,
+                response_deserializer=messages__pb2.AIO.FromString,
+                )
+        self.GetExtraAInMode = channel.unary_unary(
+                '/robotc.RobotController/GetExtraAInMode',
                 request_serializer=messages__pb2.IOPin.SerializeToString,
                 response_deserializer=messages__pb2.AIO.FromString,
                 )
@@ -367,8 +402,18 @@ class RobotControllerStub(object):
                 request_serializer=messages__pb2.AIO.SerializeToString,
                 response_deserializer=robot__controller__pb2.CmdId.FromString,
                 )
+        self.SetExtraAOutMode = channel.unary_unary(
+                '/robotc.RobotController/SetExtraAOutMode',
+                request_serializer=messages__pb2.AIO.SerializeToString,
+                response_deserializer=robot__controller__pb2.CmdId.FromString,
+                )
         self.GetAOutMode = channel.unary_unary(
                 '/robotc.RobotController/GetAOutMode',
+                request_serializer=messages__pb2.IOPin.SerializeToString,
+                response_deserializer=messages__pb2.AIO.FromString,
+                )
+        self.GetExtraAOutMode = channel.unary_unary(
+                '/robotc.RobotController/GetExtraAOutMode',
                 request_serializer=messages__pb2.IOPin.SerializeToString,
                 response_deserializer=messages__pb2.AIO.FromString,
                 )
@@ -577,15 +622,21 @@ class RobotControllerServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def Sleep(self, request, context):
-        """implement later
+        """等待，单位毫秒
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def Sync(self, request, context):
-        """implement later
+        """同步，等待指定命令执行完成，type为0时表示所有（默认）
         """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SyncFor(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -986,8 +1037,16 @@ class RobotControllerServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def SetDIO(self, request, context):
-        """5. IO-related cmds
+        """xxx
+        5. IO-related cmds
         设置数字输出端口的值
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SetExtraDIO(self, request, context):
+        """设置扩展数字输出端口的值
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -995,6 +1054,13 @@ class RobotControllerServicer(object):
 
     def GetDIO(self, request, context):
         """获得数字输入端口的值
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetExtraDIO(self, request, context):
+        """获得扩展数字数如端口的值
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1021,8 +1087,22 @@ class RobotControllerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetExtraAIO(self, request, context):
+        """获得模拟输入端口的值
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetAIO(self, request, context):
         """获得模拟输入端口的值
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetExtraAIO(self, request, context):
+        """获得扩展模拟输入端口的值
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1035,8 +1115,22 @@ class RobotControllerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetExtraAInMode(self, request, context):
+        """设置扩展模拟输入端口工作模式：0:电压，1:电流
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetAInMode(self, request, context):
         """获得模拟输入端口工作模式：0:电压，1:电流
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetExtraAInMode(self, request, context):
+        """获得扩展模拟输入端口工作模式：0:电压，1:电流
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1049,8 +1143,22 @@ class RobotControllerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetExtraAOutMode(self, request, context):
+        """设置扩展模拟输出端口工作模式：0:电压，1:电流
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetAOutMode(self, request, context):
         """获得模拟输出端口工作模式：0:电压，1:电流
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetExtraAOutMode(self, request, context):
+        """获得扩展模拟输出端口工作模式：0:电压，1:电流
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -1337,6 +1445,11 @@ def add_RobotControllerServicer_to_server(servicer, server):
             'Sync': grpc.unary_unary_rpc_method_handler(
                     servicer.Sync,
                     request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                    response_serializer=robot__controller__pb2.CmdId.SerializeToString,
+            ),
+            'SyncFor': grpc.unary_unary_rpc_method_handler(
+                    servicer.SyncFor,
+                    request_deserializer=robot__controller__pb2.SyncRequest.FromString,
                     response_serializer=robot__controller__pb2.CmdId.SerializeToString,
             ),
             'TeachMode': grpc.unary_unary_rpc_method_handler(
@@ -1634,8 +1747,18 @@ def add_RobotControllerServicer_to_server(servicer, server):
                     request_deserializer=messages__pb2.DIO.FromString,
                     response_serializer=robot__controller__pb2.CmdId.SerializeToString,
             ),
+            'SetExtraDIO': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetExtraDIO,
+                    request_deserializer=messages__pb2.DIO.FromString,
+                    response_serializer=robot__controller__pb2.CmdId.SerializeToString,
+            ),
             'GetDIO': grpc.unary_unary_rpc_method_handler(
                     servicer.GetDIO,
+                    request_deserializer=messages__pb2.IOPin.FromString,
+                    response_serializer=messages__pb2.DIO.SerializeToString,
+            ),
+            'GetExtraDIO': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetExtraDIO,
                     request_deserializer=messages__pb2.IOPin.FromString,
                     response_serializer=messages__pb2.DIO.SerializeToString,
             ),
@@ -1654,8 +1777,18 @@ def add_RobotControllerServicer_to_server(servicer, server):
                     request_deserializer=messages__pb2.AIO.FromString,
                     response_serializer=robot__controller__pb2.CmdId.SerializeToString,
             ),
+            'SetExtraAIO': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetExtraAIO,
+                    request_deserializer=messages__pb2.AIO.FromString,
+                    response_serializer=robot__controller__pb2.CmdId.SerializeToString,
+            ),
             'GetAIO': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAIO,
+                    request_deserializer=messages__pb2.IOPin.FromString,
+                    response_serializer=messages__pb2.AIO.SerializeToString,
+            ),
+            'GetExtraAIO': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetExtraAIO,
                     request_deserializer=messages__pb2.IOPin.FromString,
                     response_serializer=messages__pb2.AIO.SerializeToString,
             ),
@@ -1664,8 +1797,18 @@ def add_RobotControllerServicer_to_server(servicer, server):
                     request_deserializer=messages__pb2.AIO.FromString,
                     response_serializer=robot__controller__pb2.CmdId.SerializeToString,
             ),
+            'SetExtraAInMode': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetExtraAInMode,
+                    request_deserializer=messages__pb2.AIO.FromString,
+                    response_serializer=robot__controller__pb2.CmdId.SerializeToString,
+            ),
             'GetAInMode': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAInMode,
+                    request_deserializer=messages__pb2.IOPin.FromString,
+                    response_serializer=messages__pb2.AIO.SerializeToString,
+            ),
+            'GetExtraAInMode': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetExtraAInMode,
                     request_deserializer=messages__pb2.IOPin.FromString,
                     response_serializer=messages__pb2.AIO.SerializeToString,
             ),
@@ -1674,8 +1817,18 @@ def add_RobotControllerServicer_to_server(servicer, server):
                     request_deserializer=messages__pb2.AIO.FromString,
                     response_serializer=robot__controller__pb2.CmdId.SerializeToString,
             ),
+            'SetExtraAOutMode': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetExtraAOutMode,
+                    request_deserializer=messages__pb2.AIO.FromString,
+                    response_serializer=robot__controller__pb2.CmdId.SerializeToString,
+            ),
             'GetAOutMode': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAOutMode,
+                    request_deserializer=messages__pb2.IOPin.FromString,
+                    response_serializer=messages__pb2.AIO.SerializeToString,
+            ),
+            'GetExtraAOutMode': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetExtraAOutMode,
                     request_deserializer=messages__pb2.IOPin.FromString,
                     response_serializer=messages__pb2.AIO.SerializeToString,
             ),
@@ -1927,6 +2080,23 @@ class RobotController(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/Sync',
             google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            robot__controller__pb2.CmdId.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SyncFor(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/SyncFor',
+            robot__controller__pb2.SyncRequest.SerializeToString,
             robot__controller__pb2.CmdId.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -2935,6 +3105,23 @@ class RobotController(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def SetExtraDIO(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/SetExtraDIO',
+            messages__pb2.DIO.SerializeToString,
+            robot__controller__pb2.CmdId.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def GetDIO(request,
             target,
             options=(),
@@ -2946,6 +3133,23 @@ class RobotController(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/GetDIO',
+            messages__pb2.IOPin.SerializeToString,
+            messages__pb2.DIO.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetExtraDIO(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/GetExtraDIO',
             messages__pb2.IOPin.SerializeToString,
             messages__pb2.DIO.FromString,
             options, channel_credentials,
@@ -3003,6 +3207,23 @@ class RobotController(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def SetExtraAIO(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/SetExtraAIO',
+            messages__pb2.AIO.SerializeToString,
+            robot__controller__pb2.CmdId.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def GetAIO(request,
             target,
             options=(),
@@ -3014,6 +3235,23 @@ class RobotController(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/GetAIO',
+            messages__pb2.IOPin.SerializeToString,
+            messages__pb2.AIO.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetExtraAIO(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/GetExtraAIO',
             messages__pb2.IOPin.SerializeToString,
             messages__pb2.AIO.FromString,
             options, channel_credentials,
@@ -3037,6 +3275,23 @@ class RobotController(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def SetExtraAInMode(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/SetExtraAInMode',
+            messages__pb2.AIO.SerializeToString,
+            robot__controller__pb2.CmdId.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def GetAInMode(request,
             target,
             options=(),
@@ -3048,6 +3303,23 @@ class RobotController(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/GetAInMode',
+            messages__pb2.IOPin.SerializeToString,
+            messages__pb2.AIO.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetExtraAInMode(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/GetExtraAInMode',
             messages__pb2.IOPin.SerializeToString,
             messages__pb2.AIO.FromString,
             options, channel_credentials,
@@ -3071,6 +3343,23 @@ class RobotController(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
+    def SetExtraAOutMode(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/SetExtraAOutMode',
+            messages__pb2.AIO.SerializeToString,
+            robot__controller__pb2.CmdId.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
     def GetAOutMode(request,
             target,
             options=(),
@@ -3082,6 +3371,23 @@ class RobotController(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/GetAOutMode',
+            messages__pb2.IOPin.SerializeToString,
+            messages__pb2.AIO.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetExtraAOutMode(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/robotc.RobotController/GetExtraAOutMode',
             messages__pb2.IOPin.SerializeToString,
             messages__pb2.AIO.FromString,
             options, channel_credentials,

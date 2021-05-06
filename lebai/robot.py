@@ -32,6 +32,12 @@ class LebaiRobot:
         except grpc.RpcError:
             pass
 
+    def sleep(self, time):
+        try:
+            self.rcs.Sleep(rc.SleepRequest(time=time))
+        except grpc.RpcError:
+            pass
+
     def start_sys(self):
         self._sync()
         self.rcs.StartSys(Empty())
@@ -42,7 +48,7 @@ class LebaiRobot:
 
     def powerdown(self):
         self._sync()
-        self.rcs.PowerDown(Empty)
+        self.rcs.PowerDown(Empty())
 
     def stop(self):
         self._sync()
@@ -54,11 +60,11 @@ class LebaiRobot:
 
     def teach_mode(self):
         self._sync()
-        self.rcs.TeachMode(Empty)
+        self.rcs.TeachMode(Empty())
 
     def end_teach_mode(self):
         self._sync()
-        self.rcs.EndTeachMode(Empty)
+        self.rcs.EndTeachMode(Empty())
 
     def resume(self):
         self._sync()
@@ -171,7 +177,7 @@ class LebaiRobot:
         self.rcs.SetClawForce(rc.Force(force=force))
         self.rcs.SetClawAmplitude(rc.Amplitude(amplitude=amplitude))
 
-    def movej(self, p, a=0, v=0, t=0, r=0):
+    def movej(self, p, a=0, v=0, t=0, r=0, is_joint=None):
         '''线性移动（关节空间）
 
         :param p:
@@ -182,9 +188,13 @@ class LebaiRobot:
         :param t: 运动时间 (s)
         :param r: 交融半径 (m)
         '''
+        if is_joint is None:
+            is_joint = getattr(p, 'is_joint', True)
+        if not hasattr(p, 'pos'):
+            p = JointPose(*p)
         req = rc.MoveJRequest(
             joint_pose_to = list(p.pos),
-            pose_is_joint_angle=getattr(p, 'is_joint', True),
+            pose_is_joint_angle=is_joint,
             acceleration=a,
             velocity=v,
             time=t,
@@ -194,10 +204,14 @@ class LebaiRobot:
             p._base_set_PR(req.pose_base)
         self.rcs.MoveJ(req)
 
-    def movel(self, p, a=0, v=0, t=0, r=0):
+    def movel(self, p, a=0, v=0, t=0, r=0, is_joint=None):
+        if is_joint is None:
+            is_joint = getattr(p, 'is_joint', False)
+        if not hasattr(p, 'pos'):
+            p = CartesianPose(*p)
         req = rc.MoveLRequest(
             pose_to = list(p.pos),
-            pose_is_joint_angle=getattr(p, 'is_joint', False),
+            pose_is_joint_angle=is_joint,
             acceleration=a,
             velocity=v,
             time=t,
@@ -207,12 +221,16 @@ class LebaiRobot:
             p._base_set_PR(req.pose_base)
         self.rcs.MoveL(req)
 
-    def movec(self, via, p, rad=0, a=0, v=0, t=0, r=0):
+    def movec(self, via, p, rad=0, a=0, v=0, t=0, r=0, is_joint=None):
+        if not hasattr(p, 'pos'):
+            p = CartesianPose(*p)
+        if not hasattr(via, 'pos'):
+            via = CartesianPose(*via)
         req = rc.MoveCRequest(
             pose_via = list(via.pos),
-            pose_via_is_joint=getattr(via, 'is_joint', False),
+            pose_via_is_joint=is_joint if is_joint is not None else getattr(via, 'is_joint', True),
             pose_to = list(p.pos),
-            pose_to_is_joint=getattr(p, 'is_joint', False),
+            pose_to_is_joint=is_joint if is_joint is not None else getattr(p, 'is_joint', True),
             acceleration=a,
             velocity=v,
             time=t,
@@ -225,6 +243,46 @@ class LebaiRobot:
 
     def stop_move(self):
         self.rcs.StopMove(Empty())
+
+    def move_pvat(self, p, v, a, t):
+        '''指定位置、速度、加速度、时间的伺服移动
+
+        :param p: 关节位置列表 (rad)
+        :param v: 关节速度列表 (rad/s)
+        :param a: 关节加速度列表 (rad/s^2)
+        :param t: 总运动时间 (s)
+        '''
+        self.rcs.MovePVAT(rc.PVATRequest(duration=t, q=p, v=v, acc=a))
+
+    def move_pvats(self, pvat_iter):
+        self.rcs.MovePVATStream((rc.PVATRequest(duration=s["t"], q=s["p"], v=s["v"], acc=s["a"]) for s in pvt_iter))
+
+    def move_pvt(self, p, v, t):
+        '''指定位置、速度、时间的伺服移动
+
+        加速度将自动计算。
+
+        :param p: 关节位置列表 (rad)
+        :param v: 关节速度列表 (rad/s)
+        :param t: 总运动时间 (s)
+        '''
+        self.rcs.MovePVT(rc.PVATRequest(duration=t, q=p, v=v))
+
+    def move_pvts(self, pvt_iter):
+        self.rcs.MovePVTStream((rc.PVATRequest(duration=s["t"], q=s["p"], v=s["v"]) for s in pvt_iter))
+
+    def move_pt(self, p, t):
+        '''指定位置和时间的伺服移动
+
+        速度和加速度将自动计算。
+
+        :param p: 关节位置列表 (rad)
+        :param t: 总运动时间 (s)
+        '''
+        self.rcs.MovePT(rc.PVATRequest(duration=t, q=p))
+
+    def move_pts(self, pvt_iter):
+        self.rcs.MovePTStream((rc.PVATRequest(duration=s["t"], q=s["p"]) for s in pvt_iter))
 
     def movej_until(self, p, a=0, v=0, t=0, cb=None):
         pass

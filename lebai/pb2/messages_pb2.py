@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0emessages.proto\x12\x06robotc\"\x17\n\x08Response\x12\x0b\n\x03ret\x18\x01 \x01(\x05\"-\n\nCoordinate\x12\t\n\x01x\x18\x01 \x01(\x01\x12\t\n\x01y\x18\x02 \x01(\x01\x12\t\n\x01z\x18\x03 \x01(\x01\"+\n\x08Rotation\x12\t\n\x01r\x18\x01 \x01(\x01\x12\t\n\x01p\x18\x02 \x01(\x01\x12\t\n\x01y\x18\x03 \x01(\x01\"N\n\x02PR\x12$\n\x08position\x18\x01 \x01(\x0b\x32\x12.robotc.Coordinate\x12\"\n\x08rotation\x18\x02 \x01(\x0b\x32\x10.robotc.Rotation\"\x17\n\x05JPose\x12\x0e\n\x06joints\x18\x01 \x03(\x01\"8\n\x07Payload\x12\x0c\n\x04mass\x18\x01 \x01(\x01\x12\x1f\n\x03\x63og\x18\x02 \x01(\x0b\x32\x12.robotc.Coordinate\"\x1b\n\x0bPayloadMass\x12\x0c\n\x04mass\x18\x01 \x01(\x01\"-\n\nPayloadCog\x12\x1f\n\x03\x63og\x18\x01 \x01(\x0b\x32\x12.robotc.Coordinate\"\x14\n\x05IOPin\x12\x0b\n\x03pin\x18\x01 \x01(\x05\"!\n\x03\x44IO\x12\x0b\n\x03pin\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x05\"/\n\x03\x41IO\x12\x0b\n\x03pin\x18\x01 \x01(\x05\x12\x0c\n\x04mode\x18\x02 \x01(\x05\x12\r\n\x05value\x18\x03 \x01(\x01\"2\n\x15ModbusExternalIOState\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05state\x18\x02 \x01(\x05\"\xfe\x01\n\x02IO\x12\x1f\n\nrobotDIOIn\x18\x01 \x03(\x0b\x32\x0b.robotc.DIO\x12 \n\x0brobotDIOOut\x18\x02 \x03(\x0b\x32\x0b.robotc.DIO\x12\x1f\n\nrobotAIOIn\x18\x03 \x03(\x0b\x32\x0b.robotc.AIO\x12 \n\x0brobotAIOOut\x18\x04 \x03(\x0b\x32\x0b.robotc.AIO\x12\x1d\n\x08tcpDIOIn\x18\x05 \x03(\x0b\x32\x0b.robotc.DIO\x12\x1e\n\ttcpDIOOut\x18\x06 \x03(\x0b\x32\x0b.robotc.DIO\x12\x33\n\x0c\x65xtIODevices\x18\x07 \x03(\x0b\x32\x1d.robotc.ModbusExternalIOState\"=\n\x08Hardware\x12\r\n\x05model\x18\x01 \x01(\t\x12\n\n\x02sn\x18\x02 \x01(\t\x12\x16\n\x0e\x64river_version\x18\x03 \x01(\t\"\xa1\x02\n\tRobotInfo\x12\x1f\n\x05robot\x18\x01 \x01(\x0b\x32\x10.robotc.Hardware\x12 \n\x06\x66lange\x18\x02 \x01(\x0b\x32\x10.robotc.Hardware\x12\x1d\n\x03led\x18\x03 \x01(\x0b\x32\x10.robotc.Hardware\x12 \n\x06joints\x18\x04 \x03(\x0b\x32\x10.robotc.Hardware\x12\x11\n\trcVersion\x18\x05 \x01(\t\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\"\n\x08\x63omboard\x18\x07 \x01(\x0b\x32\x10.robotc.Hardware\x12\x0b\n\x03mac\x18\x08 \x01(\t\x12\x1d\n\x03\x61rm\x18\t \x01(\x0b\x32\x10.robotc.Hardware\x12\x0e\n\x06\x61ppTag\x18\n \x01(\t\x12\x0f\n\x07typeTag\x18\x0b \x01(\t\"A\n\nDeviceInfo\x12!\n\x07\x64\x65vInfo\x18\x01 \x01(\x0b\x32\x10.robotc.Hardware\x12\x10\n\x08\x64\x65v_type\x18\x02 \x01(\x05*[\n\x08LuaState\x12\x08\n\x04IDLE\x10\x00\x12\x0b\n\x07RUNNING\x10\x01\x12\n\n\x06PAUSED\x10\x02\x12\x0b\n\x07\x41\x42ORTED\x10\x03\x12\x0b\n\x07STOPPED\x10\x04\x12\t\n\x05\x42\x45GIN\x10\x05\x12\x07\n\x03\x45ND\x10\x06\x62\x06proto3'
+  serialized_pb=b'\n\x0emessages.proto\x12\x06robotc\"\x17\n\x08Response\x12\x0b\n\x03ret\x18\x01 \x01(\x05\"-\n\nCoordinate\x12\t\n\x01x\x18\x01 \x01(\x01\x12\t\n\x01y\x18\x02 \x01(\x01\x12\t\n\x01z\x18\x03 \x01(\x01\"+\n\x08Rotation\x12\t\n\x01r\x18\x01 \x01(\x01\x12\t\n\x01p\x18\x02 \x01(\x01\x12\t\n\x01y\x18\x03 \x01(\x01\"N\n\x02PR\x12$\n\x08position\x18\x01 \x01(\x0b\x32\x12.robotc.Coordinate\x12\"\n\x08rotation\x18\x02 \x01(\x0b\x32\x10.robotc.Rotation\"\x17\n\x05JPose\x12\x0e\n\x06joints\x18\x01 \x03(\x01\"8\n\x07Payload\x12\x0c\n\x04mass\x18\x01 \x01(\x01\x12\x1f\n\x03\x63og\x18\x02 \x01(\x0b\x32\x12.robotc.Coordinate\"\x1b\n\x0bPayloadMass\x12\x0c\n\x04mass\x18\x01 \x01(\x01\"-\n\nPayloadCog\x12\x1f\n\x03\x63og\x18\x01 \x01(\x0b\x32\x12.robotc.Coordinate\"\x14\n\x05IOPin\x12\x0b\n\x03pin\x18\x01 \x01(\x05\"!\n\x03\x44IO\x12\x0b\n\x03pin\x18\x01 \x01(\x05\x12\r\n\x05value\x18\x02 \x01(\x05\"/\n\x03\x41IO\x12\x0b\n\x03pin\x18\x01 \x01(\x05\x12\x0c\n\x04mode\x18\x02 \x01(\x05\x12\r\n\x05value\x18\x03 \x01(\x01\"2\n\x15ModbusExternalIOState\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05state\x18\x02 \x01(\x05\"\x9c\x03\n\x02IO\x12\x1f\n\nrobotDIOIn\x18\x01 \x03(\x0b\x32\x0b.robotc.DIO\x12 \n\x0brobotDIOOut\x18\x02 \x03(\x0b\x32\x0b.robotc.DIO\x12\x1f\n\nrobotAIOIn\x18\x03 \x03(\x0b\x32\x0b.robotc.AIO\x12 \n\x0brobotAIOOut\x18\x04 \x03(\x0b\x32\x0b.robotc.AIO\x12\x1d\n\x08tcpDIOIn\x18\x05 \x03(\x0b\x32\x0b.robotc.DIO\x12\x1e\n\ttcpDIOOut\x18\x06 \x03(\x0b\x32\x0b.robotc.DIO\x12\x33\n\x0c\x65xtIODevices\x18\x07 \x03(\x0b\x32\x1d.robotc.ModbusExternalIOState\x12%\n\x10\x65xtra_robotDIOIn\x18\x08 \x03(\x0b\x32\x0b.robotc.DIO\x12&\n\x11\x65xtra_robotDIOOut\x18\t \x03(\x0b\x32\x0b.robotc.DIO\x12%\n\x10\x65xtra_robotAIOIn\x18\n \x03(\x0b\x32\x0b.robotc.AIO\x12&\n\x11\x65xtra_robotAIOOut\x18\x0b \x03(\x0b\x32\x0b.robotc.AIO\"=\n\x08Hardware\x12\r\n\x05model\x18\x01 \x01(\t\x12\n\n\x02sn\x18\x02 \x01(\t\x12\x16\n\x0e\x64river_version\x18\x03 \x01(\t\"\xb3\x02\n\tRobotInfo\x12\x1f\n\x05robot\x18\x01 \x01(\x0b\x32\x10.robotc.Hardware\x12 \n\x06\x66lange\x18\x02 \x01(\x0b\x32\x10.robotc.Hardware\x12\x1d\n\x03led\x18\x03 \x01(\x0b\x32\x10.robotc.Hardware\x12 \n\x06joints\x18\x04 \x03(\x0b\x32\x10.robotc.Hardware\x12\x11\n\trcVersion\x18\x05 \x01(\t\x12\x0c\n\x04name\x18\x06 \x01(\t\x12\"\n\x08\x63omboard\x18\x07 \x01(\x0b\x32\x10.robotc.Hardware\x12\x0b\n\x03mac\x18\x08 \x01(\t\x12\x1d\n\x03\x61rm\x18\t \x01(\x0b\x32\x10.robotc.Hardware\x12\x0e\n\x06\x61ppTag\x18\n \x01(\t\x12\x0f\n\x07typeTag\x18\x0b \x01(\t\x12\x10\n\x08\x65xtra_io\x18\x0c \x01(\x08\"A\n\nDeviceInfo\x12!\n\x07\x64\x65vInfo\x18\x01 \x01(\x0b\x32\x10.robotc.Hardware\x12\x10\n\x08\x64\x65v_type\x18\x02 \x01(\x05*[\n\x08LuaState\x12\x08\n\x04IDLE\x10\x00\x12\x0b\n\x07RUNNING\x10\x01\x12\n\n\x06PAUSED\x10\x02\x12\x0b\n\x07\x41\x42ORTED\x10\x03\x12\x0b\n\x07STOPPED\x10\x04\x12\t\n\x05\x42\x45GIN\x10\x05\x12\x07\n\x03\x45ND\x10\x06\x62\x06proto3'
 )
 
 _LUASTATE = _descriptor.EnumDescriptor(
@@ -68,8 +68,8 @@ _LUASTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1219,
-  serialized_end=1310,
+  serialized_start=1395,
+  serialized_end=1486,
 )
 _sym_db.RegisterEnumDescriptor(_LUASTATE)
 
@@ -595,6 +595,34 @@ _IO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='extra_robotDIOIn', full_name='robotc.IO.extra_robotDIOIn', index=7,
+      number=8, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='extra_robotDIOOut', full_name='robotc.IO.extra_robotDIOOut', index=8,
+      number=9, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='extra_robotAIOIn', full_name='robotc.IO.extra_robotAIOIn', index=9,
+      number=10, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='extra_robotAIOOut', full_name='robotc.IO.extra_robotAIOOut', index=10,
+      number=11, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -608,7 +636,7 @@ _IO = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=541,
-  serialized_end=795,
+  serialized_end=953,
 )
 
 
@@ -653,8 +681,8 @@ _HARDWARE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=797,
-  serialized_end=858,
+  serialized_start=955,
+  serialized_end=1016,
 )
 
 
@@ -743,6 +771,13 @@ _ROBOTINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='extra_io', full_name='robotc.RobotInfo.extra_io', index=11,
+      number=12, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -755,8 +790,8 @@ _ROBOTINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=861,
-  serialized_end=1150,
+  serialized_start=1019,
+  serialized_end=1326,
 )
 
 
@@ -794,8 +829,8 @@ _DEVICEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1152,
-  serialized_end=1217,
+  serialized_start=1328,
+  serialized_end=1393,
 )
 
 _PR.fields_by_name['position'].message_type = _COORDINATE
@@ -809,6 +844,10 @@ _IO.fields_by_name['robotAIOOut'].message_type = _AIO
 _IO.fields_by_name['tcpDIOIn'].message_type = _DIO
 _IO.fields_by_name['tcpDIOOut'].message_type = _DIO
 _IO.fields_by_name['extIODevices'].message_type = _MODBUSEXTERNALIOSTATE
+_IO.fields_by_name['extra_robotDIOIn'].message_type = _DIO
+_IO.fields_by_name['extra_robotDIOOut'].message_type = _DIO
+_IO.fields_by_name['extra_robotAIOIn'].message_type = _AIO
+_IO.fields_by_name['extra_robotAIOOut'].message_type = _AIO
 _ROBOTINFO.fields_by_name['robot'].message_type = _HARDWARE
 _ROBOTINFO.fields_by_name['flange'].message_type = _HARDWARE
 _ROBOTINFO.fields_by_name['led'].message_type = _HARDWARE

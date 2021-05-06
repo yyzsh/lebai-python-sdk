@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x18private_controller.proto\x12\x06robotc\x1a\x1bgoogle/protobuf/empty.proto\x1a\x0emessages.proto\"4\n\x13\x45nableJointBacklash\x12\r\n\x05joint\x18\x01 \x01(\x05\x12\x0e\n\x06\x65nable\x18\x02 \x01(\x08\"D\n\x15\x45nableJointBacklashes\x12+\n\x06joints\x18\x01 \x03(\x0b\x32\x1b.robotc.EnableJointBacklash\"\xef\x01\n\x0f\x45xtraServoParam\x12\r\n\x05joint\x18\x01 \x01(\x05\x12\x17\n\x0f\x61\x63\x63_position_kp\x18\x02 \x01(\x01\x12\x14\n\x0c\x61\x63\x63_speed_kp\x18\x03 \x01(\x01\x12\x14\n\x0c\x61\x63\x63_speed_it\x18\x04 \x01(\x01\x12\x17\n\x0funi_position_kp\x18\x05 \x01(\x01\x12\x14\n\x0cuni_speed_kp\x18\x06 \x01(\x01\x12\x14\n\x0cuni_speed_it\x18\x07 \x01(\x01\x12\x17\n\x0f\x64\x65\x63_position_kp\x18\x08 \x01(\x01\x12\x14\n\x0c\x64\x65\x63_speed_kp\x18\t \x01(\x01\x12\x14\n\x0c\x64\x65\x63_speed_it\x18\n \x01(\x01\";\n\x10\x45xtraServoParams\x12\'\n\x06joints\x18\x01 \x03(\x0b\x32\x17.robotc.ExtraServoParam\"Y\n\rJointBacklash\x12\r\n\x05joint\x18\x01 \x01(\x05\x12\t\n\x01k\x18\x02 \x01(\r\x12\n\n\x02iq\x18\x03 \x01(\x01\x12\x10\n\x08iq_final\x18\x04 \x01(\x01\x12\x10\n\x08iq_count\x18\x05 \x01(\r\"8\n\x0fJointBacklashes\x12%\n\x06joints\x18\x01 \x03(\x0b\x32\x15.robotc.JointBacklash\"v\n\x12JointBacklashParam\x12\r\n\x05joint\x18\x01 \x01(\x05\x12\x1b\n\x13\x65ncoder_data_offset\x18\x02 \x01(\x05\x12\n\n\x02on\x18\x03 \x01(\r\x12\x0c\n\x04over\x18\x04 \x01(\r\x12\r\n\x05leave\x18\x05 \x01(\r\x12\x0b\n\x03max\x18\x06 \x01(\r\"A\n\x13JointBacklashParams\x12*\n\x06joints\x18\x01 \x03(\x0b\x32\x1a.robotc.JointBacklashParam\"2\n\tVoiceFile\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04\x66ile\x18\x02 \x01(\t\x12\x0b\n\x03md5\x18\x03 \x01(\t\"=\n\x0bVoiceResult\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04step\x18\x02 \x01(\x05\x12\x14\n\x0cstepProgress\x18\x03 \x01(\x05\"\x1a\n\x0bTrueOrFalse\x12\x0b\n\x03val\x18\x01 \x01(\x08\"%\n\x10InstallDirection\x12\x11\n\tdirection\x18\x01 \x01(\x05\"O\n\x0bJointConfig\x12\x10\n\x08maxAngle\x18\x01 \x01(\x01\x12\x10\n\x08minAngle\x18\x02 \x01(\x01\x12\x0c\n\x04maxV\x18\x03 \x01(\x01\x12\x0e\n\x06maxAcc\x18\x04 \x01(\x01\"4\n\x0cJointConfigs\x12$\n\x07\x63onfigs\x18\x01 \x03(\x0b\x32\x13.robotc.JointConfig\"/\n\x0f\x43\x61rtesianConfig\x12\x0c\n\x04maxV\x18\x01 \x01(\x01\x12\x0e\n\x06maxAcc\x18\x02 \x01(\x01\"0\n\nSafetyPlat\x12\"\n\x06points\x18\x01 \x03(\x0b\x32\x12.robotc.Coordinate\"0\n\x0bSafetyPlats\x12!\n\x05plats\x18\x01 \x03(\x0b\x32\x12.robotc.SafetyPlat\"$\n\x13\x43ollisionTorqueDiff\x12\r\n\x05\x64iffs\x18\x01 \x03(\x01\"[\n\x11\x43ollisionDetector\x12\x0e\n\x06\x65nable\x18\x01 \x01(\x08\x12\x0e\n\x06\x61\x63tion\x18\x02 \x01(\x05\x12\x11\n\tpauseTime\x18\x03 \x01(\x05\x12\x13\n\x0bsensitivity\x18\x04 \x01(\x05\"h\n\x08LEDStyle\x12\x0c\n\x04mode\x18\x03 \x01(\x05\x12\r\n\x05speed\x18\x04 \x01(\x05\x12\r\n\x05\x63olor\x18\x05 \x03(\x05\x12\r\n\x05voice\x18\x01 \x01(\x05\x12\x0e\n\x06volume\x18\x02 \x01(\x05\x12\x11\n\trobotMode\x18\x06 \x01(\x05\"-\n\tLEDStyles\x12 \n\x06styles\x18\x10 \x03(\x0b\x32\x10.robotc.LEDStyle\"N\n\x0c\x42uttonConfig\x12\x12\n\nbtn_flan_1\x18\x01 \x01(\x08\x12\x12\n\nbtn_flan_2\x18\x02 \x01(\x08\x12\x16\n\x0e\x62tn_shoulder_0\x18\x03 \x01(\x08\"\xa5\x05\n\rConfiguration\x12\x32\n\x10installDirection\x18\x01 \x01(\x0b\x32\x18.robotc.InstallDirection\x12\x34\n\x11\x63ollisionDetector\x18\x02 \x01(\x0b\x32\x19.robotc.CollisionDetector\x12*\n\x0cjointConfigs\x18\x03 \x01(\x0b\x32\x14.robotc.JointConfigs\x12(\n\x0bsafetyPlats\x18\x04 \x01(\x0b\x32\x13.robotc.SafetyPlats\x12\x17\n\x03tcp\x18\x05 \x01(\x0b\x32\n.robotc.PR\x12 \n\x07payload\x18\x06 \x01(\x0b\x32\x0f.robotc.Payload\x12\x11\n\tenableDDS\x18\x07 \x01(\x08\x12\x38\n\x13\x63ollisionTorqueDiff\x18\x08 \x01(\x0b\x32\x1b.robotc.CollisionTorqueDiff\x12\x15\n\rrobotDIOInNum\x18\t \x01(\x05\x12\x16\n\x0erobotDIOOutNum\x18\n \x01(\x05\x12%\n\x10robotAIOInConfig\x18\x0b \x03(\x0b\x32\x0b.robotc.AIO\x12&\n\x11robotAIOOutConfig\x18\x0c \x03(\x0b\x32\x0b.robotc.AIO\x12\x13\n\x0btcpDIOInNum\x18\r \x01(\x05\x12\x14\n\x0ctcpDIOOutNum\x18\x0e \x01(\x05\x12\r\n\x05zeros\x18\x0f \x03(\x01\x12 \n\x06styles\x18\x10 \x03(\x0b\x32\x10.robotc.LEDStyle\x12\x13\n\x0b\x62reak_a_cup\x18\x11 \x01(\x08\x12+\n\rbutton_config\x18\x12 \x01(\x0b\x32\x14.robotc.ButtonConfig\x12\x30\n\x0f\x63\x61rtesianConfig\x18\x13 \x01(\x0b\x32\x17.robotc.CartesianConfig\"\x15\n\x04Zero\x12\r\n\x05zeros\x18\x01 \x03(\x01\"\xb1\x03\n\x06Notice\x12\'\n\x04type\x18\x01 \x01(\x0e\x32\x19.robotc.Notice.NoticeType\x12#\n\x02id\x18\x02 \x01(\x0e\x32\x17.robotc.Notice.NoticeId\x12\r\n\x05value\x18\x03 \x01(\x05\x12\x0c\n\x04\x63ode\x18\x04 \x01(\x05\x12\x0b\n\x03lol\x18\x05 \x03(\x01\x12\r\n\x05\x63ount\x18\x06 \x01(\x05\"C\n\nNoticeType\x12\x10\n\x0cNOTICE_STATE\x10\x00\x12\x10\n\x0cNOTICE_ERROR\x10\x01\x12\x11\n\rNOTICE_BUTTON\x10\x02\"\xda\x01\n\x08NoticeId\x12\x1f\n\x1bNOTICE_ID_STATE_ROBOT_STATE\x10\x00\x12\x1a\n\x16NOTICE_ID_STATE_E_STOP\x10\x01\x12\x1f\n\x1bNOTICE_ID_STATE_DATA_UPDATE\x10\x02\x12\x13\n\x0fNOTICE_ID_ERROR\x10\x03\x12\x1d\n\x19NOTICE_ID_BUTTON_SHOULDER\x10\x04\x12\x1d\n\x19NOTICE_ID_BUTTON_FLANGE_1\x10\x05\x12\x1d\n\x19NOTICE_ID_BUTTON_FLANGE_2\x10\x06\"-\n\x0cNotification\x12\x1d\n\x05items\x18\x01 \x03(\x0b\x32\x0e.robotc.Notice\"Y\n\x06\x44river\x12\"\n\x08hardware\x18\x01 \x01(\x0b\x32\x10.robotc.Hardware\x12+\n\x0c\x63urPartition\x18\x02 \x01(\x0e\x32\x15.robotc.BootPartition\"\x8b\x01\n\nDriverInfo\x12\x1e\n\x06\x66lange\x18\x01 \x01(\x0b\x32\x0e.robotc.Driver\x12\x1b\n\x03led\x18\x02 \x01(\x0b\x32\x0e.robotc.Driver\x12\x1e\n\x06joints\x18\x03 \x03(\x0b\x32\x0e.robotc.Driver\x12 \n\x08\x63omboard\x18\x04 \x01(\x0b\x32\x0e.robotc.Driver\"5\n\x07OTAFile\x12\x0c\n\x04\x66ile\x18\x01 \x01(\t\x12\x0b\n\x03md5\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x03 \x01(\t\"d\n\x06OTACmd\x12*\n\x0c\x62ootloaderId\x18\x01 \x01(\x0e\x32\x14.robotc.BootloaderId\x12.\n\x0ftargetPartition\x18\x02 \x01(\x0e\x32\x15.robotc.BootPartition\"E\n\x07OTAData\x12\x1b\n\x03\x63md\x18\x01 \x01(\x0b\x32\x0e.robotc.OTACmd\x12\x1d\n\x04\x66ile\x18\x02 \x01(\x0b\x32\x0f.robotc.OTAFile\"H\n\tOTAJoints\x12\x1c\n\x04\x63mds\x18\x01 \x03(\x0b\x32\x0e.robotc.OTACmd\x12\x1d\n\x04\x66ile\x18\x02 \x01(\x0b\x32\x0f.robotc.OTAFile\"Q\n\x08OTADatas\x12!\n\x06joints\x18\x01 \x01(\x0b\x32\x11.robotc.OTAJoints\x12\"\n\tnotJoints\x18\x02 \x03(\x0b\x32\x0f.robotc.OTAData\"\x96\x01\n\tOTAResult\x12*\n\x0c\x62ootloaderId\x18\x01 \x01(\x0e\x32\x14.robotc.BootloaderId\x12\x0c\n\x04step\x18\x02 \x01(\x05\x12\x14\n\x0cstepProgress\x18\x03 \x01(\x05\x12\x0f\n\x07version\x18\x04 \x01(\t\x12(\n\tpartition\x18\x05 \x01(\x0e\x32\x15.robotc.BootPartition\"0\n\nOTAResults\x12\"\n\x07results\x18\x01 \x03(\x0b\x32\x11.robotc.OTAResult\"N\n\x0e\x43urrentVoltage\x12\r\n\x05power\x18\x01 \x01(\x01\x12\x0c\n\x04\x66lan\x18\x02 \x01(\x01\x12\r\n\x05joint\x18\x03 \x03(\x01\x12\x10\n\x08io_power\x18\x04 \x01(\x01\"t\n\x0fJointServoParam\x12\r\n\x05index\x18\x01 \x01(\r\x12\x13\n\x0bposition_kp\x18\x02 \x01(\x01\x12\x10\n\x08speed_kp\x18\x03 \x01(\x01\x12\x10\n\x08speed_it\x18\x04 \x01(\x01\x12\x19\n\x11torque_cmd_filter\x18\x05 \x01(\x01\";\n\x10JointServoParams\x12\'\n\x06joints\x18\x01 \x03(\x0b\x32\x17.robotc.JointServoParam\"\x18\n\x0b\x44\x65\x62ugParams\x12\t\n\x01\x64\x18\x01 \x03(\x01\"X\n\x0c\x46ixDHRequest\x12\x13\n\x0b\x64\x65lta_theta\x18\x01 \x03(\x01\x12\x12\n\nplus_theta\x18\x02 \x01(\x08\x12\x0f\n\x07\x64\x65lta_l\x18\x03 \x03(\x01\x12\x0e\n\x06plus_l\x18\x04 \x01(\x08\"$\n\tDHRequest\x12\x17\n\x0fget_theoretical\x18\x01 \x01(\x08\"9\n\x03\x44Ht\x12\t\n\x01\x64\x18\x01 \x01(\x01\x12\t\n\x01\x61\x18\x02 \x01(\x01\x12\r\n\x05\x61lpha\x18\x03 \x01(\x01\x12\r\n\x05theta\x18\x04 \x01(\x01\"\'\n\x08\x44HParams\x12\x1b\n\x06params\x18\x01 \x03(\x0b\x32\x0b.robotc.DHt\"c\n\x0b\x46ixDHResult\x12\x1b\n\x06origin\x18\x01 \x03(\x0b\x32\x0b.robotc.DHt\x12\x1b\n\x06\x62\x65\x66ore\x18\x02 \x03(\x0b\x32\x0b.robotc.DHt\x12\x1a\n\x05\x61\x66ter\x18\x03 \x03(\x0b\x32\x0b.robotc.DHt\"&\n\x06Option\x12\r\n\x05value\x18\x01 \x01(\t\x12\r\n\x05label\x18\x02 \x01(\t\"\x99\x03\n\x08LuaEvent\x12#\n\x04type\x18\x01 \x01(\x0e\x32\x15.robotc.LuaEvent.Type\x12\x0e\n\x06\x63md_id\x18\x02 \x01(\x05\x12,\n\tcmd_state\x18\x03 \x01(\x0e\x32\x19.robotc.LuaEvent.CmdState\x12\x10\n\x08\x65\x63ho_key\x18\x04 \x01(\t\x12\r\n\x05index\x18\x08 \x01(\x05\x12#\n\tlua_state\x18\x05 \x01(\x0e\x32\x10.robotc.LuaState\x12\x11\n\tsignal_id\x18\x06 \x01(\x05\x12\x14\n\x0csignal_value\x18\x07 \x01(\x01\x12\x1f\n\x07options\x18\t \x03(\x0b\x32\x0e.robotc.Option\"^\n\x04Type\x12\x08\n\x04\x45\x43HO\x10\x00\x12\x07\n\x03LUA\x10\x01\x12\n\n\x06SIGNAL\x10\x02\x12\x08\n\x04LOOP\x10\x03\x12\t\n\x05\x41LERT\x10\x04\x12\x0b\n\x07\x43ONFIRM\x10\x05\x12\t\n\x05INPUT\x10\x06\x12\n\n\x06SELECT\x10\x07\":\n\x08\x43mdState\x12\x08\n\x04INIT\x10\x00\x12\x0b\n\x07RUNNING\x10\x01\x12\x0b\n\x07SUCCESS\x10\x02\x12\n\n\x06\x46\x41ILED\x10\x03\"\x1d\n\x0c\x43onfirmInput\x12\r\n\x05input\x18\x01 \x01(\t\"A\n\x07PoseRes\x12\x18\n\x04\x63\x61rt\x18\x01 \x01(\x0b\x32\n.robotc.PR\x12\x1c\n\x05joint\x18\x02 \x01(\x0b\x32\r.robotc.JPose\"&\n\tModbusDio\x12\x0b\n\x03pin\x18\x01 \x01(\x05\x12\x0c\n\x04\x61\x64\x64r\x18\x02 \x01(\x05\"?\n\x0eModbusDioGroup\x12\x1f\n\x04pins\x18\x01 \x03(\x0b\x32\x11.robotc.ModbusDio\x12\x0c\n\x04\x61\x64\x64r\x18\x02 \x01(\x05\"4\n\tModbusAio\x12\x0b\n\x03pin\x18\x01 \x01(\x05\x12\x0c\n\x04mode\x18\x02 \x01(\x05\x12\x0c\n\x04\x61\x64\x64r\x18\x03 \x01(\x05\"$\n\x08\x41IORange\x12\x0b\n\x03min\x18\x01 \x01(\x01\x12\x0b\n\x03max\x18\x02 \x01(\x01\"A\n\x05Range\x12\x1b\n\x01V\x18\x01 \x01(\x0b\x32\x10.robotc.AIORange\x12\x1b\n\x01\x41\x18\x02 \x01(\x0b\x32\x10.robotc.AIORange\"z\n\x0eModbusAioGroup\x12\x1f\n\x04pins\x18\x01 \x03(\x0b\x32\x11.robotc.ModbusAio\x12\x0c\n\x04\x61\x64\x64r\x18\x02 \x01(\x05\x12\r\n\x05isLsb\x18\x03 \x01(\x05\x12\x1c\n\x05range\x18\x04 \x01(\x0b\x32\r.robotc.Range\x12\x0c\n\x04size\x18\x05 \x01(\x05\"\xa9\x01\n\x17ModbusExternalIOMapping\x12\"\n\x02\x64i\x18\x01 \x01(\x0b\x32\x16.robotc.ModbusDioGroup\x12\"\n\x02\x64o\x18\x02 \x01(\x0b\x32\x16.robotc.ModbusDioGroup\x12\"\n\x02\x61i\x18\x03 \x01(\x0b\x32\x16.robotc.ModbusAioGroup\x12\"\n\x02\x61o\x18\x04 \x01(\x0b\x32\x16.robotc.ModbusAioGroup\"\xb0\x01\n\x10ModbusExternalIO\x12\n\n\x02id\x18\x01 \x01(\x05\x12\n\n\x02ip\x18\x02 \x01(\t\x12\x0c\n\x04port\x18\x03 \x01(\x05\x12\x0f\n\x07timeout\x18\x04 \x01(\x05\x12\x0f\n\x07slaveId\x18\x05 \x01(\x05\x12\x13\n\x0b\x63mdHoldTime\x18\x06 \x01(\x05\x12\x0f\n\x07version\x18\x07 \x01(\x05\x12.\n\x05ioMap\x18\x08 \x01(\x0b\x32\x1f.robotc.ModbusExternalIOMapping\":\n\x11ModbusExternalIOs\x12%\n\x03ios\x18\x01 \x03(\x0b\x32\x18.robotc.ModbusExternalIO\"\x93\x02\n\x11RecordPVATRequest\x12\x30\n\x04type\x18\x01 \x01(\x0e\x32\".robotc.RecordPVATRequest.PVATType\x12\x10\n\x08\x64uration\x18\x02 \x01(\x01\x12\x34\n\x08vZeroGap\x18\x03 \x01(\x0b\x32\".robotc.RecordPVATRequest.VZeroGap\x12\x17\n\x0fuse_duration_ts\x18\x04 \x01(\x08\x12\x11\n\tsave_file\x18\x05 \x01(\x08\x1a\x31\n\x08VZeroGap\x12\x11\n\tthreshold\x18\x01 \x01(\x01\x12\x12\n\nremove_gap\x18\x02 \x01(\x08\"%\n\x08PVATType\x12\x06\n\x02PT\x10\x00\x12\x07\n\x03PVT\x10\x01\x12\x08\n\x04PVAT\x10\x02\"Z\n\x12RecordPVATResponse\x12\t\n\x01p\x18\x01 \x03(\x01\x12\t\n\x01v\x18\x02 \x03(\x01\x12\x0b\n\x03\x61\x63\x63\x18\x03 \x03(\x01\x12\t\n\x01t\x18\x04 \x01(\x01\x12\x0b\n\x03\x65nd\x18\x05 \x01(\x08\x12\t\n\x01\x66\x18\x06 \x01(\t*\xa7\x01\n\x0c\x42ootloaderId\x12\x0e\n\nALL_JOINTS\x10\x00\x12\x0b\n\x07JOINT_1\x10\x01\x12\x0b\n\x07JOINT_2\x10\x02\x12\x0b\n\x07JOINT_3\x10\x03\x12\x0b\n\x07JOINT_4\x10\x04\x12\x0b\n\x07JOINT_5\x10\x05\x12\x0b\n\x07JOINT_6\x10\x06\x12\x0b\n\x07JOINT_7\x10\x07\x12\n\n\x06\x46LANGE\x10\x08\x12\x08\n\x04\x43LAW\x10\t\x12\x08\n\x04LAMP\x10\n\x12\x0c\n\x08\x43OMBOARD\x10\x0e*6\n\rBootPartition\x12\x05\n\x01\x41\x10\x00\x12\x05\n\x01\x42\x10\x01\x12\x05\n\x01\x43\x10\x02\x12\x10\n\x0cPART_UNKNOWN\x10\x03\x32\xab\x1b\n\x16RobotPrivateController\x12/\n\x04Init\x12\x15.robotc.Configuration\x1a\x10.robotc.Response\x12\x39\n\x0cGetRobotInfo\x12\x16.google.protobuf.Empty\x1a\x11.robotc.RobotInfo\x12\x41\n\x13SetInstallDirection\x12\x18.robotc.InstallDirection\x1a\x10.robotc.Response\x12\x43\n\x14SetCollisionDetector\x12\x19.robotc.CollisionDetector\x1a\x10.robotc.Response\x12\x38\n\x0eSetJointConfig\x12\x14.robotc.JointConfigs\x1a\x10.robotc.Response\x12?\n\x12SetCartesianConfig\x12\x17.robotc.CartesianConfig\x1a\x10.robotc.Response\x12\x32\n\tEnableDDS\x12\x13.robotc.TrueOrFalse\x1a\x10.robotc.Response\x12G\n\x16SetCollisionTorqueDiff\x12\x1b.robotc.CollisionTorqueDiff\x1a\x10.robotc.Response\x12\x46\n\x14RegisterNotification\x12\x16.google.protobuf.Empty\x1a\x14.robotc.Notification0\x01\x12=\n\x0fRobotDriverInfo\x12\x16.google.protobuf.Empty\x1a\x12.robotc.DriverInfo\x12\x30\n\x08RobotOTA\x12\x0f.robotc.OTAData\x1a\x11.robotc.OTAResult0\x01\x12\x36\n\x12SwitchOtaPartition\x12\x0e.robotc.OTACmd\x1a\x10.robotc.Response\x12\x37\n\rRobotOTABatch\x12\x10.robotc.OTADatas\x1a\x12.robotc.OTAResults0\x01\x12\x31\n\x05Reset\x12\x16.google.protobuf.Empty\x1a\x10.robotc.Response\x12*\n\x08InitZero\x12\x0c.robotc.Zero\x1a\x10.robotc.Response\x12\x33\n\x07SetZero\x12\x16.google.protobuf.Empty\x1a\x10.robotc.Response\x12<\n\nGetVoltage\x12\x16.google.protobuf.Empty\x1a\x16.robotc.CurrentVoltage\x12\x42\n\rSetServoParam\x12\x17.robotc.JointServoParam\x1a\x18.robotc.JointServoParams\x12\x42\n\x0eGetServoParams\x12\x16.google.protobuf.Empty\x1a\x18.robotc.JointServoParams\x12:\n\x0eSetDebugParams\x12\x13.robotc.DebugParams\x1a\x13.robotc.DebugParams\x12\x38\n\x0b\x46ixDHParams\x12\x14.robotc.FixDHRequest\x1a\x13.robotc.FixDHResult\x12\x32\n\x0bSetLEDStyle\x12\x10.robotc.LEDStyle\x1a\x11.robotc.LEDStyles\x12\x39\n\x0cGetLEDStyles\x12\x16.google.protobuf.Empty\x1a\x11.robotc.LEDStyles\x12>\n\x10RegisterLuaEvent\x12\x16.google.protobuf.Empty\x1a\x10.robotc.LuaEvent0\x01\x12\x39\n\x0f\x43onfirmCallback\x12\x14.robotc.ConfirmInput\x1a\x10.robotc.Response\x12\x36\n\x0bGetLastPose\x12\x16.google.protobuf.Empty\x1a\x0f.robotc.PoseRes\x12\x42\n\x13SetModbusExternalIO\x12\x19.robotc.ModbusExternalIOs\x1a\x10.robotc.Response\x12\x39\n\x0fSetButtonConfig\x12\x14.robotc.ButtonConfig\x1a\x10.robotc.Response\x12\x35\n\x0cSetBreakACup\x12\x13.robotc.TrueOrFalse\x1a\x10.robotc.Response\x12\x45\n\nRecordPVAT\x12\x19.robotc.RecordPVATRequest\x1a\x1a.robotc.RecordPVATResponse0\x01\x12:\n\x0eStopRecordPVAT\x12\x16.google.protobuf.Empty\x1a\x10.robotc.Response\x12<\n\x10UpgradeVoiceFile\x12\x11.robotc.VoiceFile\x1a\x13.robotc.VoiceResult0\x01\x12\x32\n\x0bGetDHParams\x12\x11.robotc.DHRequest\x1a\x10.robotc.DHParams\x12\x31\n\x0bSetDHParams\x12\x10.robotc.DHParams\x1a\x10.robotc.DHParams\x12H\n\x14WriteExtraServoParam\x12\x17.robotc.ExtraServoParam\x1a\x17.robotc.ExtraServoParam\x12G\n\x13ReadExtraServoParam\x12\x17.robotc.ExtraServoParam\x1a\x17.robotc.ExtraServoParam\x12J\n\x15WriteExtraServoParams\x12\x17.robotc.ExtraServoParam\x1a\x18.robotc.ExtraServoParams\x12H\n\x14ReadExtraServoParams\x12\x16.google.protobuf.Empty\x1a\x18.robotc.ExtraServoParams\x12I\n\x15ResetExtraServoParams\x12\x16.google.protobuf.Empty\x1a\x18.robotc.ExtraServoParams\x12\x42\n\x12WriteJointBacklash\x12\x15.robotc.JointBacklash\x1a\x15.robotc.JointBacklash\x12\x41\n\x11ReadJointBacklash\x12\x15.robotc.JointBacklash\x1a\x15.robotc.JointBacklash\x12\x46\n\x14WriteJointBacklashes\x12\x15.robotc.JointBacklash\x1a\x17.robotc.JointBacklashes\x12\x46\n\x13ReadJointBacklashes\x12\x16.google.protobuf.Empty\x1a\x17.robotc.JointBacklashes\x12G\n\x14ResetJointBacklashes\x12\x16.google.protobuf.Empty\x1a\x17.robotc.JointBacklashes\x12X\n\x1aWriteEnableJointBacklashes\x12\x1b.robotc.EnableJointBacklash\x1a\x1d.robotc.EnableJointBacklashes\x12R\n\x19ReadEnableJointBacklashes\x12\x16.google.protobuf.Empty\x1a\x1d.robotc.EnableJointBacklashes\x12S\n\x1aResetEnableJointBacklashes\x12\x16.google.protobuf.Empty\x1a\x1d.robotc.EnableJointBacklashes\x12Q\n\x17WriteJointBacklashParam\x12\x1a.robotc.JointBacklashParam\x1a\x1a.robotc.JointBacklashParam\x12P\n\x16ReadJointBacklashParam\x12\x1a.robotc.JointBacklashParam\x1a\x1a.robotc.JointBacklashParam\x12S\n\x18WriteJointBacklashParams\x12\x1a.robotc.JointBacklashParam\x1a\x1b.robotc.JointBacklashParams\x12N\n\x17ReadJointBacklashParams\x12\x16.google.protobuf.Empty\x1a\x1b.robotc.JointBacklashParams\x12O\n\x18ResetJointBacklashParams\x12\x16.google.protobuf.Empty\x1a\x1b.robotc.JointBacklashParams\x12\x39\n\x10\x45nableJointLimit\x12\x13.robotc.TrueOrFalse\x1a\x10.robotc.Responseb\x06proto3'
+  serialized_pb=b'\n\x18private_controller.proto\x12\x06robotc\x1a\x1bgoogle/protobuf/empty.proto\x1a\x0emessages.proto\"4\n\x13\x45nableJointBacklash\x12\r\n\x05joint\x18\x01 \x01(\x05\x12\x0e\n\x06\x65nable\x18\x02 \x01(\x08\"D\n\x15\x45nableJointBacklashes\x12+\n\x06joints\x18\x01 \x03(\x0b\x32\x1b.robotc.EnableJointBacklash\"\xef\x01\n\x0f\x45xtraServoParam\x12\r\n\x05joint\x18\x01 \x01(\x05\x12\x17\n\x0f\x61\x63\x63_position_kp\x18\x02 \x01(\x01\x12\x14\n\x0c\x61\x63\x63_speed_kp\x18\x03 \x01(\x01\x12\x14\n\x0c\x61\x63\x63_speed_it\x18\x04 \x01(\x01\x12\x17\n\x0funi_position_kp\x18\x05 \x01(\x01\x12\x14\n\x0cuni_speed_kp\x18\x06 \x01(\x01\x12\x14\n\x0cuni_speed_it\x18\x07 \x01(\x01\x12\x17\n\x0f\x64\x65\x63_position_kp\x18\x08 \x01(\x01\x12\x14\n\x0c\x64\x65\x63_speed_kp\x18\t \x01(\x01\x12\x14\n\x0c\x64\x65\x63_speed_it\x18\n \x01(\x01\";\n\x10\x45xtraServoParams\x12\'\n\x06joints\x18\x01 \x03(\x0b\x32\x17.robotc.ExtraServoParam\"Y\n\rJointBacklash\x12\r\n\x05joint\x18\x01 \x01(\x05\x12\t\n\x01k\x18\x02 \x01(\r\x12\n\n\x02iq\x18\x03 \x01(\x01\x12\x10\n\x08iq_final\x18\x04 \x01(\x01\x12\x10\n\x08iq_count\x18\x05 \x01(\r\"8\n\x0fJointBacklashes\x12%\n\x06joints\x18\x01 \x03(\x0b\x32\x15.robotc.JointBacklash\"v\n\x12JointBacklashParam\x12\r\n\x05joint\x18\x01 \x01(\x05\x12\x1b\n\x13\x65ncoder_data_offset\x18\x02 \x01(\x05\x12\n\n\x02on\x18\x03 \x01(\r\x12\x0c\n\x04over\x18\x04 \x01(\r\x12\r\n\x05leave\x18\x05 \x01(\r\x12\x0b\n\x03max\x18\x06 \x01(\r\"A\n\x13JointBacklashParams\x12*\n\x06joints\x18\x01 \x03(\x0b\x32\x1a.robotc.JointBacklashParam\"2\n\tVoiceFile\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04\x66ile\x18\x02 \x01(\t\x12\x0b\n\x03md5\x18\x03 \x01(\t\"=\n\x0bVoiceResult\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04step\x18\x02 \x01(\x05\x12\x14\n\x0cstepProgress\x18\x03 \x01(\x05\"\x1a\n\x0bTrueOrFalse\x12\x0b\n\x03val\x18\x01 \x01(\x08\"%\n\x10InstallDirection\x12\x11\n\tdirection\x18\x01 \x01(\x05\"O\n\x0bJointConfig\x12\x10\n\x08maxAngle\x18\x01 \x01(\x01\x12\x10\n\x08minAngle\x18\x02 \x01(\x01\x12\x0c\n\x04maxV\x18\x03 \x01(\x01\x12\x0e\n\x06maxAcc\x18\x04 \x01(\x01\"4\n\x0cJointConfigs\x12$\n\x07\x63onfigs\x18\x01 \x03(\x0b\x32\x13.robotc.JointConfig\"/\n\x0f\x43\x61rtesianConfig\x12\x0c\n\x04maxV\x18\x01 \x01(\x01\x12\x0e\n\x06maxAcc\x18\x02 \x01(\x01\"0\n\nSafetyPlat\x12\"\n\x06points\x18\x01 \x03(\x0b\x32\x12.robotc.Coordinate\"0\n\x0bSafetyPlats\x12!\n\x05plats\x18\x01 \x03(\x0b\x32\x12.robotc.SafetyPlat\"$\n\x13\x43ollisionTorqueDiff\x12\r\n\x05\x64iffs\x18\x01 \x03(\x01\"[\n\x11\x43ollisionDetector\x12\x0e\n\x06\x65nable\x18\x01 \x01(\x08\x12\x0e\n\x06\x61\x63tion\x18\x02 \x01(\x05\x12\x11\n\tpauseTime\x18\x03 \x01(\x05\x12\x13\n\x0bsensitivity\x18\x04 \x01(\x05\"h\n\x08LEDStyle\x12\x0c\n\x04mode\x18\x03 \x01(\x05\x12\r\n\x05speed\x18\x04 \x01(\x05\x12\r\n\x05\x63olor\x18\x05 \x03(\x05\x12\r\n\x05voice\x18\x01 \x01(\x05\x12\x0e\n\x06volume\x18\x02 \x01(\x05\x12\x11\n\trobotMode\x18\x06 \x01(\x05\"-\n\tLEDStyles\x12 \n\x06styles\x18\x10 \x03(\x0b\x32\x10.robotc.LEDStyle\"N\n\x0c\x42uttonConfig\x12\x12\n\nbtn_flan_1\x18\x01 \x01(\x08\x12\x12\n\nbtn_flan_2\x18\x02 \x01(\x08\x12\x16\n\x0e\x62tn_shoulder_0\x18\x03 \x01(\x08\"\xbb\x06\n\rConfiguration\x12\x32\n\x10installDirection\x18\x01 \x01(\x0b\x32\x18.robotc.InstallDirection\x12\x34\n\x11\x63ollisionDetector\x18\x02 \x01(\x0b\x32\x19.robotc.CollisionDetector\x12*\n\x0cjointConfigs\x18\x03 \x01(\x0b\x32\x14.robotc.JointConfigs\x12(\n\x0bsafetyPlats\x18\x04 \x01(\x0b\x32\x13.robotc.SafetyPlats\x12\x17\n\x03tcp\x18\x05 \x01(\x0b\x32\n.robotc.PR\x12 \n\x07payload\x18\x06 \x01(\x0b\x32\x0f.robotc.Payload\x12\x11\n\tenableDDS\x18\x07 \x01(\x08\x12\x38\n\x13\x63ollisionTorqueDiff\x18\x08 \x01(\x0b\x32\x1b.robotc.CollisionTorqueDiff\x12\x15\n\rrobotDIOInNum\x18\t \x01(\x05\x12\x16\n\x0erobotDIOOutNum\x18\n \x01(\x05\x12%\n\x10robotAIOInConfig\x18\x0b \x03(\x0b\x32\x0b.robotc.AIO\x12&\n\x11robotAIOOutConfig\x18\x0c \x03(\x0b\x32\x0b.robotc.AIO\x12\x13\n\x0btcpDIOInNum\x18\r \x01(\x05\x12\x14\n\x0ctcpDIOOutNum\x18\x0e \x01(\x05\x12\r\n\x05zeros\x18\x0f \x03(\x01\x12 \n\x06styles\x18\x10 \x03(\x0b\x32\x10.robotc.LEDStyle\x12\x13\n\x0b\x62reak_a_cup\x18\x11 \x01(\x08\x12+\n\rbutton_config\x18\x12 \x01(\x0b\x32\x14.robotc.ButtonConfig\x12\x30\n\x0f\x63\x61rtesianConfig\x18\x13 \x01(\x0b\x32\x17.robotc.CartesianConfig\x12\x1b\n\x13\x65xtra_robotDIOInNum\x18\x14 \x01(\x05\x12\x1c\n\x14\x65xtra_robotDIOOutNum\x18\x15 \x01(\x05\x12+\n\x16\x65xtra_robotAIOInConfig\x18\x16 \x03(\x0b\x32\x0b.robotc.AIO\x12,\n\x17\x65xtra_robotAIOOutConfig\x18\x17 \x03(\x0b\x32\x0b.robotc.AIO\"\x15\n\x04Zero\x12\r\n\x05zeros\x18\x01 \x03(\x01\"\xb1\x03\n\x06Notice\x12\'\n\x04type\x18\x01 \x01(\x0e\x32\x19.robotc.Notice.NoticeType\x12#\n\x02id\x18\x02 \x01(\x0e\x32\x17.robotc.Notice.NoticeId\x12\r\n\x05value\x18\x03 \x01(\x05\x12\x0c\n\x04\x63ode\x18\x04 \x01(\x05\x12\x0b\n\x03lol\x18\x05 \x03(\x01\x12\r\n\x05\x63ount\x18\x06 \x01(\x05\"C\n\nNoticeType\x12\x10\n\x0cNOTICE_STATE\x10\x00\x12\x10\n\x0cNOTICE_ERROR\x10\x01\x12\x11\n\rNOTICE_BUTTON\x10\x02\"\xda\x01\n\x08NoticeId\x12\x1f\n\x1bNOTICE_ID_STATE_ROBOT_STATE\x10\x00\x12\x1a\n\x16NOTICE_ID_STATE_E_STOP\x10\x01\x12\x1f\n\x1bNOTICE_ID_STATE_DATA_UPDATE\x10\x02\x12\x13\n\x0fNOTICE_ID_ERROR\x10\x03\x12\x1d\n\x19NOTICE_ID_BUTTON_SHOULDER\x10\x04\x12\x1d\n\x19NOTICE_ID_BUTTON_FLANGE_1\x10\x05\x12\x1d\n\x19NOTICE_ID_BUTTON_FLANGE_2\x10\x06\"-\n\x0cNotification\x12\x1d\n\x05items\x18\x01 \x03(\x0b\x32\x0e.robotc.Notice\"Y\n\x06\x44river\x12\"\n\x08hardware\x18\x01 \x01(\x0b\x32\x10.robotc.Hardware\x12+\n\x0c\x63urPartition\x18\x02 \x01(\x0e\x32\x15.robotc.BootPartition\"\x8b\x01\n\nDriverInfo\x12\x1e\n\x06\x66lange\x18\x01 \x01(\x0b\x32\x0e.robotc.Driver\x12\x1b\n\x03led\x18\x02 \x01(\x0b\x32\x0e.robotc.Driver\x12\x1e\n\x06joints\x18\x03 \x03(\x0b\x32\x0e.robotc.Driver\x12 \n\x08\x63omboard\x18\x04 \x01(\x0b\x32\x0e.robotc.Driver\"5\n\x07OTAFile\x12\x0c\n\x04\x66ile\x18\x01 \x01(\t\x12\x0b\n\x03md5\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x03 \x01(\t\"d\n\x06OTACmd\x12*\n\x0c\x62ootloaderId\x18\x01 \x01(\x0e\x32\x14.robotc.BootloaderId\x12.\n\x0ftargetPartition\x18\x02 \x01(\x0e\x32\x15.robotc.BootPartition\"E\n\x07OTAData\x12\x1b\n\x03\x63md\x18\x01 \x01(\x0b\x32\x0e.robotc.OTACmd\x12\x1d\n\x04\x66ile\x18\x02 \x01(\x0b\x32\x0f.robotc.OTAFile\"H\n\tOTAJoints\x12\x1c\n\x04\x63mds\x18\x01 \x03(\x0b\x32\x0e.robotc.OTACmd\x12\x1d\n\x04\x66ile\x18\x02 \x01(\x0b\x32\x0f.robotc.OTAFile\"Q\n\x08OTADatas\x12!\n\x06joints\x18\x01 \x01(\x0b\x32\x11.robotc.OTAJoints\x12\"\n\tnotJoints\x18\x02 \x03(\x0b\x32\x0f.robotc.OTAData\"\x96\x01\n\tOTAResult\x12*\n\x0c\x62ootloaderId\x18\x01 \x01(\x0e\x32\x14.robotc.BootloaderId\x12\x0c\n\x04step\x18\x02 \x01(\x05\x12\x14\n\x0cstepProgress\x18\x03 \x01(\x05\x12\x0f\n\x07version\x18\x04 \x01(\t\x12(\n\tpartition\x18\x05 \x01(\x0e\x32\x15.robotc.BootPartition\"0\n\nOTAResults\x12\"\n\x07results\x18\x01 \x03(\x0b\x32\x11.robotc.OTAResult\"N\n\x0e\x43urrentVoltage\x12\r\n\x05power\x18\x01 \x01(\x01\x12\x0c\n\x04\x66lan\x18\x02 \x01(\x01\x12\r\n\x05joint\x18\x03 \x03(\x01\x12\x10\n\x08io_power\x18\x04 \x01(\x01\"t\n\x0fJointServoParam\x12\r\n\x05index\x18\x01 \x01(\r\x12\x13\n\x0bposition_kp\x18\x02 \x01(\x01\x12\x10\n\x08speed_kp\x18\x03 \x01(\x01\x12\x10\n\x08speed_it\x18\x04 \x01(\x01\x12\x19\n\x11torque_cmd_filter\x18\x05 \x01(\x01\";\n\x10JointServoParams\x12\'\n\x06joints\x18\x01 \x03(\x0b\x32\x17.robotc.JointServoParam\"\x18\n\x0b\x44\x65\x62ugParams\x12\t\n\x01\x64\x18\x01 \x03(\x01\"X\n\x0c\x46ixDHRequest\x12\x13\n\x0b\x64\x65lta_theta\x18\x01 \x03(\x01\x12\x12\n\nplus_theta\x18\x02 \x01(\x08\x12\x0f\n\x07\x64\x65lta_l\x18\x03 \x03(\x01\x12\x0e\n\x06plus_l\x18\x04 \x01(\x08\"$\n\tDHRequest\x12\x17\n\x0fget_theoretical\x18\x01 \x01(\x08\"9\n\x03\x44Ht\x12\t\n\x01\x64\x18\x01 \x01(\x01\x12\t\n\x01\x61\x18\x02 \x01(\x01\x12\r\n\x05\x61lpha\x18\x03 \x01(\x01\x12\r\n\x05theta\x18\x04 \x01(\x01\"\'\n\x08\x44HParams\x12\x1b\n\x06params\x18\x01 \x03(\x0b\x32\x0b.robotc.DHt\"c\n\x0b\x46ixDHResult\x12\x1b\n\x06origin\x18\x01 \x03(\x0b\x32\x0b.robotc.DHt\x12\x1b\n\x06\x62\x65\x66ore\x18\x02 \x03(\x0b\x32\x0b.robotc.DHt\x12\x1a\n\x05\x61\x66ter\x18\x03 \x03(\x0b\x32\x0b.robotc.DHt\"&\n\x06Option\x12\r\n\x05value\x18\x01 \x01(\t\x12\r\n\x05label\x18\x02 \x01(\t\"\x99\x03\n\x08LuaEvent\x12#\n\x04type\x18\x01 \x01(\x0e\x32\x15.robotc.LuaEvent.Type\x12\x0e\n\x06\x63md_id\x18\x02 \x01(\x05\x12,\n\tcmd_state\x18\x03 \x01(\x0e\x32\x19.robotc.LuaEvent.CmdState\x12\x10\n\x08\x65\x63ho_key\x18\x04 \x01(\t\x12\r\n\x05index\x18\x08 \x01(\x05\x12#\n\tlua_state\x18\x05 \x01(\x0e\x32\x10.robotc.LuaState\x12\x11\n\tsignal_id\x18\x06 \x01(\x05\x12\x14\n\x0csignal_value\x18\x07 \x01(\x01\x12\x1f\n\x07options\x18\t \x03(\x0b\x32\x0e.robotc.Option\"^\n\x04Type\x12\x08\n\x04\x45\x43HO\x10\x00\x12\x07\n\x03LUA\x10\x01\x12\n\n\x06SIGNAL\x10\x02\x12\x08\n\x04LOOP\x10\x03\x12\t\n\x05\x41LERT\x10\x04\x12\x0b\n\x07\x43ONFIRM\x10\x05\x12\t\n\x05INPUT\x10\x06\x12\n\n\x06SELECT\x10\x07\":\n\x08\x43mdState\x12\x08\n\x04INIT\x10\x00\x12\x0b\n\x07RUNNING\x10\x01\x12\x0b\n\x07SUCCESS\x10\x02\x12\n\n\x06\x46\x41ILED\x10\x03\"\x1d\n\x0c\x43onfirmInput\x12\r\n\x05input\x18\x01 \x01(\t\"A\n\x07PoseRes\x12\x18\n\x04\x63\x61rt\x18\x01 \x01(\x0b\x32\n.robotc.PR\x12\x1c\n\x05joint\x18\x02 \x01(\x0b\x32\r.robotc.JPose\"&\n\tModbusDio\x12\x0b\n\x03pin\x18\x01 \x01(\x05\x12\x0c\n\x04\x61\x64\x64r\x18\x02 \x01(\x05\"?\n\x0eModbusDioGroup\x12\x1f\n\x04pins\x18\x01 \x03(\x0b\x32\x11.robotc.ModbusDio\x12\x0c\n\x04\x61\x64\x64r\x18\x02 \x01(\x05\"4\n\tModbusAio\x12\x0b\n\x03pin\x18\x01 \x01(\x05\x12\x0c\n\x04mode\x18\x02 \x01(\x05\x12\x0c\n\x04\x61\x64\x64r\x18\x03 \x01(\x05\"$\n\x08\x41IORange\x12\x0b\n\x03min\x18\x01 \x01(\x01\x12\x0b\n\x03max\x18\x02 \x01(\x01\"A\n\x05Range\x12\x1b\n\x01V\x18\x01 \x01(\x0b\x32\x10.robotc.AIORange\x12\x1b\n\x01\x41\x18\x02 \x01(\x0b\x32\x10.robotc.AIORange\"z\n\x0eModbusAioGroup\x12\x1f\n\x04pins\x18\x01 \x03(\x0b\x32\x11.robotc.ModbusAio\x12\x0c\n\x04\x61\x64\x64r\x18\x02 \x01(\x05\x12\r\n\x05isLsb\x18\x03 \x01(\x05\x12\x1c\n\x05range\x18\x04 \x01(\x0b\x32\r.robotc.Range\x12\x0c\n\x04size\x18\x05 \x01(\x05\"\xa9\x01\n\x17ModbusExternalIOMapping\x12\"\n\x02\x64i\x18\x01 \x01(\x0b\x32\x16.robotc.ModbusDioGroup\x12\"\n\x02\x64o\x18\x02 \x01(\x0b\x32\x16.robotc.ModbusDioGroup\x12\"\n\x02\x61i\x18\x03 \x01(\x0b\x32\x16.robotc.ModbusAioGroup\x12\"\n\x02\x61o\x18\x04 \x01(\x0b\x32\x16.robotc.ModbusAioGroup\"\xb0\x01\n\x10ModbusExternalIO\x12\n\n\x02id\x18\x01 \x01(\x05\x12\n\n\x02ip\x18\x02 \x01(\t\x12\x0c\n\x04port\x18\x03 \x01(\x05\x12\x0f\n\x07timeout\x18\x04 \x01(\x05\x12\x0f\n\x07slaveId\x18\x05 \x01(\x05\x12\x13\n\x0b\x63mdHoldTime\x18\x06 \x01(\x05\x12\x0f\n\x07version\x18\x07 \x01(\x05\x12.\n\x05ioMap\x18\x08 \x01(\x0b\x32\x1f.robotc.ModbusExternalIOMapping\":\n\x11ModbusExternalIOs\x12%\n\x03ios\x18\x01 \x03(\x0b\x32\x18.robotc.ModbusExternalIO\"\x93\x02\n\x11RecordPVATRequest\x12\x30\n\x04type\x18\x01 \x01(\x0e\x32\".robotc.RecordPVATRequest.PVATType\x12\x10\n\x08\x64uration\x18\x02 \x01(\x01\x12\x34\n\x08vZeroGap\x18\x03 \x01(\x0b\x32\".robotc.RecordPVATRequest.VZeroGap\x12\x17\n\x0fuse_duration_ts\x18\x04 \x01(\x08\x12\x11\n\tsave_file\x18\x05 \x01(\x08\x1a\x31\n\x08VZeroGap\x12\x11\n\tthreshold\x18\x01 \x01(\x01\x12\x12\n\nremove_gap\x18\x02 \x01(\x08\"%\n\x08PVATType\x12\x06\n\x02PT\x10\x00\x12\x07\n\x03PVT\x10\x01\x12\x08\n\x04PVAT\x10\x02\"Z\n\x12RecordPVATResponse\x12\t\n\x01p\x18\x01 \x03(\x01\x12\t\n\x01v\x18\x02 \x03(\x01\x12\x0b\n\x03\x61\x63\x63\x18\x03 \x03(\x01\x12\t\n\x01t\x18\x04 \x01(\x01\x12\x0b\n\x03\x65nd\x18\x05 \x01(\x08\x12\t\n\x01\x66\x18\x06 \x01(\t*\xa7\x01\n\x0c\x42ootloaderId\x12\x0e\n\nALL_JOINTS\x10\x00\x12\x0b\n\x07JOINT_1\x10\x01\x12\x0b\n\x07JOINT_2\x10\x02\x12\x0b\n\x07JOINT_3\x10\x03\x12\x0b\n\x07JOINT_4\x10\x04\x12\x0b\n\x07JOINT_5\x10\x05\x12\x0b\n\x07JOINT_6\x10\x06\x12\x0b\n\x07JOINT_7\x10\x07\x12\n\n\x06\x46LANGE\x10\x08\x12\x08\n\x04\x43LAW\x10\t\x12\x08\n\x04LAMP\x10\n\x12\x0c\n\x08\x43OMBOARD\x10\x0e*6\n\rBootPartition\x12\x05\n\x01\x41\x10\x00\x12\x05\n\x01\x42\x10\x01\x12\x05\n\x01\x43\x10\x02\x12\x10\n\x0cPART_UNKNOWN\x10\x03\x32\xab\x1b\n\x16RobotPrivateController\x12/\n\x04Init\x12\x15.robotc.Configuration\x1a\x10.robotc.Response\x12\x39\n\x0cGetRobotInfo\x12\x16.google.protobuf.Empty\x1a\x11.robotc.RobotInfo\x12\x41\n\x13SetInstallDirection\x12\x18.robotc.InstallDirection\x1a\x10.robotc.Response\x12\x43\n\x14SetCollisionDetector\x12\x19.robotc.CollisionDetector\x1a\x10.robotc.Response\x12\x38\n\x0eSetJointConfig\x12\x14.robotc.JointConfigs\x1a\x10.robotc.Response\x12?\n\x12SetCartesianConfig\x12\x17.robotc.CartesianConfig\x1a\x10.robotc.Response\x12\x32\n\tEnableDDS\x12\x13.robotc.TrueOrFalse\x1a\x10.robotc.Response\x12G\n\x16SetCollisionTorqueDiff\x12\x1b.robotc.CollisionTorqueDiff\x1a\x10.robotc.Response\x12\x46\n\x14RegisterNotification\x12\x16.google.protobuf.Empty\x1a\x14.robotc.Notification0\x01\x12=\n\x0fRobotDriverInfo\x12\x16.google.protobuf.Empty\x1a\x12.robotc.DriverInfo\x12\x30\n\x08RobotOTA\x12\x0f.robotc.OTAData\x1a\x11.robotc.OTAResult0\x01\x12\x36\n\x12SwitchOtaPartition\x12\x0e.robotc.OTACmd\x1a\x10.robotc.Response\x12\x37\n\rRobotOTABatch\x12\x10.robotc.OTADatas\x1a\x12.robotc.OTAResults0\x01\x12\x31\n\x05Reset\x12\x16.google.protobuf.Empty\x1a\x10.robotc.Response\x12*\n\x08InitZero\x12\x0c.robotc.Zero\x1a\x10.robotc.Response\x12\x33\n\x07SetZero\x12\x16.google.protobuf.Empty\x1a\x10.robotc.Response\x12<\n\nGetVoltage\x12\x16.google.protobuf.Empty\x1a\x16.robotc.CurrentVoltage\x12\x42\n\rSetServoParam\x12\x17.robotc.JointServoParam\x1a\x18.robotc.JointServoParams\x12\x42\n\x0eGetServoParams\x12\x16.google.protobuf.Empty\x1a\x18.robotc.JointServoParams\x12:\n\x0eSetDebugParams\x12\x13.robotc.DebugParams\x1a\x13.robotc.DebugParams\x12\x38\n\x0b\x46ixDHParams\x12\x14.robotc.FixDHRequest\x1a\x13.robotc.FixDHResult\x12\x32\n\x0bSetLEDStyle\x12\x10.robotc.LEDStyle\x1a\x11.robotc.LEDStyles\x12\x39\n\x0cGetLEDStyles\x12\x16.google.protobuf.Empty\x1a\x11.robotc.LEDStyles\x12>\n\x10RegisterLuaEvent\x12\x16.google.protobuf.Empty\x1a\x10.robotc.LuaEvent0\x01\x12\x39\n\x0f\x43onfirmCallback\x12\x14.robotc.ConfirmInput\x1a\x10.robotc.Response\x12\x36\n\x0bGetLastPose\x12\x16.google.protobuf.Empty\x1a\x0f.robotc.PoseRes\x12\x42\n\x13SetModbusExternalIO\x12\x19.robotc.ModbusExternalIOs\x1a\x10.robotc.Response\x12\x39\n\x0fSetButtonConfig\x12\x14.robotc.ButtonConfig\x1a\x10.robotc.Response\x12\x35\n\x0cSetBreakACup\x12\x13.robotc.TrueOrFalse\x1a\x10.robotc.Response\x12\x45\n\nRecordPVAT\x12\x19.robotc.RecordPVATRequest\x1a\x1a.robotc.RecordPVATResponse0\x01\x12:\n\x0eStopRecordPVAT\x12\x16.google.protobuf.Empty\x1a\x10.robotc.Response\x12<\n\x10UpgradeVoiceFile\x12\x11.robotc.VoiceFile\x1a\x13.robotc.VoiceResult0\x01\x12\x32\n\x0bGetDHParams\x12\x11.robotc.DHRequest\x1a\x10.robotc.DHParams\x12\x31\n\x0bSetDHParams\x12\x10.robotc.DHParams\x1a\x10.robotc.DHParams\x12H\n\x14WriteExtraServoParam\x12\x17.robotc.ExtraServoParam\x1a\x17.robotc.ExtraServoParam\x12G\n\x13ReadExtraServoParam\x12\x17.robotc.ExtraServoParam\x1a\x17.robotc.ExtraServoParam\x12J\n\x15WriteExtraServoParams\x12\x17.robotc.ExtraServoParam\x1a\x18.robotc.ExtraServoParams\x12H\n\x14ReadExtraServoParams\x12\x16.google.protobuf.Empty\x1a\x18.robotc.ExtraServoParams\x12I\n\x15ResetExtraServoParams\x12\x16.google.protobuf.Empty\x1a\x18.robotc.ExtraServoParams\x12\x42\n\x12WriteJointBacklash\x12\x15.robotc.JointBacklash\x1a\x15.robotc.JointBacklash\x12\x41\n\x11ReadJointBacklash\x12\x15.robotc.JointBacklash\x1a\x15.robotc.JointBacklash\x12\x46\n\x14WriteJointBacklashes\x12\x15.robotc.JointBacklash\x1a\x17.robotc.JointBacklashes\x12\x46\n\x13ReadJointBacklashes\x12\x16.google.protobuf.Empty\x1a\x17.robotc.JointBacklashes\x12G\n\x14ResetJointBacklashes\x12\x16.google.protobuf.Empty\x1a\x17.robotc.JointBacklashes\x12X\n\x1aWriteEnableJointBacklashes\x12\x1b.robotc.EnableJointBacklash\x1a\x1d.robotc.EnableJointBacklashes\x12R\n\x19ReadEnableJointBacklashes\x12\x16.google.protobuf.Empty\x1a\x1d.robotc.EnableJointBacklashes\x12S\n\x1aResetEnableJointBacklashes\x12\x16.google.protobuf.Empty\x1a\x1d.robotc.EnableJointBacklashes\x12Q\n\x17WriteJointBacklashParam\x12\x1a.robotc.JointBacklashParam\x1a\x1a.robotc.JointBacklashParam\x12P\n\x16ReadJointBacklashParam\x12\x1a.robotc.JointBacklashParam\x1a\x1a.robotc.JointBacklashParam\x12S\n\x18WriteJointBacklashParams\x12\x1a.robotc.JointBacklashParam\x1a\x1b.robotc.JointBacklashParams\x12N\n\x17ReadJointBacklashParams\x12\x16.google.protobuf.Empty\x1a\x1b.robotc.JointBacklashParams\x12O\n\x18ResetJointBacklashParams\x12\x16.google.protobuf.Empty\x1a\x1b.robotc.JointBacklashParams\x12\x39\n\x10\x45nableJointLimit\x12\x13.robotc.TrueOrFalse\x1a\x10.robotc.Responseb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,messages__pb2.DESCRIPTOR,])
 
@@ -96,8 +96,8 @@ _BOOTLOADERID = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6015,
-  serialized_end=6182,
+  serialized_start=6165,
+  serialized_end=6332,
 )
 _sym_db.RegisterEnumDescriptor(_BOOTLOADERID)
 
@@ -132,8 +132,8 @@ _BOOTPARTITION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=6184,
-  serialized_end=6238,
+  serialized_start=6334,
+  serialized_end=6388,
 )
 _sym_db.RegisterEnumDescriptor(_BOOTPARTITION)
 
@@ -181,8 +181,8 @@ _NOTICE_NOTICETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2523,
-  serialized_end=2590,
+  serialized_start=2673,
+  serialized_end=2740,
 )
 _sym_db.RegisterEnumDescriptor(_NOTICE_NOTICETYPE)
 
@@ -231,8 +231,8 @@ _NOTICE_NOTICEID = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2593,
-  serialized_end=2811,
+  serialized_start=2743,
+  serialized_end=2961,
 )
 _sym_db.RegisterEnumDescriptor(_NOTICE_NOTICEID)
 
@@ -286,8 +286,8 @@ _LUAEVENT_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4591,
-  serialized_end=4685,
+  serialized_start=4741,
+  serialized_end=4835,
 )
 _sym_db.RegisterEnumDescriptor(_LUAEVENT_TYPE)
 
@@ -321,8 +321,8 @@ _LUAEVENT_CMDSTATE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4687,
-  serialized_end=4745,
+  serialized_start=4837,
+  serialized_end=4895,
 )
 _sym_db.RegisterEnumDescriptor(_LUAEVENT_CMDSTATE)
 
@@ -351,8 +351,8 @@ _RECORDPVATREQUEST_PVATTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=5883,
-  serialized_end=5920,
+  serialized_start=6033,
+  serialized_end=6070,
 )
 _sym_db.RegisterEnumDescriptor(_RECORDPVATREQUEST_PVATTYPE)
 
@@ -1461,6 +1461,34 @@ _CONFIGURATION = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='extra_robotDIOInNum', full_name='robotc.Configuration.extra_robotDIOInNum', index=19,
+      number=20, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='extra_robotDIOOutNum', full_name='robotc.Configuration.extra_robotDIOOutNum', index=20,
+      number=21, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='extra_robotAIOInConfig', full_name='robotc.Configuration.extra_robotAIOInConfig', index=21,
+      number=22, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='extra_robotAIOOutConfig', full_name='robotc.Configuration.extra_robotAIOOutConfig', index=22,
+      number=23, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1474,7 +1502,7 @@ _CONFIGURATION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=1675,
-  serialized_end=2352,
+  serialized_end=2502,
 )
 
 
@@ -1505,8 +1533,8 @@ _ZERO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2354,
-  serialized_end=2375,
+  serialized_start=2504,
+  serialized_end=2525,
 )
 
 
@@ -1574,8 +1602,8 @@ _NOTICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2378,
-  serialized_end=2811,
+  serialized_start=2528,
+  serialized_end=2961,
 )
 
 
@@ -1606,8 +1634,8 @@ _NOTIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2813,
-  serialized_end=2858,
+  serialized_start=2963,
+  serialized_end=3008,
 )
 
 
@@ -1645,8 +1673,8 @@ _DRIVER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2860,
-  serialized_end=2949,
+  serialized_start=3010,
+  serialized_end=3099,
 )
 
 
@@ -1698,8 +1726,8 @@ _DRIVERINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2952,
-  serialized_end=3091,
+  serialized_start=3102,
+  serialized_end=3241,
 )
 
 
@@ -1744,8 +1772,8 @@ _OTAFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3093,
-  serialized_end=3146,
+  serialized_start=3243,
+  serialized_end=3296,
 )
 
 
@@ -1783,8 +1811,8 @@ _OTACMD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3148,
-  serialized_end=3248,
+  serialized_start=3298,
+  serialized_end=3398,
 )
 
 
@@ -1822,8 +1850,8 @@ _OTADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3250,
-  serialized_end=3319,
+  serialized_start=3400,
+  serialized_end=3469,
 )
 
 
@@ -1861,8 +1889,8 @@ _OTAJOINTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3321,
-  serialized_end=3393,
+  serialized_start=3471,
+  serialized_end=3543,
 )
 
 
@@ -1900,8 +1928,8 @@ _OTADATAS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3395,
-  serialized_end=3476,
+  serialized_start=3545,
+  serialized_end=3626,
 )
 
 
@@ -1960,8 +1988,8 @@ _OTARESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3479,
-  serialized_end=3629,
+  serialized_start=3629,
+  serialized_end=3779,
 )
 
 
@@ -1992,8 +2020,8 @@ _OTARESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3631,
-  serialized_end=3679,
+  serialized_start=3781,
+  serialized_end=3829,
 )
 
 
@@ -2045,8 +2073,8 @@ _CURRENTVOLTAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3681,
-  serialized_end=3759,
+  serialized_start=3831,
+  serialized_end=3909,
 )
 
 
@@ -2105,8 +2133,8 @@ _JOINTSERVOPARAM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3761,
-  serialized_end=3877,
+  serialized_start=3911,
+  serialized_end=4027,
 )
 
 
@@ -2137,8 +2165,8 @@ _JOINTSERVOPARAMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3879,
-  serialized_end=3938,
+  serialized_start=4029,
+  serialized_end=4088,
 )
 
 
@@ -2169,8 +2197,8 @@ _DEBUGPARAMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3940,
-  serialized_end=3964,
+  serialized_start=4090,
+  serialized_end=4114,
 )
 
 
@@ -2222,8 +2250,8 @@ _FIXDHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3966,
-  serialized_end=4054,
+  serialized_start=4116,
+  serialized_end=4204,
 )
 
 
@@ -2254,8 +2282,8 @@ _DHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4056,
-  serialized_end=4092,
+  serialized_start=4206,
+  serialized_end=4242,
 )
 
 
@@ -2307,8 +2335,8 @@ _DHT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4094,
-  serialized_end=4151,
+  serialized_start=4244,
+  serialized_end=4301,
 )
 
 
@@ -2339,8 +2367,8 @@ _DHPARAMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4153,
-  serialized_end=4192,
+  serialized_start=4303,
+  serialized_end=4342,
 )
 
 
@@ -2385,8 +2413,8 @@ _FIXDHRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4194,
-  serialized_end=4293,
+  serialized_start=4344,
+  serialized_end=4443,
 )
 
 
@@ -2424,8 +2452,8 @@ _OPTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4295,
-  serialized_end=4333,
+  serialized_start=4445,
+  serialized_end=4483,
 )
 
 
@@ -2514,8 +2542,8 @@ _LUAEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4336,
-  serialized_end=4745,
+  serialized_start=4486,
+  serialized_end=4895,
 )
 
 
@@ -2546,8 +2574,8 @@ _CONFIRMINPUT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4747,
-  serialized_end=4776,
+  serialized_start=4897,
+  serialized_end=4926,
 )
 
 
@@ -2585,8 +2613,8 @@ _POSERES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4778,
-  serialized_end=4843,
+  serialized_start=4928,
+  serialized_end=4993,
 )
 
 
@@ -2624,8 +2652,8 @@ _MODBUSDIO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4845,
-  serialized_end=4883,
+  serialized_start=4995,
+  serialized_end=5033,
 )
 
 
@@ -2663,8 +2691,8 @@ _MODBUSDIOGROUP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4885,
-  serialized_end=4948,
+  serialized_start=5035,
+  serialized_end=5098,
 )
 
 
@@ -2709,8 +2737,8 @@ _MODBUSAIO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4950,
-  serialized_end=5002,
+  serialized_start=5100,
+  serialized_end=5152,
 )
 
 
@@ -2748,8 +2776,8 @@ _AIORANGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5004,
-  serialized_end=5040,
+  serialized_start=5154,
+  serialized_end=5190,
 )
 
 
@@ -2787,8 +2815,8 @@ _RANGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5042,
-  serialized_end=5107,
+  serialized_start=5192,
+  serialized_end=5257,
 )
 
 
@@ -2847,8 +2875,8 @@ _MODBUSAIOGROUP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5109,
-  serialized_end=5231,
+  serialized_start=5259,
+  serialized_end=5381,
 )
 
 
@@ -2900,8 +2928,8 @@ _MODBUSEXTERNALIOMAPPING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5234,
-  serialized_end=5403,
+  serialized_start=5384,
+  serialized_end=5553,
 )
 
 
@@ -2981,8 +3009,8 @@ _MODBUSEXTERNALIO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5406,
-  serialized_end=5582,
+  serialized_start=5556,
+  serialized_end=5732,
 )
 
 
@@ -3013,8 +3041,8 @@ _MODBUSEXTERNALIOS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5584,
-  serialized_end=5642,
+  serialized_start=5734,
+  serialized_end=5792,
 )
 
 
@@ -3052,8 +3080,8 @@ _RECORDPVATREQUEST_VZEROGAP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5832,
-  serialized_end=5881,
+  serialized_start=5982,
+  serialized_end=6031,
 )
 
 _RECORDPVATREQUEST = _descriptor.Descriptor(
@@ -3112,8 +3140,8 @@ _RECORDPVATREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5645,
-  serialized_end=5920,
+  serialized_start=5795,
+  serialized_end=6070,
 )
 
 
@@ -3179,8 +3207,8 @@ _RECORDPVATRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5922,
-  serialized_end=6012,
+  serialized_start=6072,
+  serialized_end=6162,
 )
 
 _ENABLEJOINTBACKLASHES.fields_by_name['joints'].message_type = _ENABLEJOINTBACKLASH
@@ -3203,6 +3231,8 @@ _CONFIGURATION.fields_by_name['robotAIOOutConfig'].message_type = messages__pb2.
 _CONFIGURATION.fields_by_name['styles'].message_type = _LEDSTYLE
 _CONFIGURATION.fields_by_name['button_config'].message_type = _BUTTONCONFIG
 _CONFIGURATION.fields_by_name['cartesianConfig'].message_type = _CARTESIANCONFIG
+_CONFIGURATION.fields_by_name['extra_robotAIOInConfig'].message_type = messages__pb2._AIO
+_CONFIGURATION.fields_by_name['extra_robotAIOOutConfig'].message_type = messages__pb2._AIO
 _NOTICE.fields_by_name['type'].enum_type = _NOTICE_NOTICETYPE
 _NOTICE.fields_by_name['id'].enum_type = _NOTICE_NOTICEID
 _NOTICE_NOTICETYPE.containing_type = _NOTICE
@@ -3746,8 +3776,8 @@ _ROBOTPRIVATECONTROLLER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=6241,
-  serialized_end=9740,
+  serialized_start=6391,
+  serialized_end=9890,
   methods=[
   _descriptor.MethodDescriptor(
     name='Init',
