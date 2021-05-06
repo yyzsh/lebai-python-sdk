@@ -10,6 +10,7 @@ def run():
     rb = LebaiRobot("192.168.3.218")
     rb.start_sys()
     logging.info(rb.get_robot_mode())
+    logging.info(rb.is_connected())
 
     rb.set_velocity_factor(60)
     logging.info(rb.get_velocity_factor())

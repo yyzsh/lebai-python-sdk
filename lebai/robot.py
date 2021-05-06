@@ -21,6 +21,12 @@ class LebaiRobot:
         self.pcs = private_controller_pb2_grpc.RobotPrivateControllerStub(self.pcc)
 
         self._sync_flag = sync
+    
+    def is_connected(self):
+        try:
+            return self.get_robot_mode() != RobotState.DISCONNECTED
+        except grpc.RpcError:
+            return False
 
     def _sync(self):
         if self._sync_flag:
@@ -281,8 +287,8 @@ class LebaiRobot:
         '''
         self.rcs.MovePT(rc.PVATRequest(duration=t, q=p))
 
-    def move_pts(self, pvt_iter):
-        self.rcs.MovePTStream((rc.PVATRequest(duration=s["t"], q=s["p"]) for s in pvt_iter))
+    def move_pts(self, pt_iter):
+        self.rcs.MovePTStream((rc.PVATRequest(duration=s["t"], q=s["p"]) for s in pt_iter))
 
     def movej_until(self, p, a=0, v=0, t=0, cb=None):
         pass
