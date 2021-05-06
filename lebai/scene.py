@@ -59,7 +59,7 @@ class LebaiScene:
 
     def run(self, loop=1):
         output = b''
-        self.start()
+        self.start(loop, True)
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((self.ip, 5180))
             while True:
