@@ -4,9 +4,13 @@
 import logging
 import math
 
-from lebai import LebaiRobot, CartesianPose, JointPose
+from lebai import LebaiRobot, CartesianPose, JointPose, LebaiScene
 
 def run():
+    
+    kfc = LebaiScene('192.168.3.218', 10001)
+    print(kfc.run())
+
     rb = LebaiRobot("192.168.3.218")
     rb.start_sys()
     logging.info(rb.get_robot_mode())

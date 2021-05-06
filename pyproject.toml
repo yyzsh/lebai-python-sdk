@@ -2,6 +2,8 @@
 requires = [
     "setuptools",
     "wheel",
-    "grpcio"
+    "grpcio",
+    "requests",
+    "protobuf"
 ]
 build-backend = "setuptools.build_meta"

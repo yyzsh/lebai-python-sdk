@@ -10,7 +10,21 @@ class LebaiScene:
         self.ip = ip
         self.scene_id = scene_id
         self.task_id = task_id
-        self.robot = LebaiRobot(ip)
+
+    def action(self, cmd, data=None, sleep=0):
+        payload = json.dumps({
+            'cmd': cmd,
+            'data': data
+        })
+        r = requests.post("http://{0}/public/robot/action".format(self.ip), data=payload)
+        r.raise_for_status()
+        r = r.json()
+        if r['code'] == 0:
+            if sleep > 0:
+                time.sleep(1)
+            return r['data']
+        else:
+            raise RequestError(r)
 
     def start(self, loop=1, force=False):
         payload = {
@@ -31,13 +45,13 @@ class LebaiScene:
             raise RequestError(r)
 
     def pause(self):
-        self.robot.action('pause_task', sleep=1)
+        self.action('pause_task', sleep=1)
 
     def resume(self):
-        self.robot.action('resume_task', sleep=1)
+        self.action('resume_task', sleep=1)
 
     def stop(self):
-        self.robot.action('stop_task', sleep=1)
+        self.action('stop_task', sleep=1)
     
     def result(self):
         r = requests.get("http://{0}/public/task".format(self.ip), params={'id': self.task_id})
@@ -63,6 +77,8 @@ class LebaiScene:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((self.ip, 5180))
             while True:
+                if self.done():
+                    break
                 output += s.recv(1024)
                 if self.done():
                     break

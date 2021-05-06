@@ -41,5 +41,5 @@ if __name__ == '__main__':
 
 安装依赖：
 ```bash
-pip install grpcio protobuf
+pip install grpcio protobuf requests
 ```

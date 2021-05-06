@@ -5,6 +5,7 @@ from .pb2 import robot_controller_pb2_grpc
 from .pb2 import private_controller_pb2_grpc
 
 from .type import *
+from .scene import LebaiScene
 
 class LebaiRobot:
     '''
@@ -14,6 +15,7 @@ class LebaiRobot:
     :returns: 返回一个乐白机器人控制实例
     '''
     def __init__(self, ip, sync=True):
+        self.ip = ip
         self.rcc = grpc.insecure_channel(f'{ip}:5181')
         self.rcs = robot_controller_pb2_grpc.RobotControllerStub(self.rcc)
 
@@ -514,3 +516,11 @@ class LebaiRobot:
     def disable_joint_limits(self):
         self._sync()
         self.pcs.EnableJointLimit(pc.TrueOrFalse(val=False))
+
+    def run_scene(self, scene_id, loop=1):
+        task = LebaiScene(self.ip, scene_id=scene_id)
+        return task.run(loop)
+
+    def rerun_task(self, task_id):
+        task = LebaiScene(self.ip, task_id=task_id)
+        return task.run(loop)
