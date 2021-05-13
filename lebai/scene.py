@@ -1,48 +1,32 @@
-import requests
 import json
-import time
 import socket
+import time
 
+from .lebai_http_service import LebaiHttpService
 from .type import *
+
 
 class LebaiScene:
     def __init__(self, ip, scene_id=0, task_id=0):
         self.ip = ip
         self.scene_id = scene_id
         self.task_id = task_id
+        self.http_service = LebaiHttpService(ip)
 
     def action(self, cmd, data=None, sleep=0):
-        payload = json.dumps({
+        r = self.http_service.action(json.dumps({
             'cmd': cmd,
             'data': data
-        })
-        r = requests.post("http://{0}/public/robot/action".format(self.ip), data=payload)
-        r.raise_for_status()
-        r = r.json()
-        if r['code'] == 0:
-            if sleep > 0:
-                time.sleep(1)
-            return r['data']
-        else:
-            raise RequestError(r)
+        }))
+        if sleep > 0:
+            time.sleep(1)
+        return r
 
     def start(self, loop=1, force=False):
-        payload = {
-            'execute_count': loop,
-            'clear': 1 if force else 0
-        }
         if self.task_id > 0:
-            payload['task_id'] = self.task_id
+            self.task_id = self.http_service.run_task(self.task_id, loop, force)['id']
         else:
-            payload['scene_id'] = self.scene_id
-        payload = json.dumps(payload)
-        r = requests.post("http://{0}/public/task".format(self.ip), data=payload)
-        r.raise_for_status()
-        r = r.json()
-        if r['code'] == 0:
-            self.task_id = r['data']['id']
-        else:
-            raise RequestError(r)
+            self.task_id = self.http_service.run_scene(self.scene_id, loop, force)['id']
 
     def pause(self):
         self.action('pause_task', sleep=1)
@@ -52,15 +36,9 @@ class LebaiScene:
 
     def stop(self):
         self.action('stop_task', sleep=1)
-    
+
     def result(self):
-        r = requests.get("http://{0}/public/task".format(self.ip), params={'id': self.task_id})
-        r.raise_for_status()
-        r = r.json()
-        if r['code'] == 0:
-            return r['data']
-        else:
-            raise RequestError(r)
+        return self.http_service.get_task(self.task_id)
 
     def status(self):
         return TaskStatus(self.result()['status'])

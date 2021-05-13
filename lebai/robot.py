@@ -1,9 +1,7 @@
-import json
-
 import grpc
-import requests
 from google.protobuf.empty_pb2 import Empty
 
+from .lebai_http_service import LebaiHttpService
 from .pb2 import private_controller_pb2_grpc
 from .pb2 import robot_controller_pb2_grpc
 from .scene import LebaiScene
@@ -25,6 +23,7 @@ class LebaiRobot:
 
         self.pcc = grpc.insecure_channel(f'{ip}:5182')
         self.pcs = private_controller_pb2_grpc.RobotPrivateControllerStub(self.pcc)
+        self.http_service = LebaiHttpService(ip)
 
         self._sync_flag = sync
 
@@ -530,39 +529,10 @@ class LebaiRobot:
         return task.run(loop)
 
     def execute_lua_code(self, task_name, execute_count, clear, code):
-        r = requests.post("http://{0}/public/executor/lua".format(self.ip), params={
-            'name': task_name,
-            'execute_count': execute_count,
-            'clear': clear
-        }, data=code)
-        r.raise_for_status()
-        r = r.json()
-        if r['code'] == 0:
-            return r['data']
-        else:
-            raise RequestError(r)
+        return self.http_service.execute_lua_code(task_name, execute_count, clear, code)
 
     def get_task(self, id):
-        r = requests.get("http://{0}/public/task".format(self.ip), params={
-            'id': str(id)
-        })
-        r.raise_for_status()
-        r = r.json()
-        if r['code'] == 0:
-            return r['data']
-        else:
-            return None
+        return self.http_service.get_task(id)
 
     def get_tasks(self, pi, ps):
-        params = {
-            'pi': pi,
-            'ps': ps
-        }
-        params = json.dumps(params)
-        r = requests.get("http://{0}/public/tasks".format(self.ip), params)
-        r.raise_for_status()
-        r = r.json()
-        if r['code'] == 0:
-            return r['data']
-        else:
-            return None
+        return self.http_service.get_tasks(pi, ps)
