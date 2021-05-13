@@ -1,11 +1,14 @@
+import json
+
 import grpc
-
+import requests
 from google.protobuf.empty_pb2 import Empty
-from .pb2 import robot_controller_pb2_grpc
-from .pb2 import private_controller_pb2_grpc
 
-from .type import *
+from .pb2 import private_controller_pb2_grpc
+from .pb2 import robot_controller_pb2_grpc
 from .scene import LebaiScene
+from .type import *
+
 
 class LebaiRobot:
     '''
@@ -14,6 +17,7 @@ class LebaiRobot:
 
     :returns: 返回一个乐白机器人控制实例
     '''
+
     def __init__(self, ip, sync=True):
         self.ip = ip
         self.rcc = grpc.insecure_channel(f'{ip}:5181')
@@ -23,7 +27,7 @@ class LebaiRobot:
         self.pcs = private_controller_pb2_grpc.RobotPrivateControllerStub(self.pcc)
 
         self._sync_flag = sync
-    
+
     def is_connected(self):
         try:
             return self.get_robot_mode() != RobotState.DISCONNECTED
@@ -103,7 +107,7 @@ class LebaiRobot:
             z = x[2]
             x = x[0]
         self._sync()
-        self.rcs.SetGravity(msg.Coordinate(x=x,y=y,z=z))
+        self.rcs.SetGravity(msg.Coordinate(x=x, y=y, z=z))
 
     def get_gravity(self):
         self._sync()
@@ -120,7 +124,7 @@ class LebaiRobot:
             y = x[1]
             x = x[0]
         self._sync()
-        self.rcs.SetPayload(msg.Payload(mass=mass, cog=msg.Coordinate(x=x,y=y,z=z)))
+        self.rcs.SetPayload(msg.Payload(mass=mass, cog=msg.Coordinate(x=x, y=y, z=z)))
 
     def get_payload(self):
         self._sync()
@@ -142,7 +146,7 @@ class LebaiRobot:
             z = x[2]
             x = x[0]
         self._sync()
-        self.rcs.SetPayloadCog(msg.PayloadCog(cog=msg.Coordinate(x=x,y=y,z=z)))
+        self.rcs.SetPayloadCog(msg.PayloadCog(cog=msg.Coordinate(x=x, y=y, z=z)))
 
     def get_payload_cog(self):
         self._sync()
@@ -168,7 +172,7 @@ class LebaiRobot:
         elif pin == 'weight':
             res = self.rcs.GetClawWeight(Empty())
             return res.weight
-        else: # pin == 'amplitude':
+        else:  # pin == 'amplitude':
             res = self.rcs.GetClawAmplitude(Empty())
             return res.amplitude
 
@@ -177,7 +181,7 @@ class LebaiRobot:
         pin = pin.lower()
         if pin == 'force':
             self.rcs.SetClawForce(rc.Force(force=value))
-        else: # pin == 'amplitude':
+        else:  # pin == 'amplitude':
             self.rcs.SetClawAmplitude(rc.Amplitude(amplitude=value))
 
     def set_claw(self, force=0, amplitude=0):
@@ -201,7 +205,7 @@ class LebaiRobot:
         if not hasattr(p, 'pos'):
             p = JointPose(*p)
         req = rc.MoveJRequest(
-            joint_pose_to = list(p.pos),
+            joint_pose_to=list(p.pos),
             pose_is_joint_angle=is_joint,
             acceleration=a,
             velocity=v,
@@ -218,7 +222,7 @@ class LebaiRobot:
         if not hasattr(p, 'pos'):
             p = CartesianPose(*p)
         req = rc.MoveLRequest(
-            pose_to = list(p.pos),
+            pose_to=list(p.pos),
             pose_is_joint_angle=is_joint,
             acceleration=a,
             velocity=v,
@@ -235,9 +239,9 @@ class LebaiRobot:
         if not hasattr(via, 'pos'):
             via = CartesianPose(*via)
         req = rc.MoveCRequest(
-            pose_via = list(via.pos),
+            pose_via=list(via.pos),
             pose_via_is_joint=is_joint if is_joint is not None else getattr(via, 'is_joint', True),
-            pose_to = list(p.pos),
+            pose_to=list(p.pos),
             pose_to_is_joint=is_joint if is_joint is not None else getattr(p, 'is_joint', True),
             acceleration=a,
             velocity=v,
@@ -262,7 +266,7 @@ class LebaiRobot:
         '''
         self.rcs.MovePVAT(rc.PVATRequest(duration=t, q=p, v=v, acc=a))
 
-    def move_pvats(self, pvat_iter):
+    def move_pvats(self, pvt_iter):
         self.rcs.MovePVATStream((rc.PVATRequest(duration=s['t'], q=s['p'], v=s['v'], acc=s['a']) for s in pvt_iter))
 
     def move_pvt(self, p, v, t):
@@ -417,8 +421,8 @@ class LebaiRobot:
         ret['actual_torque'] = tuple(res.actualTorque.joints)
         ret['target_vel'] = tuple(res.targetJointSpeed.joints)
         ret['actual_vel'] = tuple(res.actualJointSpeed.joints)
-        ret['target_acc'] = tuple([]) # TODO: res.targetJointAcc.joints
-        ret['actual_acc'] = tuple([]) # TODO: res.actualJointAcc.joints
+        ret['target_acc'] = tuple([])  # TODO: res.targetJointAcc.joints
+        ret['actual_acc'] = tuple([])  # TODO: res.actualJointAcc.joints
         ret['temp'] = tuple(res.jointTemps.joints)
         return ret
 
@@ -505,7 +509,7 @@ class LebaiRobot:
         res = self.rcs.GetSignal(msg.SignalValue(index=pin))
         return res.value
 
-    def add_signal(self, pin, delta):
+    def add_signal(self, pin, value):
         self._sync()
         self.rcs.AddSignal(msg.SignalValue(index=pin, value=value))
 
@@ -521,6 +525,44 @@ class LebaiRobot:
         task = LebaiScene(self.ip, scene_id=scene_id)
         return task.run(loop)
 
-    def rerun_task(self, task_id):
+    def rerun_task(self, task_id, loop=1):
         task = LebaiScene(self.ip, task_id=task_id)
         return task.run(loop)
+
+    def execute_lua_code(self, task_name, execute_count, clear, code):
+        r = requests.post("http://{0}/public/executor/lua".format(self.ip), params={
+            'name': task_name,
+            'execute_count': execute_count,
+            'clear': clear
+        }, data=code)
+        r.raise_for_status()
+        r = r.json()
+        if r['code'] == 0:
+            return r['data']
+        else:
+            raise RequestError(r)
+
+    def get_task(self, id):
+        r = requests.get("http://{0}/public/task".format(self.ip), params={
+            'id': str(id)
+        })
+        r.raise_for_status()
+        r = r.json()
+        if r['code'] == 0:
+            return r['data']
+        else:
+            return None
+
+    def get_tasks(self, pi, ps):
+        params = {
+            'pi': pi,
+            'ps': ps
+        }
+        params = json.dumps(params)
+        r = requests.get("http://{0}/public/tasks".format(self.ip), params)
+        r.raise_for_status()
+        r = r.json()
+        if r['code'] == 0:
+            return r['data']
+        else:
+            return None
