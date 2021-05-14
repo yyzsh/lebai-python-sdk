@@ -14,10 +14,10 @@ class LebaiScene:
         self.http_service = LebaiHttpService(ip)
 
     def action(self, cmd, data=None, sleep=0):
-        r = self.http_service.action(json.dumps({
+        r = self.http_service.action({
             'cmd': cmd,
             'data': data
-        }))
+        })
         if sleep > 0:
             time.sleep(1)
         return r

@@ -1,10 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import json
 import unittest
 
 from lebai.lebai_http_service import LebaiHttpService
 
+
+# n)umber
 
 class Test(unittest.TestCase):
     """Test test.py"""
@@ -24,214 +25,276 @@ class Test(unittest.TestCase):
     def tearDown(self):
         pass
 
-
     def get_task_id(self):
         code = "print('test')"
         return self.http_service.execute_lua_code('任务名称', 1, 1, code)['id']
 
     def test_get_tasks(self):
-        self.http_service.get_tasks(0, 10)
-
+        r = self.http_service.get_tasks(0, 10)
+        self.assertTrue(r)
 
     def test_execute_lua_code(self):
         code = "print('test')"
-        self.http_service.execute_lua_code('任务名称', 1, 1, code)
+        r = self.http_service.execute_lua_code('任务名称', 1, 1, code)
+        self.assertTrue(r['id'])
 
     def test_get_task(self):
-        self.http_service.get_task(self.get_task_id())
+        r = self.http_service.get_task(self.get_task_id())
+        self.assertTrue(r)
 
     def test_run_task(self):
-        self.http_service.run_task(self.get_task_id(), 1, 1)
+        r = self.http_service.run_task(self.get_task_id(), 1, 1)
+        self.assertTrue(r)
         pass
 
     def test_run_scene(self):
-        self.http_service.run_task(10001, 1, 1)
+        r = self.http_service.run_task(10001, 1, 1)
+        self.assertTrue(r)
         pass
 
     # 状态控制
 
     def test_start_sys(self):
-        # data = json.dumps({})
-        # self.http_service.action("start_sys", data)
+        r = self.http_service.action("start_sys")
+
+        self.assertGreater(r['task_id'], 0)
         pass
 
-    def test_stop_sys(self):
-        # data = json.dumps({})
-        # self.http_service.action("stop_sys", data)
-        pass
-
-    def test_powerdown(self):
-        # data = json.dumps({})
-        # self.http_service.action("powerdown", data)
-        pass
-
-    def test_stop(self):
-        # data = json.dumps({})
-        # self.http_service.action("stop", data)
-        pass
-
-    def test_estop(self):
-        # data = json.dumps({})
-        # self.http_service.action("estop", data)
-        pass
+    # stop
+    #
+    # def test_stop_sys(self):
+    #     r = self.http_service.action("stop_sys")
+    #
+    #     self.assertGreater(r['task_id'], 0)
+    #     pass
+    #
+    # def test_powerdown(self):
+    #     r = self.http_service.action("powerdown")
+    #
+    #     self.assertGreater(r['task_id'], 0)
+    #
+    # def test_stop(self):
+    #     r = self.http_service.action("stop")
+    #
+    #     self.assertGreater(r['task_id'], 0)
+    #     pass
+    #
+    # def test_estop(self):
+    #     r = self.http_service.action("estop")
+    #
+    #     self.assertGreater(r['task_id'], 0)
+    #     pass
 
     def test_teach_mode(self):
-        # data = json.dumps({})
-        # self.http_service.action("teach_mode", data)
+        r = self.http_service.action("teach_mode")
+
+        self.assertGreater(r['task_id'], 0)
+        self.http_service.action("end_teach_mode")
         pass
 
     def test_end_teach_mode(self):
-        # data = json.dumps({})
-        # self.http_service.action("end_teach_mode", data)
+        self.http_service.action("teach_mode")
+        r = self.http_service.action("end_teach_mode")
+
+        self.assertGreater(r['task_id'], 0)
         pass
 
-    def test_pause_task(self):
-        # data = json.dumps({})
-        # self.http_service.action("pause_task", data)
-        pass
+    # stop
+    # def test_pause_task(self):
+    #     r = self.http_service.action("pause_task")
+    #
+    #     self.assertGreater(r['task_id'], 0)
+    #     pass
 
     def test_resume_task(self):
-        # data = json.dumps({})
-        # self.http_service.action("resume_task", data)
+        r = self.http_service.action("resume_task")
+
+        self.assertGreater(r['task_id'], 0)
         pass
 
     def test_wait(self):
-        # data = json.dumps({})
-        # self.http_service.action("wait", data)
+        self.http_service.action("wait")
         pass
 
-    def test_wait_until(self):
-        # data = json.dumps({})
-        # self.http_service.action("wait_until", data)
-        pass
+    # def test_wait_until(self):
+    #     def is_started():
+    #         return True
+    #
+    #     self.http_service.action("wait_until", {
+    #         'fn': is_started
+    #     })
+    #     pass
 
-    def test_stop_task(self):
-        # data = json.dumps({})
-        # self.http_service.action("stop_task", data)
-        pass
+    # stop
+    # def test_stop_task(self):
+    #     r = self.http_service.action("stop_task")
+    #
+    #     self.assertGreater(r['task_id'], 0)
+    #     pass
 
     def test_get_task_status(self):
-        # data = json.dumps({})
-        # self.http_service.action("get_task_status", data)
+        r = self.http_service.action("get_task_status")
+        self.assertIn('task_id', r)
+        self.assertIn('task_status', r)
         pass
 
     # 参数配置
 
     def test_set_tcp(self):
-        # data = json.dumps({})
-        # self.http_service.action("set_tcp", data)
+        data = {
+            "value": [1.002, 1.002, 1.002, 1.002, 1.002, 1.002]
+        }
+        r = self.http_service.action("set_tcp", data)
+        self.assertTrue(r['result'] == 1)
         pass
 
     def test_get_tcp(self):
-        # data = json.dumps({})
-        # self.http_service.action("get_tcp", data)
+        r = self.http_service.action("get_tcp")
+        self.assertTrue('value' in r)
+        self.assertTrue(len(r['value']) == 6)
         pass
 
     def test_set_velocity_factor(self):
-        # data = json.dumps({})
-        # self.http_service.action("set_velocity_factor", data)
+        r = self.http_service.action("set_velocity_factor")
+
+        self.assertGreater(r['task_id'], 0)
         pass
 
     def test_get_velocity_factor(self):
-        # data = json.dumps({})
-        # self.http_service.action("get_velocity_factor", data)
+        r = self.http_service.action("get_velocity_factor")
+        self.assertTrue(0 <= r['value'] <= 100)
         pass
 
     def test_set_payload(self):
-        # data = json.dumps({})
-        # self.http_service.action("set_payload", data)
+        data = {
+            "mass": 12, "cog": [1, 2, 3]
+        }
+        r = self.http_service.action("set_payload", data)
+        self.assertTrue(r['result'] == 1)
         pass
 
     def test_get_payload(self):
-        # data = json.dumps({})
-        # self.http_service.action("get_payload", data)
+        r = self.http_service.action("get_payload")
+        self.assertTrue('cog' in r)
+        self.assertTrue('mass' in r)
         pass
 
     def test_set_payload_mass(self):
-        # data = json.dumps({})
-        # self.http_service.action("set_payload_mass", data)
+        data = {
+            'value': 2.0
+        }
+        r = self.http_service.action("set_payload_mass", data)
+        self.assertTrue(r['result'] == 1)
         pass
 
     def test_get_payload_mass(self):
-        # data = json.dumps({})
-        # self.http_service.action("get_payload_mass", data)
+        self.http_service.action("get_payload_mass")
         pass
 
     def test_set_payload_cog(self):
-        # data = json.dumps({})
-        # self.http_service.action("set_payload_cog", data)
+        data = {
+            "value": [1, 2, 3]
+        }
+        r = self.http_service.action("set_payload_cog", data)
+        self.assertTrue(r['result'] == 1)
         pass
 
-    def test_get_payload_cog(self):
-        # data = json.dumps({})
-        # self.http_service.action("get_payload_cog", data)
-        pass
+    # def test_get_payload_cog(self):
+    #     r = self.http_service.action("get_payload_cog")
+    #     # todo: 待实现
+    #     self.assertTrue(False)
+    #     pass
 
     def test_set_gravity(self):
-        # data = json.dumps({})
-        # self.http_service.action("set_gravity", data)
+        data = {
+            "value": [0, 0, -9.82]
+        }
+        r = self.http_service.action("set_gravity", data)
+        self.assertTrue('values' in r)
+        self.assertEqual(len(r['values']), 3)
         pass
 
     def test_get_gravity(self):
-        # data = json.dumps({})
-        # self.http_service.action("get_gravity", data)
+        data = {}
+        r = self.http_service.action("get_gravity", data)
+        self.assertTrue('gravity' in r)
+        self.assertEqual(len(r['gravity']), 3)
         pass
 
     # 移动命令
 
     def test_movej(self):
-        # data = json.dumps({})
-        # self.http_service.action("movej", data)
+        data = {
+            "pose_to": [0, -0.7853981633974483, 1.5707963267948966, -0.7853981633974483, 1.5707963267948966, 0],
+            "is_joint_angle": True, "acceleration": 1.23, "velocity": 1.23
+        }
+        r = self.http_service.action("movej", data)
+        self.assertGreater(r['task_id'], 0)
         pass
 
     def test_movel(self):
-        # data = json.dumps({})
-        # self.http_service.action("movel", data)
+        data = {
+            "pose_to": [0.2, 0.5, 0.4, 0, 0, 1.57],
+            "is_joint_angle": False,
+            "acceleration": 1.0, "velocity": 0.2
+        }
+        r = self.http_service.action("movel", data)
+        self.assertGreater(r['task_id'], 0)
         pass
 
     def test_movec(self):
-        # data = json.dumps({})
-        # self.http_service.action("movec", data)
+        data = {
+            'pos_via': [0.2, 0.5, 0.4, 0, 0, 1.57],
+            'pos': {'j1': 0.1, 'j2': 0.2, 'j3': 0.2, 'j4': 0.3, 'j5': 0.1, 'j6': 0.2},
+            'rad': 0,
+            'a': 0,
+            'v': 1,
+            't': 0.2,
+            'r': 0
+        }
+        r = self.http_service.action("movec", data)
+        self.assertGreater(r['task_id'], 0)
         pass
 
     def test_stop_move(self):
-        # data = json.dumps({})
-        # self.http_service.action("stop_move", data)
-        pass
-
-    def test_stop_move(self):
-        # data = json.dumps({})
-        # self.http_service.action("stop_move", data)
+        r = self.http_service.action("stop_move")
+        self.assertGreater(r['task_id'], 0)
         pass
 
     def test_movej_until(self):
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("movej_until", data)
+        # 暂不支持
         pass
 
     def test_movel_until(self):
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("movel_until", data)
+        # 暂不支持
         pass
 
     def test_movec_until(self):
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("movec_until", data)
+        # 暂不支持
         pass
 
     def test_movej_until_rt(self):
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("movej_until_rt", data)
+        # 暂不支持
         pass
 
     def test_movel_until_rt(self):
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("movel_until_rt", data)
+        # 暂不支持
         pass
 
     def test_movec_until_rt(self):
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("movec_until_rt", data)
+        # 暂不支持
         pass
 
     # 状态数据
@@ -239,327 +302,329 @@ class Test(unittest.TestCase):
     def test_robot_data(self):
         #
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("robot_data", data)
         pass
 
     def test_get_robot_mode(self):
-        #
-
-        # data = json.dumps({})
-        # self.http_service.action("get_robot_mode", data)
+        r = self.http_service.action("get_robot_mode")
+        self.assertIn('robot_mode', r)
+        self.assertIn('velocity_factor', r)
+        self.assertIn('actual_joint', r)
+        self.assertIn('target_joint', r)
+        self.assertIn('actual_tcp_pose', r)
+        self.assertIn('target_tcp_pose', r)
         pass
 
     def test_get_actual_joint_positions(self):
-        #
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_actual_joint_positions", data)
         pass
 
     def test_get_actual_joint_speeds(self):
-        #
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_actual_joint_speeds", data)
         pass
 
     def test_get_target_joint_positions(self):
-        #
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_target_joint_positions", data)
         pass
 
     def test_get_target_joint_speeds(self):
-        #
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_target_joint_speeds", data)
         pass
 
     def test_get_actual_tcp_pose(self):
-        #
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_actual_tcp_pose", data)
         pass
 
     def test_get_target_tcp_pose(self):
-        #
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_target_tcp_pose", data)
         pass
 
     def test_get_joint_torques(self):
-        #
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_joint_torques", data)
         pass
 
     def test_get_joint_temp(self):
-        # joint
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_joint_temp", data)
         pass
 
     def test_get_joint_temperatures(self):
-        #
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_joint_temperatures", data)
         pass
 
     def test_kinematics_forward(self):
-        # joints
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("kinematics_forward", data)
         pass
 
     def test_kinematics_inverse(self):
-        # vector
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("kinematics_inverse", data)
         pass
 
     def test_pose_times(self):
-        # a, b
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("pose_times", data)
         pass
 
     def test_pose_inverse(self):
-        # a
+        # 暂不支持
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("pose_inverse", data)
         pass
 
     # 手爪控制
-    def test_set_claw(self):
-        # force, amplitude
 
-        # data = json.dumps({})
-        # self.http_service.action("set_claw", data)
+    def test_set_claw_force(self):
+        data = {"type": "Force", "value": 50}
+        r = self.http_service.action("set_claw_ao", data)
+        print(r)
         pass
 
-    def test_set_claw_aio(self):
-        # type, value
-
-        # data = json.dumps({})
-        # self.http_service.action("set_claw_aio", data)
+    def test_set_claw_claw(self):
+        data = {"type": "Amplitude", "value": 50}
+        r = self.http_service.action("set_claw_ao", data)
+        print(r)
         pass
 
-    def test_get_claw_aio(self):
-        # type
-
-        # data = json.dumps({})
-        # self.http_service.action("get_claw_aio", data)
+    def test_get_claw_force(self):
+        data = {"type": "Force"}
+        r = self.http_service.action("get_claw_ai", data)
+        print(r)
         pass
 
-    def test_wait_claw_aio(self):
-        # type, value, relation
-
-        # data = json.dumps({})
-        # self.http_service.action("wait_claw_aio", data)
+    def test_get_claw_claw(self):
+        data = {"type": "Amplitude"}
+        r = self.http_service.action("get_claw_ai", data)
         pass
 
     # 机器人 I/O
 
     def test_set_do(self):
-        # pin, value
-
-        # data = json.dumps({})
-        # self.http_service.action("set_do", data)
+        data = {
+            "pin": 1,
+            "value": 1
+        }
+        self.http_service.action("set_do", data)
         pass
 
     def test_get_di(self):
-        # pin
-
-        # data = json.dumps({})
-        # self.http_service.action("get_di", data)
+        data = {
+            "pin": 1
+        }
+        self.http_service.action("get_di", data)
         pass
+    #
+    # def test_wait_di(self):
+    #     # pin, value, relation
+    #
+    #     # data = {}
+    #     # self.http_service.action("wait_di", data)
+    #     pass
 
-    def test_wait_di(self):
-        # pin, value, relation
-
-        # data = json.dumps({})
-        # self.http_service.action("wait_di", data)
-        pass
-
-    def test_set_flange_dio(self):
-        # pin, value
-
-        # data = json.dumps({})
-        # self.http_service.action("set_flange_dio", data)
+    def test_set_flange_do(self):
+        data = {
+            "pin": 1,
+            "value": 1
+        }
+        self.http_service.action("set_flange_do", data)
         pass
 
     def test_get_flange_di(self):
-        # pin
-
-        # data = json.dumps({})
-        # self.http_service.action("get_flange_di", data)
+        data = {
+            "pin": 1
+        }
+        self.http_service.action("get_flange_di", data)
         pass
-
-    def test_wait_flange_di(self):
-        # pin, value, relation
-
-        # data = json.dumps({})
-        # self.http_service.action("wait_flange_di", data)
-        pass
+    #
+    # def test_wait_flange_di(self):
+    #     # pin, value, relation
+    #
+    #     # data = {}
+    #     # self.http_service.action("wait_flange_di", data)
+    #     pass
 
     def test_set_aio(self):
-        # pin, value
-
-        # data = json.dumps({})
-        # self.http_service.action("set_aio", data)
+        data = {
+            "pin": 1,
+            "value": 14.0
+        }
+        self.http_service.action("set_ao", data)
         pass
 
     def test_get_aio(self):
-        # pin
-
-        # data = json.dumps({})
-        # self.http_service.action("get_aio", data)
+        data = {
+            "pin": 1
+        }
+        self.http_service.action("get_ai", data)
         pass
 
-    def test_wait_aio(self):
-        # pin, value, relation
-
-        # data = json.dumps({})
-        # self.http_service.action("wait_aio", data)
-        pass
-
-    def test_set_tcp_aio(self):
-        # pin, value
-
-        # data = json.dumps({})
-        # self.http_service.action("set_tcp_aio", data)
-        pass
-
-    def test_get_tcp_aio(self):
-        # pin
-
-        # data = json.dumps({})
-        # self.http_service.action("get_tcp_aio", data)
-        pass
-
-    def test_wait_tcp_aio(self):
-        # pin, value, relation
-
-        # data = json.dumps({})
-        # self.http_service.action("wait_tcp_aio", data)
-        pass
+    # def test_wait_aio(self):
+    #     # pin, value, relation
+    #
+    #     # data = {}
+    #     # self.http_service.action("wait_aio", data)
+    #     pass
+    #
+    # def test_set_tcp_aio(self):
+    #     # pin, value
+    #
+    #     # data = {}
+    #     # self.http_service.action("set_tcp_aio", data)
+    #     pass
+    #
+    # def test_get_tcp_aio(self):
+    #     # pin
+    #
+    #     # data = {}
+    #     # self.http_service.action("get_tcp_aio", data)
+    #     pass
+    #
+    # def test_wait_tcp_aio(self):
+    #     # pin, value, relation
+    #
+    #     # data = {}
+    #     # self.http_service.action("wait_tcp_aio", data)
+    #     pass
 
     # 外置设备 I/O
 
     def test_get_external_di(self):
         # deviceId, pinId
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_external_di", data)
         pass
 
     def test_wait_external_di(self):
         # deviceId, pinId, value, relation
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("wait_external_di", data)
         pass
 
     def test_set_external_do(self):
         # deviceId, pinId, value
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("set_external_do", data)
         pass
 
     def test_get_external_do(self):
         # deviceId, pinId
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_external_do", data)
         pass
 
     def test_get_external_ai(self):
         # deviceId, pinId
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_external_ai", data)
         pass
 
     def test_wait_external_ai(self):
         # deviceId, pinId, value, relation
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("wait_external_ai", data)
         pass
 
     def test_set_external_ao(self):
         # deviceId, pinId, value
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("set_external_ao", data)
         pass
 
     def test_get_external_ao(self):
         # deviceId, pinId
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_external_ao", data)
         pass
 
     def test_set_external_dos2(self):
         #
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("set_external_dos2", data)
         pass
 
     def test_get_external_dos2(self):
         #
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_external_dos2", data)
         pass
 
     def test_get_external_dis2(self):
         #
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_external_dis2", data)
         pass
 
     def test_set_external_aos2(self):
         #
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("set_external_aos2", data)
         pass
 
     def test_get_external_aos2(self):
         #
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_external_aos2", data)
         pass
 
     def test_get_external_ais2(self):
         #
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_external_ais2", data)
         pass
 
     def test_get_external_ios2(self):
         #
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("get_external_ios2", data)
         pass
 
@@ -568,21 +633,21 @@ class Test(unittest.TestCase):
     def test_set_led(self):
         # mode, speed, color
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("set_led", data)
         pass
 
     def test_set_voice(self):
         # voice, volume
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("set_voice", data)
         pass
 
     def test_set_fan(self):
         # status
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("set_fan", data)
         pass
 
@@ -591,44 +656,45 @@ class Test(unittest.TestCase):
     def test_print(self):
         # line
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("print", data)
         pass
 
     def test_scene(self):
         # id
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("scene", data)
         pass
 
     def test_alert(self):
         # msg
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("alert", data)
         pass
 
     def test_confirm(self):
         # msg
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("confirm", data)
         pass
 
     def test_input(self):
         # msg
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("input", data)
         pass
 
     def test_option(self):
         # msg, options, cnt
 
-        # data = json.dumps({})
+        # data = {}
         # self.http_service.action("option", data)
         pass
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)

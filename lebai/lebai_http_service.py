@@ -19,12 +19,13 @@ class LebaiHttpService:
         else:
             raise RequestError(r)
 
-    def action(self, cmd, data = None):
-        payload = json.dumps({
-            'cmd': cmd,
-            'data': data
-        })
-        r = requests.post("http://{0}/public/robot/action".format(self.ip), data=payload)
+    def action(self, cmd, inner_data=None):
+        data = {
+            'cmd': cmd
+        }
+        if inner_data is not None:
+            data['data'] = inner_data
+        r = requests.post("http://{0}/public/robot/action".format(self.ip), data=json.dumps(data))
         return self.handle_result(r)
 
     def run_scene(self, scene_id, execute_count, clear):
