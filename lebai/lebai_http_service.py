@@ -6,6 +6,8 @@ from lebai import RequestError
 
 
 class LebaiHttpService:
+    def get_url(self, path):
+        return "http://{0}{1}".format(self.ip, path)
 
     def __init__(self, ip):
         self.ip = ip
@@ -25,7 +27,7 @@ class LebaiHttpService:
         }
         if inner_data is not None:
             data['data'] = inner_data
-        r = requests.post("http://{0}/public/robot/action".format(self.ip), data=json.dumps(data))
+        r = requests.post(self.get_url("/public/robot/action"), data=json.dumps(data))
         return self.handle_result(r)
 
     def run_scene(self, scene_id, execute_count, clear):
@@ -34,7 +36,7 @@ class LebaiHttpService:
             'clear': 1 if clear else 0,
             'scene_id': scene_id
         }
-        r = requests.post("http://{0}/public/task".format(self.ip), data=json.dumps(payload))
+        r = requests.post(self.get_url("/public/task"), data=json.dumps(payload))
         return self.handle_result(r)
 
     def run_task(self, task_id, execute_count, clear):
@@ -43,11 +45,11 @@ class LebaiHttpService:
             'clear': 1 if clear else 0,
             'task_id': task_id
         }
-        r = requests.post("http://{0}/public/task".format(self.ip), data=json.dumps(payload))
+        r = requests.post(self.get_url("/public/task"), data=json.dumps(payload))
         return self.handle_result(r)
 
     def execute_lua_code(self, task_name, execute_count, clear, code):
-        r = requests.post("http://{0}/public/executor/lua".format(self.ip), params={
+        r = requests.post(self.get_url("/public/executor/lua"), params={
             'name': task_name,
             'execute_count': execute_count,
             'clear': clear
@@ -55,7 +57,7 @@ class LebaiHttpService:
         return self.handle_result(r)
 
     def get_task(self, id):
-        r = requests.get("http://{0}/public/task".format(self.ip), params={
+        r = requests.get(self.get_url("/public/task"), params={
             'id': str(id)
         })
         r.raise_for_status()
@@ -70,7 +72,7 @@ class LebaiHttpService:
             'pi': pi,
             'ps': ps
         })
-        r = requests.get("http://{0}/public/tasks".format(self.ip), params)
+        r = requests.get(self.get_url("/public/tasks"), params)
         r.raise_for_status()
         r = r.json()
         if r['code'] == 0:

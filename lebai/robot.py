@@ -50,23 +50,23 @@ class LebaiRobot:
             pass
 
     def start_sys(self):
-        self._sync()
+        # self._sync()
         self.rcs.StartSys(Empty())
 
     def stop_sys(self):
-        self._sync()
+        # self._sync()
         self.rcs.StopSys(Empty())
 
     def powerdown(self):
-        self._sync()
+        # self._sync()
         self.rcs.PowerDown(Empty())
 
     def stop(self):
-        self._sync()
+        # self._sync()
         self.rcs.Stop(Empty())
 
     def estop(self):
-        self._sync()
+        # self._sync()
         self.rcs.EStop(Empty())
 
     def teach_mode(self):
@@ -78,11 +78,11 @@ class LebaiRobot:
         self.rcs.EndTeachMode(Empty())
 
     def resume(self):
-        self._sync()
+        # self._sync()
         self.rcs.Resume(Empty())
 
     def pause(self):
-        self._sync()
+        # self._sync()
         self.rcs.Pause(Empty())
 
     def get_robot_mode(self):

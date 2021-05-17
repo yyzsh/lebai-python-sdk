@@ -1,18 +1,22 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import logging
 import unittest
 
+from lebai import LebaiRobot
 from lebai.lebai_http_service import LebaiHttpService
 
 
 # n)umber
 
 class Test(unittest.TestCase):
-    """Test test.py"""
+    """Test http_api_test.py"""
     ip = "192.168.3.227"
 
     @classmethod
     def setUpClass(cls):
+        LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
+        logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
         pass
 
     @classmethod
@@ -21,6 +25,15 @@ class Test(unittest.TestCase):
 
     def setUp(self):
         self.http_service = LebaiHttpService(self.ip)
+        self.robot = LebaiRobot(self.ip, True)
+
+        self.robot.estop()
+        logging.info('stop')
+        self.robot.sync()
+        self.robot.start_sys()
+        logging.info('start_sys')
+        self.robot.sync()
+        self.robot.sleep(10)
 
     def tearDown(self):
         pass
@@ -60,30 +73,28 @@ class Test(unittest.TestCase):
         self.assertGreater(r['task_id'], 0)
         pass
 
-    # stop
-    #
-    # def test_stop_sys(self):
-    #     r = self.http_service.action("stop_sys")
-    #
-    #     self.assertGreater(r['task_id'], 0)
-    #     pass
-    #
-    # def test_powerdown(self):
-    #     r = self.http_service.action("powerdown")
-    #
-    #     self.assertGreater(r['task_id'], 0)
-    #
-    # def test_stop(self):
-    #     r = self.http_service.action("stop")
-    #
-    #     self.assertGreater(r['task_id'], 0)
-    #     pass
-    #
-    # def test_estop(self):
-    #     r = self.http_service.action("estop")
-    #
-    #     self.assertGreater(r['task_id'], 0)
-    #     pass
+    def test_stop_sys(self):
+        r = self.http_service.action("stop_sys")
+
+        self.assertGreater(r['task_id'], 0)
+        pass
+
+    def test_powerdown(self):
+        r = self.http_service.action("power_down")
+
+        self.assertGreater(r['task_id'], 0)
+
+    def test_stop(self):
+        r = self.http_service.action("stop")
+
+        self.assertGreater(r['task_id'], 0)
+        pass
+
+    def test_estop(self):
+        r = self.http_service.action("estop")
+
+        self.assertGreater(r['task_id'], 0)
+        pass
 
     def test_teach_mode(self):
         r = self.http_service.action("teach_mode")
@@ -109,6 +120,7 @@ class Test(unittest.TestCase):
     def test_resume_task(self):
         r = self.http_service.action("resume_task")
 
+        self.assertIsNotNone(r)
         self.assertGreater(r['task_id'], 0)
         pass
 
@@ -210,8 +222,8 @@ class Test(unittest.TestCase):
             "value": [0, 0, -9.82]
         }
         r = self.http_service.action("set_gravity", data)
-        self.assertTrue('values' in r)
-        self.assertEqual(len(r['values']), 3)
+        self.assertTrue('result' in r)
+        self.assertEqual(r['result'], 1)
         pass
 
     def test_get_gravity(self):
@@ -448,6 +460,7 @@ class Test(unittest.TestCase):
         }
         self.http_service.action("get_di", data)
         pass
+
     #
     # def test_wait_di(self):
     #     # pin, value, relation
@@ -470,6 +483,7 @@ class Test(unittest.TestCase):
         }
         self.http_service.action("get_flange_di", data)
         pass
+
     #
     # def test_wait_flange_di(self):
     #     # pin, value, relation
