@@ -3,7 +3,7 @@
 import logging
 import unittest
 
-from lebai import LebaiRobot
+from lebai import LebaiRobot, LebaiScene
 from lebai.lebai_http_service import LebaiHttpService
 
 
@@ -27,13 +27,6 @@ class Test(unittest.TestCase):
         self.http_service = LebaiHttpService(self.ip)
         self.robot = LebaiRobot(self.ip, True)
 
-        self.robot.estop()
-        logging.info('stop')
-        self.robot.sync()
-        self.robot.start_sys()
-        logging.info('start_sys')
-        self.robot.sync()
-        self.robot.sleep(10)
 
     def tearDown(self):
         pass
@@ -54,6 +47,10 @@ class Test(unittest.TestCase):
     def test_get_task(self):
         r = self.http_service.get_task(self.get_task_id())
         self.assertTrue(r)
+
+    def test_robot_run(self):
+        task = LebaiScene(self.ip, scene_id=10054)
+        return task.run(1)
 
     def test_run_task(self):
         r = self.http_service.run_task(self.get_task_id(), 1, 1)

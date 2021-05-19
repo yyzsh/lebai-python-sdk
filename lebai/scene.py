@@ -1,4 +1,3 @@
-import json
 import socket
 import time
 
@@ -49,15 +48,20 @@ class LebaiScene:
             return True
         return False
 
+    # 运行任务或者场景，直到运行完成，返回lua代码，没有lua代码则返回空
     def run(self, loop=1):
         output = b''
         self.start(loop, True)
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(0.1)
             s.connect((self.ip, 5180))
             while True:
                 if self.done():
                     break
-                output += s.recv(1024)
+                try:
+                    output += s.recv(1024)
+                except socket.timeout:
+                    pass
                 if self.done():
                     break
         return output.decode('utf-8')
