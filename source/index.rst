@@ -25,11 +25,6 @@
    :undoc-members:
    :show-inheritance:
 
-.. automodule:: lebai.robot_async
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 索引
 ==================
 

@@ -62,12 +62,31 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+import sphinx_rtd_theme
 
+html_theme = "pydata_sphinx_theme"
+# html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+html_logo = "../_static/logo.png"
+html_theme_options = {
+    "use_edit_page_button": False,
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/lebai-robotics/lebai-python-sdk",
+            "icon": "fab fa-github-square",
+        }
+    ],
+}
+# html_context = {
+#     # "github_url": "https://github.com", # or your GitHub Enterprise interprise
+#     "github_user": "https://github.com/lebai-robotics",
+#     "github_repo": "https://github.com/lebai-robotics/lebai-python-sdk",
+#     "github_version": "main",
+# }
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+# html_static_path = ['_static']
 
 import os
 import sys
