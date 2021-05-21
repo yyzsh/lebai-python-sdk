@@ -4,10 +4,11 @@ import logging
 import unittest
 
 from lebai import LebaiRobot, LebaiScene
-from lebai import LebaiHttpService
 
 
 # n)umber
+from lebai.lebai_http_service import LebaiHttpService
+
 
 class Test(unittest.TestCase):
     """Test http_api_test.py"""
@@ -27,7 +28,6 @@ class Test(unittest.TestCase):
         self.http_service = LebaiHttpService(self.ip)
         self.robot = LebaiRobot(self.ip, True)
 
-
     def tearDown(self):
         pass
 
@@ -37,6 +37,7 @@ class Test(unittest.TestCase):
 
     def test_get_tasks(self):
         r = self.http_service.get_tasks(0, 10)
+        logging.info(r)
         self.assertTrue(r)
 
     def test_execute_lua_code(self):

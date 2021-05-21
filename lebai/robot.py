@@ -1,3 +1,5 @@
+from typing import Optional
+
 import grpc
 from google.protobuf.empty_pb2 import Empty
 
@@ -773,8 +775,8 @@ class LebaiRobot:
     def execute_lua_code(self, task_name: str, code: str, execute_count: int = 1, clear: bool = True) -> int:
         return self.http_service.execute_lua_code(task_name, execute_count, clear, code)['id']
 
-    def get_task(self, id: int) -> object:
+    def get_task(self, id: int) -> Optional[TaskInfo]:
         return self.http_service.get_task(id)
 
-    def get_tasks(self, pi: int, ps: int) -> object:
+    def get_tasks(self, pi: int, ps: int) -> Optional[TasksResult]:
         return self.http_service.get_tasks(pi, ps)
