@@ -48,7 +48,7 @@ class LebaiHttpService:
         r = requests.post(self.get_url("/public/task"), data=json.dumps(payload))
         return self.handle_result(r)
 
-    def execute_lua_code(self, task_name, execute_count, clear, code):
+    def execute_lua_code(self, task_name, code, execute_count, clear):
         r = requests.post(self.get_url("/public/executor/lua"), params={
             'name': task_name,
             'execute_count': execute_count,

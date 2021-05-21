@@ -4,7 +4,7 @@ import logging
 import unittest
 
 from lebai import LebaiRobot, LebaiScene
-from lebai.lebai_http_service import LebaiHttpService
+from lebai import LebaiHttpService
 
 
 # n)umber

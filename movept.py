@@ -3,7 +3,7 @@
 
 from lebai import LebaiRobot
 import numpy as np
-import grpc
+
 
 def generate_list(filename):
     points = np.loadtxt(filename, delimiter=',')

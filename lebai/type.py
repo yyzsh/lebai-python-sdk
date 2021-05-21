@@ -1,7 +1,7 @@
-from enum import Enum, unique
-from .pb2 import messages_pb2 as msg
+from enum import Enum
+from lebai.pb2 import messages_pb2 as msg
 from .pb2 import robot_controller_pb2 as rc
-from .pb2 import private_controller_pb2 as pc
+
 
 class RobotState(Enum):
     '''机器人状态

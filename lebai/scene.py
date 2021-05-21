@@ -1,18 +1,27 @@
 import socket
 import time
 
-from .lebai_http_service import LebaiHttpService
-from .type import *
+from lebai.type import TaskStatus
+from lebai.lebai_http_service import LebaiHttpService
 
 
 class LebaiScene:
+
     def __init__(self, ip, scene_id=0, task_id=0):
         self.ip = ip
         self.scene_id = scene_id
         self.task_id = task_id
         self.http_service = LebaiHttpService(ip)
 
-    def action(self, cmd, data=None, sleep=0):
+    def action(self, cmd: str, data: object = None, sleep: float = 0) -> object:
+        """
+        调用命令
+
+        :param cmd: 机器人命令
+        :param data: 机器人命令参数
+        :param sleep:
+        :return:
+        """
         r = self.http_service.action({
             'cmd': cmd,
             'data': data
@@ -21,35 +30,70 @@ class LebaiScene:
             time.sleep(1)
         return r
 
-    def start(self, loop=1, force=False):
-        if self.task_id > 0:
-            self.task_id = self.http_service.run_task(self.task_id, loop, force)['id']
-        else:
-            self.task_id = self.http_service.run_scene(self.scene_id, loop, force)['id']
+    def start(self, execute_count: int = 1, clear: bool = True) -> None:
+        """
+        开始执行
 
-    def pause(self):
+        :param execute_count: 执行次数，0表示无限循环
+        :param clear: 是否停止当前正在执行的任务
+        """
+        if self.task_id > 0:
+            self.task_id = self.http_service.run_task(self.task_id, execute_count, clear)['id']
+        else:
+            self.task_id = self.http_service.run_scene(self.scene_id, execute_count, clear)['id']
+
+    def pause(self) -> None:
+        """
+        暂停执行
+        """
         self.action('pause_task', sleep=1)
 
-    def resume(self):
+    def resume(self) -> None:
+        """
+        恢复执行
+        """
         self.action('resume_task', sleep=1)
 
-    def stop(self):
+    def stop(self) -> None:
+        """
+        停止
+        """
         self.action('stop_task', sleep=1)
 
-    def result(self):
+    def result(self) -> object:
+        """
+        获取任务信息
+
+        :return: 任务信息
+        """
         return self.http_service.get_task(self.task_id)
 
-    def status(self):
+    def status(self) -> TaskStatus:
+        """
+        获取任务状态
+
+        :return: 任务状态
+        """
         return TaskStatus(self.result()['status'])
 
-    def done(self):
+    def done(self) -> bool:
+        """
+        获取是否停止了执行
+
+        :return: 是否停止了执行
+        """
         status = self.status()
         if status == TaskStatus.SUCCESS or status == TaskStatus.STOPPED or status == TaskStatus.ABORTED:
             return True
         return False
 
-    # 运行任务或者场景，直到运行完成，返回lua代码，没有lua代码则返回空
-    def run(self, loop=1):
+    def run(self, loop: int = 1) -> str:
+        """
+        运行任务或者场景，直到运行完成，返回lua代码
+
+        :param loop:
+        :return: 返回执行了的lua代码，没有执行lua代码则返回空
+        """
         output = b''
         self.start(loop, True)
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:

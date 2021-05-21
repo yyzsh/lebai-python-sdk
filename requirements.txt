@@ -1,5 +1,9 @@
+numpy~=1.20.3
 grpcio
 pep517
-setuptools
+setuptools~=56.0.0
 Sphinx
 recommonmark
+
+requests~=2.25.1
+numpy~=1.20.3
