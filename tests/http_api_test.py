@@ -4,8 +4,6 @@ import logging
 import unittest
 
 from lebai import LebaiRobot, LebaiScene
-
-
 # n)umber
 from lebai.lebai_http_service import LebaiHttpService
 
@@ -33,7 +31,9 @@ class Test(unittest.TestCase):
 
     def get_task_id(self):
         code = "print('test')"
-        return self.http_service.execute_lua_code('任务名称', 1, 1, code)['id']
+        r = self.http_service.execute_lua_code('任务名称', code, 1, 1)['id']
+        logging.info(r)
+        return r
 
     def test_get_tasks(self):
         r = self.http_service.get_tasks(0, 10)
@@ -42,11 +42,13 @@ class Test(unittest.TestCase):
 
     def test_execute_lua_code(self):
         code = "print('test')"
-        r = self.http_service.execute_lua_code('任务名称', 1, 1, code)
+        r = self.http_service.execute_lua_code('任务名称', code, 1, 1)
+        logging.info(r)
         self.assertTrue(r['id'])
 
     def test_get_task(self):
         r = self.http_service.get_task(self.get_task_id())
+        logging.info(r)
         self.assertTrue(r)
 
     def test_robot_run(self):
@@ -55,11 +57,15 @@ class Test(unittest.TestCase):
 
     def test_run_task(self):
         r = self.http_service.run_task(self.get_task_id(), 1, 1)
+
+        logging.info(r)
         self.assertTrue(r)
         pass
 
     def test_run_scene(self):
         r = self.http_service.run_task(10001, 1, 1)
+
+        logging.info(r)
         self.assertTrue(r)
         pass
 
@@ -68,11 +74,15 @@ class Test(unittest.TestCase):
     def test_start_sys(self):
         r = self.http_service.action("start_sys")
 
+        logging.info(r)
+
         self.assertGreater(r['task_id'], 0)
         pass
 
     def test_stop_sys(self):
         r = self.http_service.action("stop_sys")
+
+        logging.info(r)
 
         self.assertGreater(r['task_id'], 0)
         pass
@@ -80,10 +90,14 @@ class Test(unittest.TestCase):
     def test_powerdown(self):
         r = self.http_service.action("power_down")
 
+        logging.info(r)
+
         self.assertGreater(r['task_id'], 0)
 
     def test_stop(self):
         r = self.http_service.action("stop")
+
+        logging.info(r)
 
         self.assertGreater(r['task_id'], 0)
         pass
@@ -91,11 +105,15 @@ class Test(unittest.TestCase):
     def test_estop(self):
         r = self.http_service.action("estop")
 
+        logging.info(r)
+
         self.assertGreater(r['task_id'], 0)
         pass
 
     def test_teach_mode(self):
         r = self.http_service.action("teach_mode")
+
+        logging.info(r)
 
         self.assertGreater(r['task_id'], 0)
         self.http_service.action("end_teach_mode")
@@ -105,18 +123,23 @@ class Test(unittest.TestCase):
         self.http_service.action("teach_mode")
         r = self.http_service.action("end_teach_mode")
 
+        logging.info(r)
+
         self.assertGreater(r['task_id'], 0)
         pass
 
-    # stop
-    # def test_pause_task(self):
-    #     r = self.http_service.action("pause_task")
-    #
-    #     self.assertGreater(r['task_id'], 0)
-    #     pass
+    def test_pause_task(self):
+        r = self.http_service.action("pause_task")
+
+        logging.info(r)
+
+        self.assertGreater(r['task_id'], 0)
+        pass
 
     def test_resume_task(self):
         r = self.http_service.action("resume_task")
+
+        logging.info(r)
 
         self.assertIsNotNone(r)
         self.assertGreater(r['task_id'], 0)
@@ -138,12 +161,16 @@ class Test(unittest.TestCase):
     # stop
     # def test_stop_task(self):
     #     r = self.http_service.action("stop_task")
+
+    # logging.info(r)
     #
     #     self.assertGreater(r['task_id'], 0)
     #     pass
 
     def test_get_task_status(self):
         r = self.http_service.action("get_task_status")
+
+        logging.info(r)
         self.assertIn('task_id', r)
         self.assertIn('task_status', r)
         pass
@@ -155,11 +182,15 @@ class Test(unittest.TestCase):
             "value": [1.002, 1.002, 1.002, 1.002, 1.002, 1.002]
         }
         r = self.http_service.action("set_tcp", data)
+
+        logging.info(r)
         self.assertTrue(r['result'] == 1)
         pass
 
     def test_get_tcp(self):
         r = self.http_service.action("get_tcp")
+
+        logging.info(r)
         self.assertTrue('value' in r)
         self.assertTrue(len(r['value']) == 6)
         pass
@@ -167,11 +198,15 @@ class Test(unittest.TestCase):
     def test_set_velocity_factor(self):
         r = self.http_service.action("set_velocity_factor")
 
+        logging.info(r)
+
         self.assertGreater(r['task_id'], 0)
         pass
 
     def test_get_velocity_factor(self):
         r = self.http_service.action("get_velocity_factor")
+
+        logging.info(r)
         self.assertTrue(0 <= r['value'] <= 100)
         pass
 
@@ -180,11 +215,15 @@ class Test(unittest.TestCase):
             "mass": 12, "cog": [1, 2, 3]
         }
         r = self.http_service.action("set_payload", data)
+
+        logging.info(r)
         self.assertTrue(r['result'] == 1)
         pass
 
     def test_get_payload(self):
         r = self.http_service.action("get_payload")
+
+        logging.info(r)
         self.assertTrue('cog' in r)
         self.assertTrue('mass' in r)
         pass
@@ -194,6 +233,8 @@ class Test(unittest.TestCase):
             'value': 2.0
         }
         r = self.http_service.action("set_payload_mass", data)
+
+        logging.info(r)
         self.assertTrue(r['result'] == 1)
         pass
 
@@ -206,11 +247,16 @@ class Test(unittest.TestCase):
             "value": [1, 2, 3]
         }
         r = self.http_service.action("set_payload_cog", data)
+
+        logging.info(r)
         self.assertTrue(r['result'] == 1)
         pass
 
-    # def test_get_payload_cog(self):
-    #     r = self.http_service.action("get_payload_cog")
+        # def test_get_payload_cog(self):
+        #     r = self.http_service.action("get_payload_cog")
+
+        logging.info(r)
+
     #     # todo: 待实现
     #     self.assertTrue(False)
     #     pass
@@ -220,6 +266,8 @@ class Test(unittest.TestCase):
             "value": [0, 0, -9.82]
         }
         r = self.http_service.action("set_gravity", data)
+
+        logging.info(r)
         self.assertTrue('result' in r)
         self.assertEqual(r['result'], 1)
         pass
@@ -227,6 +275,8 @@ class Test(unittest.TestCase):
     def test_get_gravity(self):
         data = {}
         r = self.http_service.action("get_gravity", data)
+
+        logging.info(r)
         self.assertTrue('gravity' in r)
         self.assertEqual(len(r['gravity']), 3)
         pass
@@ -239,6 +289,8 @@ class Test(unittest.TestCase):
             "is_joint_angle": True, "acceleration": 1.23, "velocity": 1.23
         }
         r = self.http_service.action("movej", data)
+
+        logging.info(r)
         self.assertGreater(r['task_id'], 0)
         pass
 
@@ -249,6 +301,8 @@ class Test(unittest.TestCase):
             "acceleration": 1.0, "velocity": 0.2
         }
         r = self.http_service.action("movel", data)
+
+        logging.info(r)
         self.assertGreater(r['task_id'], 0)
         pass
 
@@ -263,11 +317,15 @@ class Test(unittest.TestCase):
             'r': 0
         }
         r = self.http_service.action("movec", data)
+
+        logging.info(r)
         self.assertGreater(r['task_id'], 0)
         pass
 
     def test_stop_move(self):
         r = self.http_service.action("stop_move")
+
+        logging.info(r)
         self.assertGreater(r['task_id'], 0)
         pass
 
@@ -318,6 +376,8 @@ class Test(unittest.TestCase):
 
     def test_get_robot_mode(self):
         r = self.http_service.action("get_robot_mode")
+
+        logging.info(r)
         self.assertIn('robot_mode', r)
         self.assertIn('velocity_factor', r)
         self.assertIn('actual_joint', r)
@@ -422,24 +482,32 @@ class Test(unittest.TestCase):
     def test_set_claw_force(self):
         data = {"type": "Force", "value": 50}
         r = self.http_service.action("set_claw_ao", data)
+
+        logging.info(r)
         print(r)
         pass
 
     def test_set_claw_claw(self):
         data = {"type": "Amplitude", "value": 50}
         r = self.http_service.action("set_claw_ao", data)
+
+        logging.info(r)
         print(r)
         pass
 
     def test_get_claw_force(self):
         data = {"type": "Force"}
         r = self.http_service.action("get_claw_ai", data)
+
+        logging.info(r)
         print(r)
         pass
 
     def test_get_claw_claw(self):
         data = {"type": "Amplitude"}
         r = self.http_service.action("get_claw_ai", data)
+
+        logging.info(r)
         pass
 
     # 机器人 I/O
