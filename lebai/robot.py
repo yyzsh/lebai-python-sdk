@@ -29,7 +29,7 @@ class LebaiRobot:
         """
         是否连接
 
-        @return:
+        :return:
         """
         try:
             return self.get_robot_mode() != RobotState.DISCONNECTED
@@ -54,7 +54,7 @@ class LebaiRobot:
         """
         等待
 
-        @param time: 等待时间,单位毫秒
+        :param time: 等待时间,单位毫秒
         """
         try:
             self.rcs.Sleep(rc.SleepRequest(time=time))
@@ -132,7 +132,7 @@ class LebaiRobot:
     def get_robot_mode(self) -> RobotState:
         """
         获取机器人状态
-        @return: 机器人状态
+        :return: 机器人状态
         """
         self._sync()
         res = self.rcs.GetRobotMode(Empty())
@@ -141,7 +141,7 @@ class LebaiRobot:
     def get_velocity_factor(self) -> float:
         """
         获取速度因子
-        @return: 速度因子
+        :return: 速度因子
         """
         self._sync()
         res = self.rcs.GetVelocityFactor(Empty())
@@ -150,7 +150,7 @@ class LebaiRobot:
     def set_velocity_factor(self, factor) -> None:
         """
         设置速度因子
-        @param factor: 速度因子
+        :param factor: 速度因子
         """
         self._sync()
         self.rcs.SetVelocityFactor(rc.Factor(value=factor))
@@ -160,9 +160,9 @@ class LebaiRobot:
         """
         设置重力
 
-        @param x:
-        @param y:
-        @param z:
+        :param x:
+        :param y:
+        :param z:
         """
         if type(x) is tuple or type(x) is list:
             y = x[1]
@@ -175,7 +175,7 @@ class LebaiRobot:
         """
         获取重力
 
-        @return:
+        :return:
         """
         self._sync()
         res = self.rcs.GetGravity(Empty())
@@ -185,10 +185,10 @@ class LebaiRobot:
         """
         设置负荷
 
-        @param x:
-        @param y:
-        @param z:
-        @param mass:
+        :param x:
+        :param y:
+        :param z:
+        :param mass:
         """
         if type(x) is tuple:
             if type(y) is not tuple and type(x[0]) is tuple:
@@ -205,7 +205,7 @@ class LebaiRobot:
         """
         获取负荷
 
-        @return:
+        :return:
         """
         self._sync()
         res = self.rcs.GetPayload(Empty())
@@ -215,8 +215,8 @@ class LebaiRobot:
         """
         设置负荷的质量
 
-        @param mass:
-        @type mass:
+        :param mass:
+        :type mass:
         """
         self._sync()
         self.rcs.SetPayloadMass(msg.PayloadMass(mass=mass))
@@ -225,7 +225,7 @@ class LebaiRobot:
         """
         获取负荷的质量
 
-        @return:
+        :return:
         """
         self._sync()
         res = self.rcs.GetPayloadMass(Empty())
@@ -235,9 +235,9 @@ class LebaiRobot:
         """
         设置负荷的质心
 
-        @param x:
-        @param y:
-        @param z:
+        :param x:
+        :param y:
+        :param z:
         """
         if type(x) is tuple or type(x) is list:
             y = x[1]
@@ -250,7 +250,7 @@ class LebaiRobot:
         """
         获取负荷的质心
 
-        @return:
+        :return:
         """
         self._sync()
         res = self.rcs.GetPayloadCog(Empty())
@@ -260,12 +260,12 @@ class LebaiRobot:
         """
         设置TCP
 
-        @param x:
-        @param y:
-        @param z:
-        @param rz:
-        @param ry:
-        @param rx:
+        :param x:
+        :param y:
+        :param z:
+        :param rz:
+        :param ry:
+        :param rx:
         """
         self._sync()
         tcp = CartesianPose(x, y, z, rz, ry, rx)
@@ -275,7 +275,7 @@ class LebaiRobot:
         """
         获取TCP
 
-        @return:
+        :return:
         """
         self._sync()
         res = self.rcs.GetTcp(Empty())
@@ -285,8 +285,8 @@ class LebaiRobot:
         """
         获取手爪参数
 
-        @param pin:
-        @return:
+        :param pin:
+        :return:
         """
         self._sync()
         pin = pin.lower()
@@ -304,8 +304,8 @@ class LebaiRobot:
         """
         设置手爪参数
 
-        @param pin:
-        @param value:
+        :param pin:
+        :param value:
         """
         self._sync()
         pin = pin.lower()
@@ -318,8 +318,8 @@ class LebaiRobot:
         """
         设置手爪
 
-        @param force:
-        @param amplitude:
+        :param force:
+        :param amplitude:
         """
         self._sync()
         self.rcs.SetClawForce(rc.Force(force=force))
@@ -383,14 +383,14 @@ class LebaiRobot:
         """
         圆弧移动（工具空间）
 
-        @param via:
-        @param p:
-        @param rad:
-        @param a:
-        @param v:
-        @param t:
-        @param r:
-        @param is_joint:
+        :param via:
+        :param p:
+        :param rad:
+        :param a:
+        :param v:
+        :param t:
+        :param r:
+        :param is_joint:
         """
         if not hasattr(p, 'pos'):
             p = CartesianPose(*p)
@@ -488,13 +488,13 @@ class LebaiRobot:
 
     def pose_times(self) -> None:
         """
-        @todo: 待实现
+        :todo: 待实现
         """
         pass
 
     def pose_inverse(self) -> None:
         """
-        @todo: 待实现
+        :todo: 待实现
         """
         pass
 
@@ -511,7 +511,7 @@ class LebaiRobot:
         """
         获得所有关节的期望角度位置
 
-        @return: 所有关节的期望角度位置
+        :return: 所有关节的期望角度位置
         """
         self._sync()
         res = self.rcs.GetTargetJointPositions(Empty())
@@ -521,7 +521,7 @@ class LebaiRobot:
         """
         获得所有关节的实际角速度
 
-        @return: 所有关节的实际角速度
+        :return: 所有关节的实际角速度
         """
         self._sync()
         res = self.rcs.GetActualJointSpeeds(Empty())
@@ -531,7 +531,7 @@ class LebaiRobot:
         """
         获得所有关节的期望角速度
 
-        @return: 所有关节的期望角速度
+        :return: 所有关节的期望角速度
         """
         self._sync()
         res = self.rcs.GetTargetJointSpeeds(Empty())
@@ -541,7 +541,7 @@ class LebaiRobot:
         """
         获得每个关节的扭矩值
 
-        @return: 每个关节的扭矩值
+        :return: 每个关节的扭矩值
         """
         self._sync()
         res = self.rcs.GetJointTorques(Empty())
@@ -588,7 +588,7 @@ class LebaiRobot:
         """
         获得TCP的期望的姿态/位置
 
-        @return: TCP的期望的姿态/位置
+        :return: TCP的期望的姿态/位置
         """
         self._sync()
         res = self.rcs.GetTargetTcpPose(Empty())
@@ -598,7 +598,7 @@ class LebaiRobot:
         """
         获取机器人姿态信息
 
-        @return: 机器人姿态信息
+        :return: 机器人姿态信息
         """
         self._sync()
         res = self.rcs.GetRobotData(Empty())
@@ -613,7 +613,7 @@ class LebaiRobot:
         """
         获取机器人数据
 
-        @return: 机器人数据
+        :return: 机器人数据
         """
         self._sync()
         res = self.rcs.GetRobotData(Empty())
@@ -639,7 +639,7 @@ class LebaiRobot:
         """
         获取机器人IO数据
 
-        @return: 机器人IO数据
+        :return: 机器人IO数据
         """
         self._sync()
         res = self.rcs.GetRobotIOData(self._generate_robot_data_cmd())
@@ -657,8 +657,8 @@ class LebaiRobot:
         """
         设置数字输出
 
-        @param pin: 针脚
-        @param value: 值
+        :param pin: 针脚
+        :param value: 值
         """
         self._sync()
         self.rcs.SetDIO(msg.DIO(pin=pin, value=value))
@@ -667,8 +667,8 @@ class LebaiRobot:
         """
         获取数字输入
 
-        @param pin: 针脚
-        @return:
+        :param pin: 针脚
+        :return:
         """
         self._sync()
         res = self.rcs.GetDIO(msg.IOPin(pin=pin))
@@ -678,8 +678,8 @@ class LebaiRobot:
         """
         设置模拟输出
 
-        @param pin: 针脚
-        @param value: 值
+        :param pin: 针脚
+        :param value: 值
         """
         self._sync()
         self.rcs.SetAIO(msg.AIO(pin=pin, value=value))
@@ -688,8 +688,8 @@ class LebaiRobot:
         """
         获取模拟输入
 
-        @param pin: 针脚
-        @return:
+        :param pin: 针脚
+        :return:
         """
         self._sync()
         res = self.rcs.GetAIO(msg.IOPin(pin=pin))
