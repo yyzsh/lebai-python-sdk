@@ -9,7 +9,7 @@ from lebai import LebaiRobot, CartesianPose, JointPose, LebaiScene
 
 
 def run():
-    ip = sys.argv[1] if sys.argv[1] else "192.168.3.218"
+    ip = sys.argv[1] if len(sys.argv) > 1 else "192.168.3.218"
     kfc = LebaiScene(ip, 10001)
     # print(kfc.run())
 
