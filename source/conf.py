@@ -22,7 +22,7 @@ copyright = '2021, kingfree'
 author = 'kingfree'
 
 # The full version, including alpha/beta/rc tags
-release = '0.5.2'
+release = '0.6.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -64,7 +64,7 @@ exclude_patterns = []
 #
 import sphinx_rtd_theme
 
-html_theme = "pydata_sphinx_theme"
+html_theme = "sphinx_rtd_theme"
 # html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_logo = "../_static/logo.png"
 html_theme_options = {
