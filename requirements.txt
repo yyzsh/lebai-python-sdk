@@ -4,6 +4,6 @@ pep517
 setuptools~=56.0.0
 Sphinx
 recommonmark
-sphinx_rtd_theme
+
 requests~=2.25.1
 numpy~=1.20.3
