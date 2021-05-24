@@ -10,3 +10,7 @@
 - 添加方法注释与类型注释
 - 添加类型：RobotIOData、IOItem、RobotData、RobotPoseData、PVAT
 - 自动生成API文档
+
+## 0.6.1
+
+- 修复模拟信号类型错误

@@ -295,7 +295,7 @@ class LebaiRobot:
         res = self.rcs.GetTcp(Empty())
         return CartesianPose(res)
 
-    def get_claw_aio(self, pin: int) -> int:
+    def get_claw_aio(self, pin: int) -> float:
         """
         获取手爪参数
 
@@ -314,7 +314,7 @@ class LebaiRobot:
             res = self.rcs.GetClawAmplitude(Empty())
             return res.amplitude
 
-    def set_claw_aio(self, pin: int, value: int = 0) -> None:
+    def set_claw_aio(self, pin: int, value: float = 0) -> None:
         """
         设置手爪参数
 
@@ -730,7 +730,7 @@ class LebaiRobot:
         res = self.rcs.GetDIO(msg.IOPin(pin=pin))
         return res.value
 
-    def set_ao(self, pin: int, value: int) -> None:
+    def set_ao(self, pin: int, value: float) -> None:
         """
         设置模拟输出
 
@@ -740,7 +740,7 @@ class LebaiRobot:
         self._sync()
         self.rcs.SetAIO(msg.AIO(pin=pin, value=value))
 
-    def get_ai(self, pin: int) -> int:
+    def get_ai(self, pin: int) -> float:
         """
         获取模拟输入
 
@@ -786,6 +786,7 @@ class LebaiRobot:
         获取模拟输出端口工作模式
 
         :param pin: 针脚
+        :return: 0:电压，1:电流
         """
         self._sync()
         res = self.rcs.GetAOutMode(msg.IOPin(pin=pin))
