@@ -1,3 +1,5 @@
+from typing import Optional, Iterator
+
 import grpc
 from google.protobuf.empty_pb2 import Empty
 
@@ -64,6 +66,7 @@ class LebaiRobot:
     def start_sys(self) -> None:
         """
         启动
+
         """
         # self._sync()
         self.rcs.StartSys(Empty())
@@ -71,6 +74,7 @@ class LebaiRobot:
     def stop_sys(self) -> None:
         """
         关闭
+
         """
 
         # self._sync()
@@ -79,6 +83,7 @@ class LebaiRobot:
     def powerdown(self) -> None:
         """
         关闭电源
+
         """
 
         # self._sync()
@@ -87,6 +92,7 @@ class LebaiRobot:
     def stop(self) -> None:
         """
         停止程序
+
         """
 
         # self._sync()
@@ -95,6 +101,7 @@ class LebaiRobot:
     def estop(self) -> None:
         """
         急停
+
         """
         # self._sync()
         self.rcs.EStop(Empty())
@@ -102,6 +109,7 @@ class LebaiRobot:
     def teach_mode(self) -> None:
         """
         开启示教模式
+
         """
 
         self._sync()
@@ -110,6 +118,7 @@ class LebaiRobot:
     def end_teach_mode(self) -> None:
         """
         关闭示教模式
+
         """
 
         self._sync()
@@ -118,6 +127,7 @@ class LebaiRobot:
     def resume(self) -> None:
         """
         恢复机器人
+
         """
         # self._sync()
         self.rcs.Resume(Empty())
@@ -125,6 +135,7 @@ class LebaiRobot:
     def pause(self) -> None:
         """
         暂停机器人
+
         """
         # self._sync()
         self.rcs.Pause(Empty())
@@ -132,6 +143,7 @@ class LebaiRobot:
     def get_robot_mode(self) -> RobotState:
         """
         获取机器人状态
+
         :return: 机器人状态
         """
         self._sync()
@@ -141,6 +153,7 @@ class LebaiRobot:
     def get_velocity_factor(self) -> float:
         """
         获取速度因子
+
         :return: 速度因子
         """
         self._sync()
@@ -150,6 +163,7 @@ class LebaiRobot:
     def set_velocity_factor(self, factor) -> None:
         """
         设置速度因子
+
         :param factor: 速度因子
         """
         self._sync()
@@ -281,7 +295,7 @@ class LebaiRobot:
         res = self.rcs.GetTcp(Empty())
         return CartesianPose(res)
 
-    def get_claw_aio(self, pin: int) -> int:
+    def get_claw_aio(self, pin: int) -> float:
         """
         获取手爪参数
 
@@ -300,7 +314,7 @@ class LebaiRobot:
             res = self.rcs.GetClawAmplitude(Empty())
             return res.amplitude
 
-    def set_claw_aio(self, pin: int, value: int = 0) -> None:
+    def set_claw_aio(self, pin: int, value: float = 0) -> None:
         """
         设置手爪参数
 
@@ -414,10 +428,11 @@ class LebaiRobot:
     def stop_move(self) -> None:
         """
         停止当前移动
+
         """
         self.rcs.StopMove(Empty())
 
-    def move_pvat(self, p, v, a, t):
+    def move_pvat(self, p: list[float], v: list[float], a: list[float], t: float) -> None:
         """
         指定位置、速度、加速度、时间的伺服移动
 
@@ -428,79 +443,128 @@ class LebaiRobot:
         """
         self.rcs.MovePVAT(rc.PVATRequest(duration=t, q=p, v=v, acc=a))
 
-    def move_pvats(self, pvt_iter):
-        self.rcs.MovePVATStream((rc.PVATRequest(duration=s['t'], q=s['p'], v=s['v'], acc=s['a']) for s in pvt_iter))
+    def move_pvats(self, pvt_iter: list[PVAT]):
+        self.rcs.MovePVATStream((rc.PVATRequest(duration=s.duration, q=s.q, v=s.v, acc=s.acc) for s in pvt_iter))
 
-    def move_pvt(self, p, v, t):
-        '''指定位置、速度、时间的伺服移动
-
-        加速度将自动计算。
+    def move_pvt(self, p: list[float], v: list[float], t: float):
+        """
+        指定位置、速度、时间的伺服移动, 加速度将自动计算。
 
         :param p: 关节位置列表 (rad)
         :param v: 关节速度列表 (rad/s)
         :param t: 总运动时间 (s)
-        '''
+        """
         self.rcs.MovePVT(rc.PVATRequest(duration=t, q=p, v=v))
 
-    def move_pvts(self, pvt_iter):
-        self.rcs.MovePVTStream((rc.PVATRequest(duration=s['t'], q=s['p'], v=s['v']) for s in pvt_iter))
+    def move_pvts(self, pvt_iter: list[PVAT]):
+        """
+        指定位置、速度、时间的伺服移动, 加速度将自动计算。
 
-    def move_pt(self, p, t):
-        '''指定位置和时间的伺服移动
+        :param pvt_iter:
+        :return:
+        """
+        self.rcs.MovePVTStream((rc.PVATRequest(duration=s.duration, q=s.q, v=s.v) for s in pvt_iter))
 
-        速度和加速度将自动计算。
+    def move_pt(self, p: list[float], t: float) -> None:
+        """
+        指定位置和时间的伺服移动,速度和加速度将自动计算。
 
         :param p: 关节位置列表 (rad)
         :param t: 总运动时间 (s)
-        '''
+        """
         self.rcs.MovePT(rc.PVATRequest(duration=t, q=p))
 
-    def move_pts(self, pt_iter):
-        self.rcs.MovePTStream((rc.PVATRequest(duration=s['t'], q=s['p']) for s in pt_iter))
+    def move_pts(self, pt_iter: list[PVAT]):
+        """
+        指定位置和时间的伺服移动,速度和加速度将自动计算。
+
+        :param pt_iter:
+        :return:
+        """
+        self.rcs.MovePTStream((rc.PVATRequest(duration=s.duration, q=s.q) for s in pt_iter))
 
     def movej_until(self, p, a=0, v=0, t=0, cb=None):
+        """
+        todo: 待实现
+
+        """
         pass
 
     def movej_until_rt(self, p, a=0, v=0, t=0, logic='AND', io={}, cb=None):
+        """
+        todo: 待实现
+
+        """
         pass
 
     def movel_until(self, p, a=0, v=0, t=0, cb=None):
+        """
+        todo: 待实现
+
+        """
         pass
 
     def movel_until_rt(self, p, a=0, v=0, t=0, logic='AND', io={}, cb=None):
+        """
+        todo: 待实现
+
+        """
         pass
 
     def movec_until(self, via, p, rad=0, a=0, v=0, t=0, cb=None):
+        """
+        todo: 待实现
+
+        """
         pass
 
     def movec_until_rt(self, via, p, rad=0, a=0, v=0, t=0, logic='AND', io={}, cb=None):
+        """
+        todo: 待实现
+
+        """
         pass
 
-    def kinematics_forward(self, *p):
+    def kinematics_forward(self, *p: list[float]):
+        """
+        机器人正解
+
+        :param p:
+        :return:
+        """
         j = JointPose(*p)
         res = self.rcs.KinematicsForward(j._to_Joint())
         return CartesianPose(*res.vector)
 
-    def kinematics_inverse(self, *p):
+    def kinematics_inverse(self, *p: list[float]):
+        """
+        机器人反解
+
+        :param p:
+        :return:
+        """
         j = CartesianPose(*p)
         res = self.rcs.KinematicsInverse(j._to_Vector())
         return JointPose(*res.joints)
 
     def pose_times(self) -> None:
         """
-        :todo: 待实现
+        todo: 待实现
+
         """
         pass
 
     def pose_inverse(self) -> None:
         """
-        :todo: 待实现
+        todo: 待实现
+
         """
         pass
 
     def get_actual_joint_positions(self) -> JointPose:
         """
         获取实际关节位置
+
         :returns: `JointPose` 关节位置
         """
         self._sync()
@@ -548,16 +612,32 @@ class LebaiRobot:
         return tuple(res.joints)
 
     def get_actual_joint_torques(self) -> tuple:
+        """
+        获取实际力矩
+
+        :return:
+        :rtype:
+        """
         self._sync()
         res = self.rcs.GetRobotData(Empty())
         return tuple(res.actualTorque.joints)
 
     def get_target_joint_torques(self) -> tuple:
+        """
+        获取理论力矩
+
+        :return:
+        """
         self._sync()
         res = self.rcs.GetRobotData(Empty())
         return tuple(res.targetTorque.joints)
 
     def get_joint_temperatures(self) -> tuple:
+        """
+        获取关节温度
+
+        :return:
+        """
         self._sync()
         res = self.rcs.GetRobotData(Empty())
         return tuple(res.jointTemps.joints)
@@ -594,7 +674,7 @@ class LebaiRobot:
         res = self.rcs.GetTargetTcpPose(Empty())
         return CartesianPose(*res.vector)
 
-    def get_robot_poses(self):
+    def get_robot_poses(self) -> RobotPoseData:
         """
         获取机器人姿态信息
 
@@ -602,14 +682,9 @@ class LebaiRobot:
         """
         self._sync()
         res = self.rcs.GetRobotData(Empty())
-        ret = {}
-        ret['actual_joint_pose'] = tuple(res.targetJoint.joints)
-        ret['target_joint_pose'] = tuple(res.actualJoint.joints)
-        ret['target_pose'] = tuple(res.targetTcpPose.vector)
-        ret['actual_pose'] = tuple(res.actualTcpPose.vector)
-        return ret
+        return RobotPoseData(res)
 
-    def get_robot_data(self):
+    def get_robot_data(self) -> RobotData:
         """
         获取机器人数据
 
@@ -617,25 +692,13 @@ class LebaiRobot:
         """
         self._sync()
         res = self.rcs.GetRobotData(Empty())
-        ret = {}
-        ret['target_joint'] = tuple(res.targetJoint.joints)
-        ret['actual_joint'] = tuple(res.actualJoint.joints)
-        ret['target_pose'] = tuple(res.targetTcpPose.vector)
-        ret['actual_pose'] = tuple(res.actualTcpPose.vector)
-        ret['target_torque'] = tuple(res.targetTorque.joints)
-        ret['actual_torque'] = tuple(res.actualTorque.joints)
-        ret['target_vel'] = tuple(res.targetJointSpeed.joints)
-        ret['actual_vel'] = tuple(res.actualJointSpeed.joints)
-        ret['target_acc'] = tuple([])  # TODO: res.targetJointAcc.joints
-        ret['actual_acc'] = tuple([])  # TODO: res.actualJointAcc.joints
-        ret['temp'] = tuple(res.jointTemps.joints)
-        return ret
+        return RobotData(res)
 
     def _generate_robot_data_cmd(self, n=1):
         for i in range(0, n):
             yield rc.RobotDataCmd()
 
-    def get_robot_io_data(self):
+    def get_robot_io_data(self) -> Iterator[RobotIOData]:
         """
         获取机器人IO数据
 
@@ -644,14 +707,7 @@ class LebaiRobot:
         self._sync()
         res = self.rcs.GetRobotIOData(self._generate_robot_data_cmd())
         for io in res:
-            ret = {}
-            ret['di'] = tuple(map(lambda dio: {'pin': dio.pin, 'value': dio.value}, io.robotDIOIn))
-            ret['do'] = tuple(map(lambda dio: {'pin': dio.pin, 'value': dio.value}, io.robotDIOOut))
-            ret['ai'] = tuple(map(lambda aio: {'pin': aio.pin, 'value': aio.value}, io.robotAIOIn))
-            ret['ao'] = tuple(map(lambda aio: {'pin': aio.pin, 'value': aio.value}, io.robotAIOOut))
-            ret['flange_di'] = tuple(map(lambda dio: {'pin': dio.pin, 'value': dio.value}, io.tcpDIOIn))
-            ret['flange_do'] = tuple(map(lambda dio: {'pin': dio.pin, 'value': dio.value}, io.tcpDIOOut))
-            return ret
+            yield RobotIOData(io)
 
     def set_do(self, pin: int, value: int) -> None:
         """
@@ -674,7 +730,7 @@ class LebaiRobot:
         res = self.rcs.GetDIO(msg.IOPin(pin=pin))
         return res.value
 
-    def set_ao(self, pin: int, value: int) -> None:
+    def set_ao(self, pin: int, value: float) -> None:
         """
         设置模拟输出
 
@@ -684,7 +740,7 @@ class LebaiRobot:
         self._sync()
         self.rcs.SetAIO(msg.AIO(pin=pin, value=value))
 
-    def get_ai(self, pin: int) -> int:
+    def get_ai(self, pin: int) -> float:
         """
         获取模拟输入
 
@@ -696,85 +752,191 @@ class LebaiRobot:
         return res.value
 
     def set_ai_mode(self, pin: int, mode: int) -> None:
+        """
+        设置模拟输入端口工作模式
+
+        :param pin: 针脚
+        :param mode:  0:电压，1:电流
+        """
         self._sync()
         self.rcs.SetAInMode(msg.AIO(pin=pin, mode=mode))
 
     def get_ai_mode(self, pin: int) -> int:
+        """
+        获取模拟输入端口工作模式
+
+        :param pin: 针脚
+        """
         self._sync()
         res = self.rcs.GetAInMode(msg.IOPin(pin=pin))
         return res.mode
 
     def set_ao_mode(self, pin: int, mode: int) -> None:
+        """
+        设置模拟输出端口工作模式
+
+        :param pin: 针脚
+        :param mode:  0:电压，1:电流
+        """
         self._sync()
         self.rcs.SetAOutMode(msg.AIO(pin=pin, mode=mode))
 
     def get_ao_mode(self, pin: int) -> int:
+        """
+        获取模拟输出端口工作模式
+
+        :param pin: 针脚
+        :return: 0:电压，1:电流
+        """
         self._sync()
         res = self.rcs.GetAOutMode(msg.IOPin(pin=pin))
         return res.mode
 
     def set_flange_do(self, pin: int, value: int) -> None:
+        """
+        设置法兰数字输出
+
+        :param pin:
+        :param value:
+        """
         self._sync()
         self.rcs.SetTcpDIO(msg.DIO(pin=pin, value=value))
 
     def get_flange_di(self, pin: int) -> int:
+        """
+        获取法兰数字输出
+
+        :param pin:
+        :return:
+        """
         self._sync()
         res = self.rcs.GetTcpDIO(msg.IOPin(pin=pin))
         return res.value
 
-    def set_led(self, mode: int, speed: float, color: object) -> None:
+    def set_led(self, mode: int, speed: float, color: list[int]) -> None:
+        """
+        设置LED灯状态
+
+        :param mode: 1：关闭、2：常亮、3：呼吸、4：均分旋转、5：同色旋转、6：闪烁
+        :param speed: 速度 分三个等级，1：快速、2：正常、3：慢速
+        :param color: 颜色，最多包含4个 0 ~ 15 之间的整数
+        """
         self._sync()
         self.rcs.SetLED(msg.LEDStatus(mode=mode, speed=speed, color=color))
 
     def set_voice(self, voice: int, volume: int) -> None:
         """
+        设置声音
 
-        :voice:
-        :volume:
+        :voice: 声音列表 0~10
+        :volume: 音量 分四个等级，0：静音、1：低、2：正常、3：高
         """
         self._sync()
         self.rcs.SetVoice(msg.VoiceStatus(voice=voice, volume=volume))
 
-    def set_fan(self, on: int) -> None:
+    def set_fan(self, fan: int) -> None:
+        """
+        设置风扇
+
+        :param fan: 1：关闭、 2：开启
+        """
         self._sync()
-        self.rcs.SetFan(msg.FanStatus(fan=on))
+        self.rcs.SetFan(msg.FanStatus(fan=fan))
 
     def set_signal(self, pin: int, value: int) -> None:
+        """
+        设置信号
+
+        :param pin: 针脚
+        :param value:  值
+        """
         self._sync()
         self.rcs.SetSignal(msg.SignalValue(index=pin, value=value))
 
     def get_signal(self, pin: int) -> int:
+        """
+        获取信号
+
+        :param pin: 针脚
+        """
         self._sync()
         res = self.rcs.GetSignal(msg.SignalValue(index=pin))
         return res.value
 
     def add_signal(self, pin: int, value: int) -> None:
         """
-        :pin:
+        添加信号
+
+        :pin: 针脚
         :value:
         """
         self._sync()
         self.rcs.AddSignal(msg.SignalValue(index=pin, value=value))
 
     def enable_joint_limits(self) -> None:
+        """
+        启用关节限位检测
+
+        """
         self._sync()
         self.pcs.EnableJointLimit(TrueOrFalse(val=True))
 
     def disable_joint_limits(self) -> None:
+        """
+        关闭关节限位检测
+
+        """
         self._sync()
         self.pcs.EnableJointLimit(TrueOrFalse(val=False))
 
     def run_scene(self, scene_id: int, execute_count: int = 1, clear: bool = True) -> int:
+        """
+        运行场景
+
+        :param scene_id: 场景Id
+        :param execute_count: 执行数量，0 表示一直循环运行
+        :param clear: 是否强制关闭正在运行的任务
+        :return:
+        """
         return self.http_service.run_scene(scene_id, execute_count, clear)['id']
 
     def rerun_task(self, task_id: int, execute_count: int = 1, clear: bool = True) -> int:
+        """
+        运行任务
+
+        :param task_id: 任务Id
+        :param execute_count: 执行数量，0 表示一直循环运行
+        :param clear: 是否强制关闭正在运行的任务
+        :return:
+        """
         return self.http_service.run_task(task_id, execute_count, clear)['id']
 
     def execute_lua_code(self, task_name: str, code: str, execute_count: int = 1, clear: bool = True) -> int:
+        """
+
+        :param task_name: 任务名称
+        :param code: lua 代码
+        :param execute_count: 执行数量，0 表示一直循环运行
+        :param clear: 是否强制关闭正在运行的任务
+        :return:
+        """
         return self.http_service.execute_lua_code(task_name, execute_count, clear, code)['id']
 
-    def get_task(self, id: int) -> object:
+    def get_task(self, id: int) -> Optional[TaskInfo]:
+        """
+        获取任务信息
+
+        :param id: 任务Id
+        :return:
+        """
         return self.http_service.get_task(id)
 
-    def get_tasks(self, pi: int, ps: int) -> object:
+    def get_tasks(self, pi: int, ps: int) -> Optional[TasksResult]:
+        """
+        获取任务列表
+
+        :param pi: 页码
+        :param ps: 页大小
+        :return:
+        """
         return self.http_service.get_tasks(pi, ps)

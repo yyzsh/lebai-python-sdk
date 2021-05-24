@@ -1,8 +1,10 @@
 import json
+from typing import Optional
 
 import requests
 
 from lebai import RequestError
+from lebai.type import TaskInfo, TasksResult
 
 
 class LebaiHttpService:
@@ -56,7 +58,7 @@ class LebaiHttpService:
         }, data=code)
         return self.handle_result(r)
 
-    def get_task(self, id):
+    def get_task(self, id) -> Optional[TaskInfo]:
         r = requests.get(self.get_url("/public/task"), params={
             'id': str(id)
         })
@@ -67,7 +69,7 @@ class LebaiHttpService:
         else:
             return None
 
-    def get_tasks(self, pi, ps):
+    def get_tasks(self, pi, ps) -> Optional[TasksResult]:
         params = json.dumps({
             'pi': pi,
             'ps': ps

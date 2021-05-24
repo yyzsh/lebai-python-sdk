@@ -36,7 +36,8 @@ def run():
     logging.info(p1_j)
     logging.info(rb.kinematics_forward(p1_j))
 
-    logging.info(rb.get_robot_io_data())
+    for x in rb.get_robot_io_data():
+        logging.info(x)
     logging.info(rb.get_robot_data())
 
     g = rb.get_gravity()
