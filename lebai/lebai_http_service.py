@@ -78,6 +78,6 @@ class LebaiHttpService:
         r.raise_for_status()
         r = r.json()
         if r['code'] == 0:
-            return r['data']
+            return TasksResult(r['data'])
         else:
             return None

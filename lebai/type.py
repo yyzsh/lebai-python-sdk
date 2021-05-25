@@ -226,10 +226,10 @@ class TasksResult:
     """任务列表"""
 
     def __init__(self, res):
-        self.pi = getattr(res, "pi")
-        self.ps = getattr(res, "ps")
-        self.total = getattr(res, "total")
-        self.records = getattr(res, "records")
+        self.pi = res["pi"]
+        self.ps = res["ps"]
+        self.total = res["total"]
+        self.records = res["records"]
         pass
 
 
