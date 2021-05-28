@@ -222,8 +222,8 @@ class TasksResult:
     """页大小"""
     total: int
     """总数"""
-    records: list[TaskInfo]
-    """任务列表"""
+    records: list
+    """任务列表 TaskInfo数组"""
 
     def __init__(self, res):
         self.pi = res["pi"]
@@ -240,14 +240,25 @@ class PVAT:
 
     duration: float
     """总运动时间"""
-    q: list[float]
-    """关节位置列表"""
-    v: list[float]
-    """关节速度列表"""
-    acc: list[float]
-    """关节加速度列表"""
+    q: list
+    """关节位置列表 float 数组"""
+    v: list
+    """关节速度列表 float 数组"""
+    acc: list
+    """关节加速度列表 float 数组"""
 
-    def __init__(self, duration: float, q: list[float], v: list[float], acc: list[float]):
+    def __init__(self, duration: float, q: list, v: list, acc: list):
+        """
+
+        :param duration:
+        :type duration:  float
+        :param q:
+        :type q: list[float]
+        :param v:
+        :type v: list[float]
+        :param acc:
+        :type acc: list[float]
+        """
         self.duration = duration
         self.q = q
         self.v = v
@@ -261,14 +272,14 @@ class RobotPoseData:
 
     """
 
-    target_joint: list[float]
-    """目标关节位置"""
-    actual_joint: list[float]
-    """实际关节位置"""
-    target_pose: list[float]
-    """目标tcp位置"""
-    actual_pose: list[float]
-    """实际tcp位置"""
+    target_joint: list
+    """目标关节位置 float 数组"""
+    actual_joint: list
+    """实际关节位置 float 数组"""
+    target_pose: list
+    """目标tcp位置 float 数组"""
+    actual_pose: list
+    """实际tcp位置 float 数组"""
 
     def __init__(self, res):
         self.target_joint = tuple(res.targetJoint.joints)
@@ -283,20 +294,20 @@ class RobotData(RobotPoseData):
 
     """
 
-    target_torque: list[float]
-    """理论力矩"""
-    actual_torque: list[float]
-    """实际力矩"""
-    target_vel: list[float]
-    """目标关节速度"""
-    actual_vel: list[float]
-    """实际关节速度"""
-    target_acc: list[float]
-    """加速度"""
-    actual_acc: list[float]
-    """实际加速度"""
-    temp: list[float]
-    """关节温度"""
+    target_torque: list
+    """理论力矩 float 数组"""
+    actual_torque: list
+    """实际力矩 float 数组"""
+    target_vel: list
+    """目标关节速度 float 数组"""
+    actual_vel: list
+    """实际关节速度 float 数组"""
+    target_acc: list
+    """加速度 float 数组"""
+    actual_acc: list
+    """实际加速度 float 数组"""
+    temp: list
+    """关节温度 float 数组"""
 
     def __init__(self, res):
         super().__init__(res)
@@ -319,18 +330,18 @@ class IOItem:
 
 
 class RobotIOData:
-    di: list[IOItem]
-    """所有数字量的输入值"""
-    do: list[IOItem]
-    """所有数字量的输出值"""
-    ai: list[IOItem]
-    """所有模拟量输入值"""
-    ao: list[IOItem]
-    """所有模拟量输出值"""
-    flange_di: list[IOItem]
-    """所有tcp数字量的输入值"""
-    flange_do: list[IOItem]
-    """所有tcp数字量的输出值"""
+    di: list
+    """所有数字量的输入值 IOItem 数组"""
+    do: list
+    """所有数字量的输出值 IOItem 数组"""
+    ai: list
+    """所有模拟量输入值 IOItem 数组"""
+    ao: list
+    """所有模拟量输出值 IOItem 数组"""
+    flange_di: list
+    """所有tcp数字量的输入值 IOItem 数组"""
+    flange_do: list
+    """所有tcp数字量的输出值 IOItem 数组"""
 
     def __init__(self, io):
         self.di = tuple(map(lambda dio: IOItem(dio.pin, dio.value), io.robotDIOIn))
