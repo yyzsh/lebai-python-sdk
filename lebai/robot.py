@@ -432,53 +432,58 @@ class LebaiRobot:
         """
         self.rcs.StopMove(Empty())
 
-    def move_pvat(self, p: list[float], v: list[float], a: list[float], t: float) -> None:
+    def move_pvat(self, p: list, v: list, a: list, t: float) -> None:
         """
         指定位置、速度、加速度、时间的伺服移动
 
-        :param p: 关节位置列表 (rad)
-        :param v: 关节速度列表 (rad/s)
-        :param a: 关节加速度列表 (rad/s^2)
+        :param p: 关节位置列表 (rad)，类型：list[float]
+        :param v: 关节速度列表 (rad/s)，类型：list[float]
+        :param a: 关节加速度列表 (rad/s^2)，类型：list[float]
         :param t: 总运动时间 (s)
         """
         self.rcs.MovePVAT(rc.PVATRequest(duration=t, q=p, v=v, acc=a))
 
-    def move_pvats(self, pvt_iter: list[PVAT]):
+    def move_pvats(self, pvt_iter: list) -> None:
+        """
+
+        @param pvt_iter: 类型：list[PVAT]
+        @type pvt_iter: list[PVAT]
+        """
         self.rcs.MovePVATStream((rc.PVATRequest(duration=s.duration, q=s.q, v=s.v, acc=s.acc) for s in pvt_iter))
 
-    def move_pvt(self, p: list[float], v: list[float], t: float):
+    def move_pvt(self, p: list, v: list, t: float)->None:
         """
         指定位置、速度、时间的伺服移动, 加速度将自动计算。
 
-        :param p: 关节位置列表 (rad)
-        :param v: 关节速度列表 (rad/s)
+        :param p: 关节位置列表 (rad)，类型：list[float],
+        :param v: 关节速度列表 (rad/s)，类型：list[float],
         :param t: 总运动时间 (s)
         """
         self.rcs.MovePVT(rc.PVATRequest(duration=t, q=p, v=v))
 
-    def move_pvts(self, pvt_iter: list[PVAT]):
+    def move_pvts(self, pvt_iter: list):
         """
         指定位置、速度、时间的伺服移动, 加速度将自动计算。
 
-        :param pvt_iter:
+        :param pvt_iter: 类型：list[PVAT]
         :return:
         """
         self.rcs.MovePVTStream((rc.PVATRequest(duration=s.duration, q=s.q, v=s.v) for s in pvt_iter))
 
-    def move_pt(self, p: list[float], t: float) -> None:
+    def move_pt(self, p: list, t: float) -> None:
         """
         指定位置和时间的伺服移动,速度和加速度将自动计算。
 
-        :param p: 关节位置列表 (rad)
+        :param p: 关节位置列表 (rad)，类型：list[float]
         :param t: 总运动时间 (s)
         """
         self.rcs.MovePT(rc.PVATRequest(duration=t, q=p))
 
-    def move_pts(self, pt_iter: list[PVAT]):
+    def move_pts(self, pt_iter: list):
         """
         指定位置和时间的伺服移动,速度和加速度将自动计算。
 
-        :param pt_iter:
+        :param pt_iter: 类型：list[PVAT]
         :return:
         """
         self.rcs.MovePTStream((rc.PVATRequest(duration=s.duration, q=s.q) for s in pt_iter))
@@ -525,22 +530,22 @@ class LebaiRobot:
         """
         pass
 
-    def kinematics_forward(self, *p: list[float]):
+    def kinematics_forward(self, *p: list):
         """
         机器人正解
 
-        :param p:
+        :param p: 类型：list[float]
         :return:
         """
         j = JointPose(*p)
         res = self.rcs.KinematicsForward(j._to_Joint())
         return CartesianPose(*res.vector)
 
-    def kinematics_inverse(self, *p: list[float]):
+    def kinematics_inverse(self, *p: list):
         """
         机器人反解
 
-        :param p:
+        :param p:  类型：list[float]
         :return:
         """
         j = CartesianPose(*p)
@@ -813,13 +818,13 @@ class LebaiRobot:
         res = self.rcs.GetTcpDIO(msg.IOPin(pin=pin))
         return res.value
 
-    def set_led(self, mode: int, speed: float, color: list[int]) -> None:
+    def set_led(self, mode: int, speed: float, color: list) -> None:
         """
         设置LED灯状态
 
         :param mode: 1：关闭、2：常亮、3：呼吸、4：均分旋转、5：同色旋转、6：闪烁
         :param speed: 速度 分三个等级，1：快速、2：正常、3：慢速
-        :param color: 颜色，最多包含4个 0 ~ 15 之间的整数
+        :param color: 颜色，最多包含4个 0 ~ 15 之间的整数，类型：list[int]
         """
         self._sync()
         self.rcs.SetLED(msg.LEDStatus(mode=mode, speed=speed, color=color))
