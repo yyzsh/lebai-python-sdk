@@ -483,7 +483,7 @@ class Test(unittest.TestCase):
 
     def test_set_claw_force(self):
         data = {"type": "Force", "value": 50}
-        r = self.http_service.action("set_claw_ao", data)
+        r = self.http_service.action("set_claw_force", data)
 
         logging.info(r)
         print(r)
@@ -491,7 +491,7 @@ class Test(unittest.TestCase):
 
     def test_set_claw_claw(self):
         data = {"type": "Amplitude", "value": 50}
-        r = self.http_service.action("set_claw_ao", data)
+        r = self.http_service.action("set_claw_claw", data)
 
         logging.info(r)
         print(r)
@@ -499,7 +499,7 @@ class Test(unittest.TestCase):
 
     def test_get_claw_force(self):
         data = {"type": "Force"}
-        r = self.http_service.action("get_claw_ai", data)
+        r = self.http_service.action("get_claw_force", data)
 
         logging.info(r)
         print(r)
@@ -507,7 +507,7 @@ class Test(unittest.TestCase):
 
     def test_get_claw_claw(self):
         data = {"type": "Amplitude"}
-        r = self.http_service.action("get_claw_ai", data)
+        r = self.http_service.action("get_claw_claw", data)
 
         logging.info(r)
         pass
