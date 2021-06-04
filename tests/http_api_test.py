@@ -22,6 +22,8 @@ class Test(unittest.TestCase):
     def tearDownClass(cls):
         pass
 
+    # http
+
     def setUp(self):
         self.http_service = LebaiHttpService(self.ip)
         self.robot = LebaiRobot(self.ip, True)
