@@ -3,9 +3,12 @@
 import logging
 import unittest
 
+import numpy as np
+
 from lebai import LebaiRobot, LebaiScene
 # n)umber
 from lebai.lebai_http_service import LebaiHttpService
+from lebai.type import PVAT
 
 
 class Test(unittest.TestCase):
@@ -142,9 +145,9 @@ class Test(unittest.TestCase):
         r = self.http_service.action("resume_task")
 
         logging.info(r)
-
-        self.assertIsNotNone(r)
-        self.assertGreater(r['task_id'], 0)
+        #
+        # self.assertIsNotNone(r)
+        # self.assertGreater(r['task_id'], 0)
         pass
 
     def test_wait(self):
@@ -367,6 +370,53 @@ class Test(unittest.TestCase):
         # 暂不支持
         pass
 
+    def generate_list(self):
+        points = np.loadtxt('sprial.txt', delimiter=',')
+        vels = np.zeros(np.shape(points))
+        n = range(np.shape(points)[0] - 1)
+        t = 0.01
+        for i in n:
+            vels[i + 1, :] = (points[i + 1, :] - points[i, :]) / t
+            yield PVAT(
+                t,
+                points[i],
+                vels[i],
+                []
+            )
+
+    def test_move_pt(self):
+        i = self.generate_list()
+        for n in list(i):
+            self.robot.move_pt(n.q, 0.1)
+        pass
+
+    def test_move_pts(self):
+        i = self.generate_list()
+        self.robot.move_pts(i)
+        pass
+
+    def test_move_pvt(self):
+        i = self.generate_list()
+        for n in list(i):
+            self.robot.move_pvt(n.q, n.v, 0.1)
+        pass
+
+    def test_move_pvts(self):
+        i = self.generate_list()
+        self.robot.move_pvts(i)
+        pass
+
+    def test_move_pvat(self):
+        i = self.generate_list()
+        for n in list(i):
+            self.robot.move_pvat(n.q, n.v, n.acc, 0.1)
+        pass
+
+    def test_move_pvats(self):
+        i = self.generate_list()
+        self.robot.move_pvats(i)
+        pass
+
     # 状态数据
 
     def test_robot_data(self):
@@ -482,34 +532,38 @@ class Test(unittest.TestCase):
     # 手爪控制
 
     def test_set_claw_force(self):
-        data = {"type": "Force", "value": 50}
-        r = self.http_service.action("set_claw_force", data)
-
-        logging.info(r)
-        print(r)
+        # 暂不支持
+        # data = {"type": "Force", "value": 50}
+        # r = self.http_service.action("set_claw_force", data)
+        #
+        # logging.info(r)
+        # print(r)
         pass
 
     def test_set_claw_claw(self):
-        data = {"type": "Amplitude", "value": 50}
-        r = self.http_service.action("set_claw_claw", data)
-
-        logging.info(r)
-        print(r)
+        # 暂不支持
+        # data = {"type": "Amplitude", "value": 50}
+        # r = self.http_service.action("set_claw_claw", data)
+        #
+        # logging.info(r)
+        # print(r)
         pass
 
     def test_get_claw_force(self):
-        data = {"type": "Force"}
-        r = self.http_service.action("get_claw_force", data)
-
-        logging.info(r)
-        print(r)
+        # 暂不支持
+        # data = {"type": "Force"}
+        # r = self.http_service.action("get_claw_force", data)
+        #
+        # logging.info(r)
+        # print(r)
         pass
 
     def test_get_claw_claw(self):
-        data = {"type": "Amplitude"}
-        r = self.http_service.action("get_claw_claw", data)
-
-        logging.info(r)
+        # 暂不支持
+        # data = {"type": "Amplitude"}
+        # r = self.http_service.action("get_claw_claw", data)
+        #
+        # logging.info(r)
         pass
 
     # 机器人 I/O
