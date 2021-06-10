@@ -104,13 +104,29 @@ class CartesianPose:
         else:
             return f'CartesianPose({self.pos[0]}, {self.pos[1]}, {self.pos[2]}, {self.pos[3]}, {self.pos[4]}, {self.pos[5]}, base={self.base})'
 
-    def __getattr__(self, key):
-        pos_idx_arr = ['x', 'y', 'z', 'rz', 'ry', 'rx']
-        if key in pos_idx_arr:
-            idx = pos_idx_arr.index(key)
-            return getattr(self, 'pos')[idx]
-        else:
-            return getattr(self, key)
+    @property
+    def x(self):
+        return self.pos[0]
+
+    @property
+    def y(self):
+        return self.pos[1]
+
+    @property
+    def z(self):
+        return self.pos[2]
+
+    @property
+    def rz(self):
+        return self.pos[3]
+
+    @property
+    def ry(self):
+        return self.pos[4]
+
+    @property
+    def rx(self):
+        return self.pos[5]
 
     def __eq__(self, other):
         return self.pos == other.pos and self.base == other.base
