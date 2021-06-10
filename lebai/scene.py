@@ -1,7 +1,7 @@
 import socket
 import time
 
-from lebai.type import TaskStatus
+from lebai.type import TaskStatus, TaskInfo
 from lebai.lebai_http_service import LebaiHttpService
 
 
@@ -60,7 +60,7 @@ class LebaiScene:
         """
         self.action('stop_task', sleep=1)
 
-    def result(self) -> object:
+    def result(self) -> TaskInfo:
         """
         获取任务信息
 
@@ -74,7 +74,7 @@ class LebaiScene:
 
         :return: 任务状态
         """
-        return TaskStatus(self.result()['status'])
+        return TaskStatus(self.result().status)
 
     def done(self) -> bool:
         """
