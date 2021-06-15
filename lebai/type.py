@@ -3,6 +3,7 @@ from enum import Enum
 from lebai.pb2 import messages_pb2 as msg
 from .pb2 import robot_controller_pb2 as rc
 
+
 class RobotState(Enum):
     """机器人状态"""
 
@@ -77,23 +78,24 @@ class IODeviceType(Enum):
 
 
 class CartesianPose:
-    '''空间位置
+    """
+    空间位置
 
     笛卡尔坐标描述的位姿
-    '''
+    """
 
     def __init__(self, x=0, y=0, z=0, rz=0, ry=0, rx=0, base=None):
         # print(x, hasattr(x, '__iter__'), hasattr(x, '__iter__'), type(x))
         if type(x) is msg.PR:
-            self.pos = (x.position.x, x.position.y, x.position.z, x.rotation.r, x.rotation.p, x.rotation.y)
+            self.pos = [x.position.x, x.position.y, x.position.z, x.rotation.r, x.rotation.p, x.rotation.y]
         elif hasattr(x, 'pos'):
             self.pos = x.pos[:]
             if hasattr(x, 'base'):
                 base = x.base
         elif hasattr(x, '__iter__') or type(x) is list:
-            self.pos = tuple(x)
+            self.pos = list(x)
         else:
-            self.pos = (x, y, z, rz, ry, rx)
+            self.pos = [x, y, z, rz, ry, rx]
         self.is_joint = False
         # 要求 base 是元组或列表而不是 CartesianPose 对象
         self.base = getattr(base, 'pos', base) if base is not None else None
@@ -128,6 +130,10 @@ class CartesianPose:
     def rx(self):
         return self.pos[5]
 
+    def __getitem__(self, item):
+        if item == 'pos':
+            return self.pos
+
     def __eq__(self, other):
         return self.pos == other.pos and self.base == other.base
 
@@ -156,13 +162,17 @@ class JointPose:
         if hasattr(j[0], 'pos'):
             self.pos = j[0].pos
         elif hasattr(j[0], '__iter__'):
-            self.pos = tuple(j[0])
+            self.pos = list(j[0])
         else:
             self.pos = j
         self.is_joint = True
 
     def __str__(self):
         return 'JointPose' + str(self.pos)
+
+    def __getitem__(self, item):
+        if item == 'pos':
+            return self.pos
 
     def _to_Joint(self):
         return rc.Joint(joints=self.pos)
@@ -298,10 +308,10 @@ class RobotPoseData:
     """实际tcp位置 float 数组"""
 
     def __init__(self, res):
-        self.target_joint = tuple(res.targetJoint.joints)
-        self.actual_joint = tuple(res.actualJoint.joints)
-        self.target_pose = tuple(res.targetTcpPose.vector)
-        self.actual_pose = tuple(res.actualTcpPose.vector)
+        self.target_joint = list(res.targetJoint.joints)
+        self.actual_joint = list(res.actualJoint.joints)
+        self.target_pose = list(res.targetTcpPose.vector)
+        self.actual_pose = list(res.actualTcpPose.vector)
 
 
 class RobotData(RobotPoseData):
@@ -327,13 +337,13 @@ class RobotData(RobotPoseData):
 
     def __init__(self, res):
         super().__init__(res)
-        self.target_torque = tuple(res.targetTorque.joints)
-        self.actual_torque = tuple(res.actualTorque.joints)
-        self.target_vel = tuple(res.targetJointSpeed.joints)
-        self.actual_vel = tuple(res.actualJointSpeed.joints)
-        self.target_acc = tuple(res.targetJointAcc.joints)
-        self.actual_acc = tuple(res.actualJointAcc.joints)
-        self.temp = tuple(res.jointTemps.joints)
+        self.target_torque = list(res.targetTorque.joints)
+        self.actual_torque = list(res.actualTorque.joints)
+        self.target_vel = list(res.targetJointSpeed.joints)
+        self.actual_vel = list(res.actualJointSpeed.joints)
+        self.target_acc = list(res.targetJointAcc.joints)
+        self.actual_acc = list(res.actualJointAcc.joints)
+        self.temp = list(res.jointTemps.joints)
 
 
 class IOItem:
@@ -360,9 +370,9 @@ class RobotIOData:
     """所有tcp数字量的输出值 IOItem 数组"""
 
     def __init__(self, io):
-        self.di = tuple(map(lambda dio: IOItem(dio.pin, dio.value), io.robotDIOIn))
-        self.do = tuple(map(lambda dio: IOItem(dio.pin, dio.value), io.robotDIOOut))
-        self.ai = tuple(map(lambda aio: IOItem(aio.pin, aio.value), io.robotAIOIn))
-        self.ao = tuple(map(lambda aio: IOItem(aio.pin, aio.value), io.robotAIOOut))
-        self.flange_di = tuple(map(lambda dio: IOItem(dio.pin, dio.value), io.tcpDIOIn))
-        self.flange_do = tuple(map(lambda dio: IOItem(dio.pin, dio.value), io.tcpDIOOut))
+        self.di = list(map(lambda dio: IOItem(dio.pin, dio.value), io.robotDIOIn))
+        self.do = list(map(lambda dio: IOItem(dio.pin, dio.value), io.robotDIOOut))
+        self.ai = list(map(lambda aio: IOItem(aio.pin, aio.value), io.robotAIOIn))
+        self.ao = list(map(lambda aio: IOItem(aio.pin, aio.value), io.robotAIOOut))
+        self.flange_di = list(map(lambda dio: IOItem(dio.pin, dio.value), io.tcpDIOIn))
+        self.flange_do = list(map(lambda dio: IOItem(dio.pin, dio.value), io.tcpDIOOut))

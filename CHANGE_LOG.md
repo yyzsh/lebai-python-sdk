@@ -31,3 +31,8 @@
 ## 0.6.4
 
 - 修复`CartesianPose __getattr__`导致的递归调用，内存溢出 bug
+
+## 0.6.5
+
+- fix`LebaiScene` `result` type error
+- 更改`tuple`到`list`
