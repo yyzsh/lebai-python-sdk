@@ -339,19 +339,20 @@ class LebaiRobot:
         self.rcs.SetClawForce(rc.Force(force=force))
         self.rcs.SetClawAmplitude(rc.Amplitude(amplitude=amplitude))
 
-    def movej(self, p, a=0, v=0, t=0, r=0, is_joint=None):
+    def movej(self, p: object, a: int = 0, v: int = 0, t: int = 0, r: int = 0, is_joint=None) -> None:
         """
         线性移动（关节空间）
 
-        :is_joint:
-        :p: `JointPose` 关节位置，`CartesianPose` 空间位置（将通过运动学反解转为关节位置）
-        :a: 主轴的关节加速度 (rad/s\ :sup:`2`)
+        :p: 传入JointPose或CartesianPose，JointPose` 关节位置，`CartesianPose` 空间位置（将通过运动学反解转为关节位置）
+        :a: 主轴的关节加速度 (rad/s)
         :v: 主轴的关节速度 (rad/s)
         :t: 运动时间 (s)
         :r: 交融半径 (m)
+        :is_joint: 已弃用
         """
-        if is_joint is None:
-            is_joint = getattr(p, 'is_joint', True)
+        if type(p) is not CartesianPose and type(p) is not JointPose:
+            raise Exception("请传入 CartesianPose 或 JointPose")
+        is_joint = getattr(p, 'is_joint', True)
         if not hasattr(p, 'pos'):
             p = JointPose(*p)
         req = rc.MoveJRequest(
@@ -370,15 +371,16 @@ class LebaiRobot:
         """
         线性移动（工具空间）
 
-        :p: `JointPose` 关节位置，`CartesianPose` 空间位置（将通过运动学反解转为关节位置）
-        :a: 轴的关节加速度 (rad/s\ :sup:`2`)
+        :p: 传入JointPose或CartesianPose，JointPose` 关节位置，`CartesianPose` 空间位置（将通过运动学反解转为关节位置）
+        :a: 轴的关节加速度 (rad/s)
         :v: 主轴的关节速度 (rad/s)
         :t: 运动时间 (s)
         :r: 交融半径 (m)
-        :is_joint:
+        :is_joint: 已弃用
         """
-        if is_joint is None:
-            is_joint = getattr(p, 'is_joint', False)
+        if type(p) is not CartesianPose and type(p) is not JointPose:
+            raise Exception("请传入 CartesianPose 或 JointPose")
+        is_joint = getattr(p, 'is_joint', False)
         if not hasattr(p, 'pos'):
             p = CartesianPose(*p)
         req = rc.MoveLRequest(
@@ -393,28 +395,32 @@ class LebaiRobot:
             p._base_set_PR(req.pose_base)
         self.rcs.MoveL(req)
 
-    def movec(self, via, p, rad=0, a=0, v=0, t=0, r=0, is_joint=None):
+    def movec(self, via: object, p: object, rad: int = 0, a: int = 0, v: int = 0, t: int = 0, r: int = 0, is_joint: bool = None) -> None:
         """
         圆弧移动（工具空间）
 
-        :param via:
-        :param p:
-        :param rad:
-        :param a:
-        :param v:
-        :param t:
-        :param r:
-        :param is_joint:
+        :param via: 途经位置。传入JointPose或CartesianPose，JointPose` 关节位置，`CartesianPose` 空间位置（将通过运动学反解转为关节位置）
+        :param p: 目标位置。入JointPose或CartesianPose，JointPose` 关节位置，`CartesianPose` 空间位置（将通过运动学反解转为关节位置）
+        :param rad: 路径圆弧的弧度 (rad)
+        :param a: 工具空间加速度 (m/s2)
+        :param v: 工具空间速度 (m/s)
+        :param t: 运动时间 (s)
+        :param r: 交融半径 (m)
+        :param is_joint: 已弃用
         """
+        if type(p) is not CartesianPose and type(p) is not JointPose:
+            raise Exception("p参数必须是 CartesianPose 或 JointPose 类型")
+        if type(via) is not CartesianPose and type(via) is not JointPose:
+            raise Exception("via 参数 必须是 CartesianPose 或 JointPose类型")
         if not hasattr(p, 'pos'):
             p = CartesianPose(*p)
         if not hasattr(via, 'pos'):
             via = CartesianPose(*via)
         req = rc.MoveCRequest(
             pose_via=list(via.pos),
-            pose_via_is_joint=is_joint if is_joint is not None else getattr(via, 'is_joint', True),
+            pose_via_is_joint=getattr(via, 'is_joint', True),
             pose_to=list(p.pos),
-            pose_to_is_joint=is_joint if is_joint is not None else getattr(p, 'is_joint', True),
+            pose_to_is_joint=getattr(p, 'is_joint', True),
             acceleration=a,
             velocity=v,
             time=t,
@@ -451,7 +457,7 @@ class LebaiRobot:
         """
         self.rcs.MovePVATStream((rc.PVATRequest(duration=s.duration, q=s.q, v=s.v, acc=s.acc) for s in pvt_iter))
 
-    def move_pvt(self, p: list, v: list, t: float)->None:
+    def move_pvt(self, p: list, v: list, t: float) -> None:
         """
         指定位置、速度、时间的伺服移动, 加速度将自动计算。
 
@@ -586,7 +592,7 @@ class LebaiRobot:
         res = self.rcs.GetTargetJointPositions(Empty())
         return JointPose(*res.joints)
 
-    def get_actual_joint_speeds(self) -> tuple:
+    def get_actual_joint_speeds(self) -> list:
         """
         获得所有关节的实际角速度
 
@@ -594,9 +600,9 @@ class LebaiRobot:
         """
         self._sync()
         res = self.rcs.GetActualJointSpeeds(Empty())
-        return tuple(res.joints)
+        return list(res.joints)
 
-    def get_target_joint_speeds(self) -> tuple:
+    def get_target_joint_speeds(self) -> list:
         """
         获得所有关节的期望角速度
 
@@ -604,9 +610,9 @@ class LebaiRobot:
         """
         self._sync()
         res = self.rcs.GetTargetJointSpeeds(Empty())
-        return tuple(res.joints)
+        return list(res.joints)
 
-    def get_joint_torques(self) -> tuple:
+    def get_joint_torques(self) -> list:
         """
         获得每个关节的扭矩值
 
@@ -614,9 +620,9 @@ class LebaiRobot:
         """
         self._sync()
         res = self.rcs.GetJointTorques(Empty())
-        return tuple(res.joints)
+        return list(res.joints)
 
-    def get_actual_joint_torques(self) -> tuple:
+    def get_actual_joint_torques(self) -> list:
         """
         获取实际力矩
 
@@ -625,9 +631,9 @@ class LebaiRobot:
         """
         self._sync()
         res = self.rcs.GetRobotData(Empty())
-        return tuple(res.actualTorque.joints)
+        return list(res.actualTorque.joints)
 
-    def get_target_joint_torques(self) -> tuple:
+    def get_target_joint_torques(self) -> list:
         """
         获取理论力矩
 
@@ -635,9 +641,9 @@ class LebaiRobot:
         """
         self._sync()
         res = self.rcs.GetRobotData(Empty())
-        return tuple(res.targetTorque.joints)
+        return list(res.targetTorque.joints)
 
-    def get_joint_temperatures(self) -> tuple:
+    def get_joint_temperatures(self) -> list:
         """
         获取关节温度
 
@@ -645,7 +651,7 @@ class LebaiRobot:
         """
         self._sync()
         res = self.rcs.GetRobotData(Empty())
-        return tuple(res.jointTemps.joints)
+        return list(res.jointTemps.joints)
 
     def get_joint_temp(self, joint: int) -> float:
         """

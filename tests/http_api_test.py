@@ -384,35 +384,35 @@ class Test(unittest.TestCase):
                 []
             )
 
-    def test_move_pt(self):
+    def test2_move_pt(self):
         i = self.generate_list()
         for n in list(i):
             self.robot.move_pt(n.q, 0.1)
         pass
 
-    def test_move_pts(self):
+    def test2_move_pts(self):
         i = self.generate_list()
         self.robot.move_pts(i)
         pass
 
-    def test_move_pvt(self):
+    def test2_move_pvt(self):
         i = self.generate_list()
         for n in list(i):
             self.robot.move_pvt(n.q, n.v, 0.1)
         pass
 
-    def test_move_pvts(self):
+    def test2_move_pvts(self):
         i = self.generate_list()
         self.robot.move_pvts(i)
         pass
 
-    def test_move_pvat(self):
+    def test2_move_pvat(self):
         i = self.generate_list()
         for n in list(i):
             self.robot.move_pvat(n.q, n.v, n.acc, 0.1)
         pass
 
-    def test_move_pvats(self):
+    def test2_move_pvats(self):
         i = self.generate_list()
         self.robot.move_pvats(i)
         pass
