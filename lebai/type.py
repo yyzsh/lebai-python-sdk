@@ -89,7 +89,7 @@ class CartesianPose:
         if type(x) is msg.PR:
             self.pos = [x.position.x, x.position.y, x.position.z, x.rotation.r, x.rotation.p, x.rotation.y]
         elif hasattr(x, 'pos'):
-            self.pos = x.pos[:]
+            self.pos = list(x.pos[:])
             if hasattr(x, 'base'):
                 base = x.base
         elif hasattr(x, '__iter__') or type(x) is list:
@@ -98,7 +98,7 @@ class CartesianPose:
             self.pos = [x, y, z, rz, ry, rx]
         self.is_joint = False
         # 要求 base 是元组或列表而不是 CartesianPose 对象
-        self.base = getattr(base, 'pos', base) if base is not None else None
+        self.base = list(getattr(base, 'pos', base)) if base is not None else None
 
     def __str__(self):
         if self.base is None:
@@ -160,11 +160,11 @@ class JointPose:
 
     def __init__(self, *j):
         if hasattr(j[0], 'pos'):
-            self.pos = j[0].pos
+            self.pos = list(j[0].pos)
         elif hasattr(j[0], '__iter__'):
             self.pos = list(j[0])
         else:
-            self.pos = j
+            self.pos = list(j)
         self.is_joint = True
 
     def __str__(self):
