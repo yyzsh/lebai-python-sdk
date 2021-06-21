@@ -1,0 +1,1829 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>乐白机器人 &mdash; lebai 0.7.1 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> lebai
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">乐白机器人</a></li>
+<li><a class="reference internal" href="#id2">索引</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">lebai</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>乐白机器人</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> 查看页面源码</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>乐白机器人<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-lebai"></span><p>Lebai Robot Python SDK</p>
+<span class="target" id="module-lebai.type"></span><dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.CartesianPose">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">CartesianPose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.CartesianPose" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>空间位置</p>
+<p>笛卡尔坐标描述的位姿</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="lebai.type.CartesianPose.rx">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">rx</span></span><a class="headerlink" href="#lebai.type.CartesianPose.rx" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lebai.type.CartesianPose.ry">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ry</span></span><a class="headerlink" href="#lebai.type.CartesianPose.ry" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lebai.type.CartesianPose.rz">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">rz</span></span><a class="headerlink" href="#lebai.type.CartesianPose.rz" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lebai.type.CartesianPose.x">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">x</span></span><a class="headerlink" href="#lebai.type.CartesianPose.x" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lebai.type.CartesianPose.y">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">y</span></span><a class="headerlink" href="#lebai.type.CartesianPose.y" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lebai.type.CartesianPose.z">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">z</span></span><a class="headerlink" href="#lebai.type.CartesianPose.z" title="永久链接至目标">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="lebai.type.Error">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">Error</span></span><a class="headerlink" href="#lebai.type.Error" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Base class for exceptions in this module.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.IODeviceType">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">IODeviceType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.IODeviceType" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>IO设备类型</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.IODeviceType.FLANGE">
+<span class="sig-name descname"><span class="pre">FLANGE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#lebai.type.IODeviceType.FLANGE" title="永久链接至目标">¶</a></dt>
+<dd><p>法兰</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.IODeviceType.GRIPPER">
+<span class="sig-name descname"><span class="pre">GRIPPER</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#lebai.type.IODeviceType.GRIPPER" title="永久链接至目标">¶</a></dt>
+<dd><p>手爪</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.IODeviceType.HOST">
+<span class="sig-name descname"><span class="pre">HOST</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lebai.type.IODeviceType.HOST" title="永久链接至目标">¶</a></dt>
+<dd><p>主机箱</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.IODeviceType.MODBUS_TCP">
+<span class="sig-name descname"><span class="pre">MODBUS_TCP</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#lebai.type.IODeviceType.MODBUS_TCP" title="永久链接至目标">¶</a></dt>
+<dd><p>MODBUS/TCP</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.IOItem">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">IOItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.IOItem" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.IOItem.pin">
+<span class="sig-name descname"><span class="pre">pin</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lebai.type.IOItem.pin" title="永久链接至目标">¶</a></dt>
+<dd><p>针脚</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.IOItem.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#lebai.type.IOItem.value" title="永久链接至目标">¶</a></dt>
+<dd><p>值</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.JointPose">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">JointPose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.JointPose" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>关节位置，关节旋转角度描述的机器人姿态</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.PVAT">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">PVAT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.PVAT" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>移动请求参数</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.PVAT.acc">
+<span class="sig-name descname"><span class="pre">acc</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.PVAT.acc" title="永久链接至目标">¶</a></dt>
+<dd><p>关节加速度列表 float 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.PVAT.duration">
+<span class="sig-name descname"><span class="pre">duration</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#lebai.type.PVAT.duration" title="永久链接至目标">¶</a></dt>
+<dd><p>总运动时间</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.PVAT.q">
+<span class="sig-name descname"><span class="pre">q</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.PVAT.q" title="永久链接至目标">¶</a></dt>
+<dd><p>关节位置列表 float 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.PVAT.v">
+<span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.PVAT.v" title="永久链接至目标">¶</a></dt>
+<dd><p>关节速度列表 float 数组</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="lebai.type.RequestError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">RequestError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">res</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.RequestError" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference internal" href="#lebai.type.Error" title="lebai.type.Error"><code class="xref py py-class docutils literal notranslate"><span class="pre">lebai.type.Error</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.RobotData">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">RobotData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">res</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.RobotData" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<a class="reference internal" href="#lebai.type.RobotPoseData" title="lebai.type.RobotPoseData"><code class="xref py py-class docutils literal notranslate"><span class="pre">lebai.type.RobotPoseData</span></code></a></p>
+<p>机器人数据</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotData.actual_acc">
+<span class="sig-name descname"><span class="pre">actual_acc</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotData.actual_acc" title="永久链接至目标">¶</a></dt>
+<dd><p>实际加速度 float 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotData.actual_torque">
+<span class="sig-name descname"><span class="pre">actual_torque</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotData.actual_torque" title="永久链接至目标">¶</a></dt>
+<dd><p>实际力矩 float 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotData.actual_vel">
+<span class="sig-name descname"><span class="pre">actual_vel</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotData.actual_vel" title="永久链接至目标">¶</a></dt>
+<dd><p>实际关节速度 float 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotData.target_acc">
+<span class="sig-name descname"><span class="pre">target_acc</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotData.target_acc" title="永久链接至目标">¶</a></dt>
+<dd><p>加速度 float 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotData.target_torque">
+<span class="sig-name descname"><span class="pre">target_torque</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotData.target_torque" title="永久链接至目标">¶</a></dt>
+<dd><p>理论力矩 float 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotData.target_vel">
+<span class="sig-name descname"><span class="pre">target_vel</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotData.target_vel" title="永久链接至目标">¶</a></dt>
+<dd><p>目标关节速度 float 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotData.temp">
+<span class="sig-name descname"><span class="pre">temp</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotData.temp" title="永久链接至目标">¶</a></dt>
+<dd><p>关节温度 float 数组</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.RobotIOData">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">RobotIOData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">io</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.RobotIOData" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotIOData.ai">
+<span class="sig-name descname"><span class="pre">ai</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotIOData.ai" title="永久链接至目标">¶</a></dt>
+<dd><p>所有模拟量输入值 IOItem 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotIOData.ao">
+<span class="sig-name descname"><span class="pre">ao</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotIOData.ao" title="永久链接至目标">¶</a></dt>
+<dd><p>所有模拟量输出值 IOItem 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotIOData.di">
+<span class="sig-name descname"><span class="pre">di</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotIOData.di" title="永久链接至目标">¶</a></dt>
+<dd><p>所有数字量的输入值 IOItem 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotIOData.do">
+<span class="sig-name descname"><span class="pre">do</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotIOData.do" title="永久链接至目标">¶</a></dt>
+<dd><p>所有数字量的输出值 IOItem 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotIOData.flange_di">
+<span class="sig-name descname"><span class="pre">flange_di</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotIOData.flange_di" title="永久链接至目标">¶</a></dt>
+<dd><p>所有tcp数字量的输入值 IOItem 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotIOData.flange_do">
+<span class="sig-name descname"><span class="pre">flange_do</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotIOData.flange_do" title="永久链接至目标">¶</a></dt>
+<dd><p>所有tcp数字量的输出值 IOItem 数组</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.RobotPoseData">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">RobotPoseData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">res</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.RobotPoseData" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>机器人姿态数据</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotPoseData.actual_joint">
+<span class="sig-name descname"><span class="pre">actual_joint</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotPoseData.actual_joint" title="永久链接至目标">¶</a></dt>
+<dd><p>实际关节位置 float 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotPoseData.actual_pose">
+<span class="sig-name descname"><span class="pre">actual_pose</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotPoseData.actual_pose" title="永久链接至目标">¶</a></dt>
+<dd><p>实际tcp位置 float 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotPoseData.target_joint">
+<span class="sig-name descname"><span class="pre">target_joint</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotPoseData.target_joint" title="永久链接至目标">¶</a></dt>
+<dd><p>目标关节位置 float 数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotPoseData.target_pose">
+<span class="sig-name descname"><span class="pre">target_pose</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.RobotPoseData.target_pose" title="永久链接至目标">¶</a></dt>
+<dd><p>目标tcp位置 float 数组</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.RobotState">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">RobotState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.RobotState" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>机器人状态</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.BOOTING">
+<span class="sig-name descname"><span class="pre">BOOTING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#lebai.type.RobotState.BOOTING" title="永久链接至目标">¶</a></dt>
+<dd><p>启动中</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.DISCONNECTED">
+<span class="sig-name descname"><span class="pre">DISCONNECTED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lebai.type.RobotState.DISCONNECTED" title="永久链接至目标">¶</a></dt>
+<dd><p>已断开连接</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.ESTOP">
+<span class="sig-name descname"><span class="pre">ESTOP</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#lebai.type.RobotState.ESTOP" title="永久链接至目标">¶</a></dt>
+<dd><p>急停停止状态</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.FINETUNING">
+<span class="sig-name descname"><span class="pre">FINETUNING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">13</span></em><a class="headerlink" href="#lebai.type.RobotState.FINETUNING" title="永久链接至目标">¶</a></dt>
+<dd><p>微调中</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.IDLE">
+<span class="sig-name descname"><span class="pre">IDLE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#lebai.type.RobotState.IDLE" title="永久链接至目标">¶</a></dt>
+<dd><p>空闲中</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.PAUSED">
+<span class="sig-name descname"><span class="pre">PAUSED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">6</span></em><a class="headerlink" href="#lebai.type.RobotState.PAUSED" title="永久链接至目标">¶</a></dt>
+<dd><p>暂停中</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.ROBOT_OFF">
+<span class="sig-name descname"><span class="pre">ROBOT_OFF</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#lebai.type.RobotState.ROBOT_OFF" title="永久链接至目标">¶</a></dt>
+<dd><p>电源关闭</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.ROBOT_ON">
+<span class="sig-name descname"><span class="pre">ROBOT_ON</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#lebai.type.RobotState.ROBOT_ON" title="永久链接至目标">¶</a></dt>
+<dd><p>电源开启</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.RUNNING">
+<span class="sig-name descname"><span class="pre">RUNNING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">7</span></em><a class="headerlink" href="#lebai.type.RobotState.RUNNING" title="永久链接至目标">¶</a></dt>
+<dd><p>机器人运动运行中</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.STARTING">
+<span class="sig-name descname"><span class="pre">STARTING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">9</span></em><a class="headerlink" href="#lebai.type.RobotState.STARTING" title="永久链接至目标">¶</a></dt>
+<dd><p>启动中</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.STOP">
+<span class="sig-name descname"><span class="pre">STOP</span></span><em class="property"> <span class="pre">=</span> <span class="pre">12</span></em><a class="headerlink" href="#lebai.type.RobotState.STOP" title="永久链接至目标">¶</a></dt>
+<dd><p>普通停止</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.STOPPING">
+<span class="sig-name descname"><span class="pre">STOPPING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">10</span></em><a class="headerlink" href="#lebai.type.RobotState.STOPPING" title="永久链接至目标">¶</a></dt>
+<dd><p>停止中</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.TEACHING">
+<span class="sig-name descname"><span class="pre">TEACHING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">11</span></em><a class="headerlink" href="#lebai.type.RobotState.TEACHING" title="永久链接至目标">¶</a></dt>
+<dd><p>示教中</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.RobotState.UPDATING">
+<span class="sig-name descname"><span class="pre">UPDATING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#lebai.type.RobotState.UPDATING" title="永久链接至目标">¶</a></dt>
+<dd><p>更新固件中</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">TaskInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">res</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.TaskInfo" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>任务信息</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.comment">
+<span class="sig-name descname"><span class="pre">comment</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lebai.type.TaskInfo.comment" title="永久链接至目标">¶</a></dt>
+<dd><p>备注</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.consume_time">
+<span class="sig-name descname"><span class="pre">consume_time</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lebai.type.TaskInfo.consume_time" title="永久链接至目标">¶</a></dt>
+<dd><p>单位秒</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.create_time">
+<span class="sig-name descname"><span class="pre">create_time</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lebai.type.TaskInfo.create_time" title="永久链接至目标">¶</a></dt>
+<dd><p>创建时间</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.end_time">
+<span class="sig-name descname"><span class="pre">end_time</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lebai.type.TaskInfo.end_time" title="永久链接至目标">¶</a></dt>
+<dd><p>任务结束时间</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.execute_count">
+<span class="sig-name descname"><span class="pre">execute_count</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lebai.type.TaskInfo.execute_count" title="永久链接至目标">¶</a></dt>
+<dd><p>执行次数</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.executed_count">
+<span class="sig-name descname"><span class="pre">executed_count</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lebai.type.TaskInfo.executed_count" title="永久链接至目标">¶</a></dt>
+<dd><p>已执行次数</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lebai.type.TaskInfo.id" title="永久链接至目标">¶</a></dt>
+<dd><p>任务ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lebai.type.TaskInfo.name" title="永久链接至目标">¶</a></dt>
+<dd><p>任务名</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.scene_id">
+<span class="sig-name descname"><span class="pre">scene_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lebai.type.TaskInfo.scene_id" title="永久链接至目标">¶</a></dt>
+<dd><p>场景ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.start_time">
+<span class="sig-name descname"><span class="pre">start_time</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lebai.type.TaskInfo.start_time" title="永久链接至目标">¶</a></dt>
+<dd><p>任务开始时间</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#lebai.type.TaskStatus" title="lebai.type.TaskStatus"><span class="pre">lebai.type.TaskStatus</span></a></em><a class="headerlink" href="#lebai.type.TaskInfo.status" title="永久链接至目标">¶</a></dt>
+<dd><p>运行成功 4:用户主动停止 5:异常停止</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>任务状态。1</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>运行中 3</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskInfo.update_time">
+<span class="sig-name descname"><span class="pre">update_time</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lebai.type.TaskInfo.update_time" title="永久链接至目标">¶</a></dt>
+<dd><p>更新时间</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.TaskStatus">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">TaskStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.TaskStatus" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>任务状态</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskStatus.ABORTED">
+<span class="sig-name descname"><span class="pre">ABORTED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#lebai.type.TaskStatus.ABORTED" title="永久链接至目标">¶</a></dt>
+<dd><p>异常终止</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskStatus.IDLE">
+<span class="sig-name descname"><span class="pre">IDLE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#lebai.type.TaskStatus.IDLE" title="永久链接至目标">¶</a></dt>
+<dd><p>空闲</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskStatus.PAUSED">
+<span class="sig-name descname"><span class="pre">PAUSED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#lebai.type.TaskStatus.PAUSED" title="永久链接至目标">¶</a></dt>
+<dd><p>暂停</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskStatus.RUNNING">
+<span class="sig-name descname"><span class="pre">RUNNING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#lebai.type.TaskStatus.RUNNING" title="永久链接至目标">¶</a></dt>
+<dd><p>运行中</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskStatus.STOPPED">
+<span class="sig-name descname"><span class="pre">STOPPED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#lebai.type.TaskStatus.STOPPED" title="永久链接至目标">¶</a></dt>
+<dd><p>停止</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TaskStatus.SUCCESS">
+<span class="sig-name descname"><span class="pre">SUCCESS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#lebai.type.TaskStatus.SUCCESS" title="永久链接至目标">¶</a></dt>
+<dd><p>运行完成</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lebai.type.TasksResult">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.type.</span></span><span class="sig-name descname"><span class="pre">TasksResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">res</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.type.TasksResult" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>任务列表信息</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TasksResult.pi">
+<span class="sig-name descname"><span class="pre">pi</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lebai.type.TasksResult.pi" title="永久链接至目标">¶</a></dt>
+<dd><p>页索引</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TasksResult.ps">
+<span class="sig-name descname"><span class="pre">ps</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lebai.type.TasksResult.ps" title="永久链接至目标">¶</a></dt>
+<dd><p>页大小</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TasksResult.records">
+<span class="sig-name descname"><span class="pre">records</span></span><em class="property"><span class="pre">:</span> <span class="pre">list</span></em><a class="headerlink" href="#lebai.type.TasksResult.records" title="永久链接至目标">¶</a></dt>
+<dd><p>任务列表 TaskInfo数组</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lebai.type.TasksResult.total">
+<span class="sig-name descname"><span class="pre">total</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lebai.type.TasksResult.total" title="永久链接至目标">¶</a></dt>
+<dd><p>总数</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-lebai.robot"></span><dl class="py class">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.robot.</span></span><span class="sig-name descname"><span class="pre">LebaiRobot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.robot.LebaiRobot" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.add_signal">
+<span class="sig-name descname"><span class="pre">add_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.add_signal" title="永久链接至目标">¶</a></dt>
+<dd><p>添加信号</p>
+<dl class="field-list simple">
+<dt class="field-odd">Pin</dt>
+<dd class="field-odd"><p>针脚</p>
+</dd>
+<dt class="field-even">Value</dt>
+<dd class="field-even"><p>值</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.disable_joint_limits">
+<span class="sig-name descname"><span class="pre">disable_joint_limits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.disable_joint_limits" title="永久链接至目标">¶</a></dt>
+<dd><p>关闭关节限位检测</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.enable_joint_limits">
+<span class="sig-name descname"><span class="pre">enable_joint_limits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.enable_joint_limits" title="永久链接至目标">¶</a></dt>
+<dd><p>启用关节限位检测</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.end_teach_mode">
+<span class="sig-name descname"><span class="pre">end_teach_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.end_teach_mode" title="永久链接至目标">¶</a></dt>
+<dd><p>关闭示教模式</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.estop">
+<span class="sig-name descname"><span class="pre">estop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.estop" title="永久链接至目标">¶</a></dt>
+<dd><p>急停</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.execute_lua_code">
+<span class="sig-name descname"><span class="pre">execute_lua_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">execute_count</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clear</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#lebai.robot.LebaiRobot.execute_lua_code" title="永久链接至目标">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task_name</strong> – 任务名称</p></li>
+<li><p><strong>code</strong> – lua 代码</p></li>
+<li><p><strong>execute_count</strong> – 执行数量，0 表示一直循环运行</p></li>
+<li><p><strong>clear</strong> – 是否强制关闭正在运行的任务</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>任务Id</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_actual_joint_positions">
+<span class="sig-name descname"><span class="pre">get_actual_joint_positions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lebai.type.JointPose" title="lebai.type.JointPose"><span class="pre">lebai.type.JointPose</span></a><a class="headerlink" href="#lebai.robot.LebaiRobot.get_actual_joint_positions" title="永久链接至目标">¶</a></dt>
+<dd><p>获取实际关节位置</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>关节位置</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_actual_joint_speeds">
+<span class="sig-name descname"><span class="pre">get_actual_joint_speeds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_actual_joint_speeds" title="永久链接至目标">¶</a></dt>
+<dd><p>获得所有关节的实际角速度</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>所有关节的实际角速度</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_actual_joint_torques">
+<span class="sig-name descname"><span class="pre">get_actual_joint_torques</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_actual_joint_torques" title="永久链接至目标">¶</a></dt>
+<dd><p>获取实际力矩</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>实际力矩</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_actual_tcp_pose">
+<span class="sig-name descname"><span class="pre">get_actual_tcp_pose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lebai.type.CartesianPose" title="lebai.type.CartesianPose"><span class="pre">lebai.type.CartesianPose</span></a><a class="headerlink" href="#lebai.robot.LebaiRobot.get_actual_tcp_pose" title="永久链接至目标">¶</a></dt>
+<dd><p>获取实际空间位置</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>空间位置</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_ai">
+<span class="sig-name descname"><span class="pre">get_ai</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_ai" title="永久链接至目标">¶</a></dt>
+<dd><p>获取模拟输入</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>pin</strong> – 针脚</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>模拟输入值</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_ai_mode">
+<span class="sig-name descname"><span class="pre">get_ai_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_ai_mode" title="永久链接至目标">¶</a></dt>
+<dd><p>获取模拟输入端口工作模式</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>pin</strong> – 针脚</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_ao_mode">
+<span class="sig-name descname"><span class="pre">get_ao_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_ao_mode" title="永久链接至目标">¶</a></dt>
+<dd><p>获取模拟输出端口工作模式</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>pin</strong> – 针脚</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>0:电压，1:电流</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_claw_aio">
+<span class="sig-name descname"><span class="pre">get_claw_aio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_claw_aio" title="永久链接至目标">¶</a></dt>
+<dd><p>获取手爪参数</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>pin</strong> – ‘force’：手爪力，’weight’：手爪重量</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>根据参数，获取手爪力或者重量</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_di">
+<span class="sig-name descname"><span class="pre">get_di</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_di" title="永久链接至目标">¶</a></dt>
+<dd><p>获取数字输入</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>pin</strong> – 针脚</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>数字输入值</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_flange_di">
+<span class="sig-name descname"><span class="pre">get_flange_di</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_flange_di" title="永久链接至目标">¶</a></dt>
+<dd><p>获取法兰数字输出</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>pin</strong> – 针脚</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>值</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_gravity">
+<span class="sig-name descname"><span class="pre">get_gravity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_gravity" title="永久链接至目标">¶</a></dt>
+<dd><p>获取重力</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>重力，类型：tuple，(x,y,z)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_joint_temp">
+<span class="sig-name descname"><span class="pre">get_joint_temp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_joint_temp" title="永久链接至目标">¶</a></dt>
+<dd><p>获取关节温度</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>joint</strong> – 关节序号</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>关节当前温度 (℃)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_joint_temperatures">
+<span class="sig-name descname"><span class="pre">get_joint_temperatures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_joint_temperatures" title="永久链接至目标">¶</a></dt>
+<dd><p>获取关节温度</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>关节温度</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_joint_torques">
+<span class="sig-name descname"><span class="pre">get_joint_torques</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_joint_torques" title="永久链接至目标">¶</a></dt>
+<dd><p>获得每个关节的扭矩值</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>每个关节的扭矩值</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_payload">
+<span class="sig-name descname"><span class="pre">get_payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">((&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span></em>, <em class="sig-param"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_payload" title="永久链接至目标">¶</a></dt>
+<dd><p>获取负荷</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>负荷信息，类型：tuple，((x, y, z), 负荷的质量)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_payload_cog">
+<span class="sig-name descname"><span class="pre">get_payload_cog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">&lt;class</span> <span class="pre">'float'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_payload_cog" title="永久链接至目标">¶</a></dt>
+<dd><p>获取负荷的质心</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>质心，类型：tuple，(x,y,z)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_payload_mass">
+<span class="sig-name descname"><span class="pre">get_payload_mass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_payload_mass" title="永久链接至目标">¶</a></dt>
+<dd><p>获取负荷的质量</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>负荷的质量</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_robot_data">
+<span class="sig-name descname"><span class="pre">get_robot_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lebai.type.RobotData" title="lebai.type.RobotData"><span class="pre">lebai.type.RobotData</span></a><a class="headerlink" href="#lebai.robot.LebaiRobot.get_robot_data" title="永久链接至目标">¶</a></dt>
+<dd><p>获取机器人数据</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>机器人数据</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_robot_io_data">
+<span class="sig-name descname"><span class="pre">get_robot_io_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lebai.type.RobotIOData" title="lebai.type.RobotIOData"><span class="pre">lebai.type.RobotIOData</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_robot_io_data" title="永久链接至目标">¶</a></dt>
+<dd><p>获取机器人IO数据</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>机器人IO数据</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_robot_mode">
+<span class="sig-name descname"><span class="pre">get_robot_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lebai.type.RobotState" title="lebai.type.RobotState"><span class="pre">lebai.type.RobotState</span></a><a class="headerlink" href="#lebai.robot.LebaiRobot.get_robot_mode" title="永久链接至目标">¶</a></dt>
+<dd><p>获取机器人状态</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>机器人状态</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_robot_poses">
+<span class="sig-name descname"><span class="pre">get_robot_poses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lebai.type.RobotPoseData" title="lebai.type.RobotPoseData"><span class="pre">lebai.type.RobotPoseData</span></a><a class="headerlink" href="#lebai.robot.LebaiRobot.get_robot_poses" title="永久链接至目标">¶</a></dt>
+<dd><p>获取机器人姿态信息</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>机器人姿态信息</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_signal">
+<span class="sig-name descname"><span class="pre">get_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_signal" title="永久链接至目标">¶</a></dt>
+<dd><p>获取信号</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>pin</strong> – 针脚</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_target_joint_positions">
+<span class="sig-name descname"><span class="pre">get_target_joint_positions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lebai.type.JointPose" title="lebai.type.JointPose"><span class="pre">lebai.type.JointPose</span></a><a class="headerlink" href="#lebai.robot.LebaiRobot.get_target_joint_positions" title="永久链接至目标">¶</a></dt>
+<dd><p>获得所有关节的期望角度位置</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>所有关节的期望角度位置</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_target_joint_speeds">
+<span class="sig-name descname"><span class="pre">get_target_joint_speeds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_target_joint_speeds" title="永久链接至目标">¶</a></dt>
+<dd><p>获得所有关节的期望角速度</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>所有关节的期望角速度</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_target_joint_torques">
+<span class="sig-name descname"><span class="pre">get_target_joint_torques</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_target_joint_torques" title="永久链接至目标">¶</a></dt>
+<dd><p>获取理论力矩</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>理论力矩</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_target_tcp_pose">
+<span class="sig-name descname"><span class="pre">get_target_tcp_pose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lebai.type.CartesianPose" title="lebai.type.CartesianPose"><span class="pre">lebai.type.CartesianPose</span></a><a class="headerlink" href="#lebai.robot.LebaiRobot.get_target_tcp_pose" title="永久链接至目标">¶</a></dt>
+<dd><p>获得TCP的期望的姿态/位置</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>TCP的期望的姿态/位置</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_task">
+<span class="sig-name descname"><span class="pre">get_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lebai.type.TaskInfo" title="lebai.type.TaskInfo"><span class="pre">lebai.type.TaskInfo</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_task" title="永久链接至目标">¶</a></dt>
+<dd><p>获取任务信息</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>id</strong> – 任务Id</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>任务信息</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_tasks">
+<span class="sig-name descname"><span class="pre">get_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lebai.type.TasksResult" title="lebai.type.TasksResult"><span class="pre">lebai.type.TasksResult</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_tasks" title="永久链接至目标">¶</a></dt>
+<dd><p>获取任务列表</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pi</strong> – 页码</p></li>
+<li><p><strong>ps</strong> – 页大小</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>任务列表</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_tcp">
+<span class="sig-name descname"><span class="pre">get_tcp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lebai.type.CartesianPose" title="lebai.type.CartesianPose"><span class="pre">lebai.type.CartesianPose</span></a><a class="headerlink" href="#lebai.robot.LebaiRobot.get_tcp" title="永久链接至目标">¶</a></dt>
+<dd><p>获取TCP</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>TCP坐标</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.get_velocity_factor">
+<span class="sig-name descname"><span class="pre">get_velocity_factor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">float</span><a class="headerlink" href="#lebai.robot.LebaiRobot.get_velocity_factor" title="永久链接至目标">¶</a></dt>
+<dd><p>获取速度因子</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>速度因子</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.is_connected">
+<span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#lebai.robot.LebaiRobot.is_connected" title="永久链接至目标">¶</a></dt>
+<dd><p>是否连接</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.kinematics_forward">
+<span class="sig-name descname"><span class="pre">kinematics_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lebai.type.CartesianPose" title="lebai.type.CartesianPose"><span class="pre">lebai.type.CartesianPose</span></a><a class="headerlink" href="#lebai.robot.LebaiRobot.kinematics_forward" title="永久链接至目标">¶</a></dt>
+<dd><p>机器人正解</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>p</strong> – 关节位置，类型：list[float]</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>空间位置</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.kinematics_inverse">
+<span class="sig-name descname"><span class="pre">kinematics_inverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.robot.LebaiRobot.kinematics_inverse" title="永久链接至目标">¶</a></dt>
+<dd><p>机器人反解</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>p</strong> – 空间位置，类型：list[float]</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>关节位置</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.move_pt">
+<span class="sig-name descname"><span class="pre">move_pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.move_pt" title="永久链接至目标">¶</a></dt>
+<dd><p>指定位置和时间的伺服移动,速度和加速度将自动计算。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> – 关节位置列表 (rad)，类型：list[float]</p></li>
+<li><p><strong>t</strong> – 总运动时间 (s)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.move_pts">
+<span class="sig-name descname"><span class="pre">move_pts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pt_iter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.move_pts" title="永久链接至目标">¶</a></dt>
+<dd><p>指定位置和时间的伺服移动,速度和加速度将自动计算。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>pt_iter</strong> – 类型：list[PVAT]</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.move_pvat">
+<span class="sig-name descname"><span class="pre">move_pvat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.move_pvat" title="永久链接至目标">¶</a></dt>
+<dd><p>指定位置、速度、加速度、时间的伺服移动</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> – 关节位置列表 (rad)，类型：list[float]</p></li>
+<li><p><strong>v</strong> – 关节速度列表 (rad/s)，类型：list[float]</p></li>
+<li><p><strong>a</strong> – 关节加速度列表 (rad/s^2)，类型：list[float]</p></li>
+<li><p><strong>t</strong> – 总运动时间 (s)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.move_pvats">
+<span class="sig-name descname"><span class="pre">move_pvats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pvt_iter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.move_pvats" title="永久链接至目标">¶</a></dt>
+<dd><p>move_pvat的流版本</p>
+<p>&#64;param pvt_iter: 类型：list[PVAT]
+&#64;type pvt_iter: list[PVAT]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.move_pvt">
+<span class="sig-name descname"><span class="pre">move_pvt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.move_pvt" title="永久链接至目标">¶</a></dt>
+<dd><p>指定位置、速度、时间的伺服移动, 加速度将自动计算。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> – 关节位置列表 (rad)，类型：list[float],</p></li>
+<li><p><strong>v</strong> – 关节速度列表 (rad/s)，类型：list[float],</p></li>
+<li><p><strong>t</strong> – 总运动时间 (s)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.move_pvts">
+<span class="sig-name descname"><span class="pre">move_pvts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pvt_iter</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.robot.LebaiRobot.move_pvts" title="永久链接至目标">¶</a></dt>
+<dd><p>指定位置、速度、时间的伺服移动, 加速度将自动计算。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>pvt_iter</strong> – 类型：list[PVAT]</p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.movec">
+<span class="sig-name descname"><span class="pre">movec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">via</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rad</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_joint</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.movec" title="永久链接至目标">¶</a></dt>
+<dd><p>圆弧移动（工具空间）</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>via</strong> – 途经位置。传入JointPose或CartesianPose，JointPose` 关节位置，<cite>CartesianPose</cite> 空间位置（将通过运动学反解转为关节位置）</p></li>
+<li><p><strong>p</strong> – 目标位置。入JointPose或CartesianPose，JointPose` 关节位置，<cite>CartesianPose</cite> 空间位置（将通过运动学反解转为关节位置）</p></li>
+<li><p><strong>rad</strong> – 路径圆弧的弧度 (rad)</p></li>
+<li><p><strong>a</strong> – 工具空间加速度 (m/s2)</p></li>
+<li><p><strong>v</strong> – 工具空间速度 (m/s)</p></li>
+<li><p><strong>t</strong> – 运动时间 (s)</p></li>
+<li><p><strong>r</strong> – 交融半径 (m)</p></li>
+<li><p><strong>is_joint</strong> – 已弃用</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.movec_until">
+<span class="sig-name descname"><span class="pre">movec_until</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">via</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.movec_until" title="永久链接至目标">¶</a></dt>
+<dd><p>todo: 待实现</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.movec_until_rt">
+<span class="sig-name descname"><span class="pre">movec_until_rt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">via</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AND'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.movec_until_rt" title="永久链接至目标">¶</a></dt>
+<dd><p>todo: 待实现</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.movej">
+<span class="sig-name descname"><span class="pre">movej</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_joint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.movej" title="永久链接至目标">¶</a></dt>
+<dd><p>线性移动（关节空间）</p>
+<dl class="field-list simple">
+<dt class="field-odd">P</dt>
+<dd class="field-odd"><p>传入JointPose或CartesianPose，JointPose` 关节位置，<cite>CartesianPose</cite> 空间位置（将通过运动学反解转为关节位置）</p>
+</dd>
+<dt class="field-even">A</dt>
+<dd class="field-even"><p>主轴的关节加速度 (rad/s)</p>
+</dd>
+<dt class="field-odd">V</dt>
+<dd class="field-odd"><p>主轴的关节速度 (rad/s)</p>
+</dd>
+<dt class="field-even">T</dt>
+<dd class="field-even"><p>运动时间 (s)</p>
+</dd>
+<dt class="field-odd">R</dt>
+<dd class="field-odd"><p>交融半径 (m)</p>
+</dd>
+<dt class="field-even">Is_joint</dt>
+<dd class="field-even"><p>已弃用</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.movej_until">
+<span class="sig-name descname"><span class="pre">movej_until</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.movej_until" title="永久链接至目标">¶</a></dt>
+<dd><p>todo: 待实现</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.movej_until_rt">
+<span class="sig-name descname"><span class="pre">movej_until_rt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AND'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.movej_until_rt" title="永久链接至目标">¶</a></dt>
+<dd><p>todo: 待实现</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.movel">
+<span class="sig-name descname"><span class="pre">movel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_joint</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.movel" title="永久链接至目标">¶</a></dt>
+<dd><p>线性移动（工具空间）</p>
+<dl class="field-list simple">
+<dt class="field-odd">P</dt>
+<dd class="field-odd"><p>传入JointPose或CartesianPose，JointPose` 关节位置，<cite>CartesianPose</cite> 空间位置（将通过运动学反解转为关节位置）</p>
+</dd>
+<dt class="field-even">A</dt>
+<dd class="field-even"><p>轴的关节加速度 (rad/s)</p>
+</dd>
+<dt class="field-odd">V</dt>
+<dd class="field-odd"><p>主轴的关节速度 (rad/s)</p>
+</dd>
+<dt class="field-even">T</dt>
+<dd class="field-even"><p>运动时间 (s)</p>
+</dd>
+<dt class="field-odd">R</dt>
+<dd class="field-odd"><p>交融半径 (m)</p>
+</dd>
+<dt class="field-even">Is_joint</dt>
+<dd class="field-even"><p>已弃用</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.movel_until">
+<span class="sig-name descname"><span class="pre">movel_until</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.movel_until" title="永久链接至目标">¶</a></dt>
+<dd><p>todo: 待实现</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.movel_until_rt">
+<span class="sig-name descname"><span class="pre">movel_until_rt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AND'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.movel_until_rt" title="永久链接至目标">¶</a></dt>
+<dd><p>todo: 待实现</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.pause">
+<span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.pause" title="永久链接至目标">¶</a></dt>
+<dd><p>暂停机器人</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.pose_inverse">
+<span class="sig-name descname"><span class="pre">pose_inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.pose_inverse" title="永久链接至目标">¶</a></dt>
+<dd><p>todo: 待实现</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.pose_times">
+<span class="sig-name descname"><span class="pre">pose_times</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.pose_times" title="永久链接至目标">¶</a></dt>
+<dd><p>todo: 待实现</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.powerdown">
+<span class="sig-name descname"><span class="pre">powerdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.powerdown" title="永久链接至目标">¶</a></dt>
+<dd><p>关闭电源</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.rerun_task">
+<span class="sig-name descname"><span class="pre">rerun_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">execute_count</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clear</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#lebai.robot.LebaiRobot.rerun_task" title="永久链接至目标">¶</a></dt>
+<dd><p>运行任务</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task_id</strong> – 任务Id</p></li>
+<li><p><strong>execute_count</strong> – 执行数量，0 表示一直循环运行</p></li>
+<li><p><strong>clear</strong> – 是否强制关闭正在运行的任务</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>任务Id</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.resume">
+<span class="sig-name descname"><span class="pre">resume</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.resume" title="永久链接至目标">¶</a></dt>
+<dd><p>恢复机器人</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.run_scene">
+<span class="sig-name descname"><span class="pre">run_scene</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">execute_count</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clear</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#lebai.robot.LebaiRobot.run_scene" title="永久链接至目标">¶</a></dt>
+<dd><p>运行场景</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scene_id</strong> – 场景Id</p></li>
+<li><p><strong>execute_count</strong> – 执行数量，0 表示一直循环运行</p></li>
+<li><p><strong>clear</strong> – 是否强制关闭正在运行的任务</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>任务Id</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_ai_mode">
+<span class="sig-name descname"><span class="pre">set_ai_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_ai_mode" title="永久链接至目标">¶</a></dt>
+<dd><p>设置模拟输入端口工作模式</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pin</strong> – 针脚</p></li>
+<li><p><strong>mode</strong> – 0:电压，1:电流</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_ao">
+<span class="sig-name descname"><span class="pre">set_ao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_ao" title="永久链接至目标">¶</a></dt>
+<dd><p>设置模拟输出</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pin</strong> – 针脚</p></li>
+<li><p><strong>value</strong> – 值</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_ao_mode">
+<span class="sig-name descname"><span class="pre">set_ao_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_ao_mode" title="永久链接至目标">¶</a></dt>
+<dd><p>设置模拟输出端口工作模式</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pin</strong> – 针脚</p></li>
+<li><p><strong>mode</strong> – 0:电压，1:电流</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_claw">
+<span class="sig-name descname"><span class="pre">set_claw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_claw" title="永久链接至目标">¶</a></dt>
+<dd><p>设置手爪</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>force</strong> – 手爪力</p></li>
+<li><p><strong>amplitude</strong> – 手爪重量</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_claw_aio">
+<span class="sig-name descname"><span class="pre">set_claw_aio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_claw_aio" title="永久链接至目标">¶</a></dt>
+<dd><p>设置手爪参数</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>pin</strong> – ‘force’：手爪力，’weight’：手爪重量</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_do">
+<span class="sig-name descname"><span class="pre">set_do</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_do" title="永久链接至目标">¶</a></dt>
+<dd><p>设置数字输出</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pin</strong> – 针脚</p></li>
+<li><p><strong>value</strong> – 值</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_fan">
+<span class="sig-name descname"><span class="pre">set_fan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fan</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_fan" title="永久链接至目标">¶</a></dt>
+<dd><p>设置风扇</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>fan</strong> – 1：关闭、 2：开启</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_flange_do">
+<span class="sig-name descname"><span class="pre">set_flange_do</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_flange_do" title="永久链接至目标">¶</a></dt>
+<dd><p>设置法兰数字输出</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pin</strong> – 针脚</p></li>
+<li><p><strong>value</strong> – 值</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_gravity">
+<span class="sig-name descname"><span class="pre">set_gravity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">9.8</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_gravity" title="永久链接至目标">¶</a></dt>
+<dd><p>设置重力</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – 重力X</p></li>
+<li><p><strong>y</strong> – 重力Y</p></li>
+<li><p><strong>z</strong> – 重力Z</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_led">
+<span class="sig-name descname"><span class="pre">set_led</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_led" title="永久链接至目标">¶</a></dt>
+<dd><p>设置LED灯状态</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> – 1：关闭、2：常亮、3：呼吸、4：均分旋转、5：同色旋转、6：闪烁</p></li>
+<li><p><strong>speed</strong> – 速度 分三个等级，1：快速、2：正常、3：慢速</p></li>
+<li><p><strong>color</strong> – 颜色，最多包含4个 0 ~ 15 之间的整数，类型：list[int]</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_payload">
+<span class="sig-name descname"><span class="pre">set_payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">9.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_payload" title="永久链接至目标">¶</a></dt>
+<dd><p>设置负荷</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – 负荷X</p></li>
+<li><p><strong>y</strong> – 负荷Y</p></li>
+<li><p><strong>z</strong> – 负荷Z</p></li>
+<li><p><strong>mass</strong> – 负荷的质量</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_payload_cog">
+<span class="sig-name descname"><span class="pre">set_payload_cog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_payload_cog" title="永久链接至目标">¶</a></dt>
+<dd><p>设置负荷的质心</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – 质心X</p></li>
+<li><p><strong>y</strong> – 质心Y</p></li>
+<li><p><strong>z</strong> – 质心Z</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_payload_mass">
+<span class="sig-name descname"><span class="pre">set_payload_mass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mass</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_payload_mass" title="永久链接至目标">¶</a></dt>
+<dd><p>设置负荷的质量</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>mass</strong> – 负荷的质量</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_signal">
+<span class="sig-name descname"><span class="pre">set_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_signal" title="永久链接至目标">¶</a></dt>
+<dd><p>设置信号</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pin</strong> – 针脚</p></li>
+<li><p><strong>value</strong> – 值</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_tcp">
+<span class="sig-name descname"><span class="pre">set_tcp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rz</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ry</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_tcp" title="永久链接至目标">¶</a></dt>
+<dd><p>设置工具中心点（TCP）坐标，坐标值相对于工具坐标系。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – TCP 坐标 x</p></li>
+<li><p><strong>y</strong> – TCP 坐标 y</p></li>
+<li><p><strong>z</strong> – TCP 坐标 z</p></li>
+<li><p><strong>rz</strong> – 旋转角度 rz</p></li>
+<li><p><strong>ry</strong> – 旋转角度 ry</p></li>
+<li><p><strong>rx</strong> – 旋转角度 rx</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_velocity_factor">
+<span class="sig-name descname"><span class="pre">set_velocity_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_velocity_factor" title="永久链接至目标">¶</a></dt>
+<dd><p>设置速度因子</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>factor</strong> – 速度因子</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.set_voice">
+<span class="sig-name descname"><span class="pre">set_voice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voice</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.set_voice" title="永久链接至目标">¶</a></dt>
+<dd><p>设置声音</p>
+<dl class="field-list simple">
+<dt class="field-odd">Voice</dt>
+<dd class="field-odd"><p>声音列表 0~10</p>
+</dd>
+<dt class="field-even">Volume</dt>
+<dd class="field-even"><p>音量 分四个等级，0：静音、1：低、2：正常、3：高</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.sleep">
+<span class="sig-name descname"><span class="pre">sleep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.sleep" title="永久链接至目标">¶</a></dt>
+<dd><p>等待</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>time</strong> – 等待时间,单位毫秒</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.start_sys">
+<span class="sig-name descname"><span class="pre">start_sys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.start_sys" title="永久链接至目标">¶</a></dt>
+<dd><p>启动</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.stop" title="永久链接至目标">¶</a></dt>
+<dd><p>停止程序</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.stop_move">
+<span class="sig-name descname"><span class="pre">stop_move</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.stop_move" title="永久链接至目标">¶</a></dt>
+<dd><p>停止当前移动</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.stop_sys">
+<span class="sig-name descname"><span class="pre">stop_sys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.stop_sys" title="永久链接至目标">¶</a></dt>
+<dd><p>关闭</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.sync">
+<span class="sig-name descname"><span class="pre">sync</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.sync" title="永久链接至目标">¶</a></dt>
+<dd><p>同步，等待指定命令执行完成</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.robot.LebaiRobot.teach_mode">
+<span class="sig-name descname"><span class="pre">teach_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.robot.LebaiRobot.teach_mode" title="永久链接至目标">¶</a></dt>
+<dd><p>开启示教模式</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-lebai.scene"></span><dl class="py class">
+<dt class="sig sig-object py" id="lebai.scene.LebaiScene">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lebai.scene.</span></span><span class="sig-name descname"><span class="pre">LebaiScene</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scene_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lebai.scene.LebaiScene" title="永久链接至目标">¶</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.scene.LebaiScene.action">
+<span class="sig-name descname"><span class="pre">action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">object</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">object</span><a class="headerlink" href="#lebai.scene.LebaiScene.action" title="永久链接至目标">¶</a></dt>
+<dd><p>调用命令</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd</strong> – 机器人命令</p></li>
+<li><p><strong>data</strong> – 机器人命令参数</p></li>
+<li><p><strong>sleep</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>命令的返回数据</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.scene.LebaiScene.done">
+<span class="sig-name descname"><span class="pre">done</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#lebai.scene.LebaiScene.done" title="永久链接至目标">¶</a></dt>
+<dd><p>获取是否停止了执行</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>是否停止了执行</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.scene.LebaiScene.pause">
+<span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.scene.LebaiScene.pause" title="永久链接至目标">¶</a></dt>
+<dd><p>暂停执行</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.scene.LebaiScene.result">
+<span class="sig-name descname"><span class="pre">result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lebai.type.TaskInfo" title="lebai.type.TaskInfo"><span class="pre">lebai.type.TaskInfo</span></a><a class="headerlink" href="#lebai.scene.LebaiScene.result" title="永久链接至目标">¶</a></dt>
+<dd><p>获取任务信息</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>任务信息</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.scene.LebaiScene.resume">
+<span class="sig-name descname"><span class="pre">resume</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.scene.LebaiScene.resume" title="永久链接至目标">¶</a></dt>
+<dd><p>恢复执行</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.scene.LebaiScene.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#lebai.scene.LebaiScene.run" title="永久链接至目标">¶</a></dt>
+<dd><p>运行任务或者场景，直到运行完成，返回lua代码</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>loop</strong> – </p>
+</dd>
+<dt class="field-even">返回</dt>
+<dd class="field-even"><p>返回执行了的lua代码，没有执行lua代码则返回空</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.scene.LebaiScene.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">execute_count</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clear</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.scene.LebaiScene.start" title="永久链接至目标">¶</a></dt>
+<dd><p>开始执行</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>execute_count</strong> – 执行次数，0表示无限循环</p></li>
+<li><p><strong>clear</strong> – 是否停止当前正在执行的任务</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.scene.LebaiScene.status">
+<span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lebai.type.TaskStatus" title="lebai.type.TaskStatus"><span class="pre">lebai.type.TaskStatus</span></a><a class="headerlink" href="#lebai.scene.LebaiScene.status" title="永久链接至目标">¶</a></dt>
+<dd><p>获取任务状态</p>
+<dl class="field-list simple">
+<dt class="field-odd">返回</dt>
+<dd class="field-odd"><p>任务状态</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lebai.scene.LebaiScene.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#lebai.scene.LebaiScene.stop" title="永久链接至目标">¶</a></dt>
+<dd><p>停止</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h1>索引<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">模块索引</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2021, kingfree.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
