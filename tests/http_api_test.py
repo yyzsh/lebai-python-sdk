@@ -3,8 +3,6 @@
 import logging
 import unittest
 
-import numpy as np
-
 from lebai import LebaiRobot, LebaiScene
 # n)umber
 from lebai.lebai_http_service import LebaiHttpService
@@ -370,52 +368,52 @@ class Test(unittest.TestCase):
         # 暂不支持
         pass
 
-    def generate_list(self):
-        points = np.loadtxt('sprial.txt', delimiter=',')
-        vels = np.zeros(np.shape(points))
-        n = range(np.shape(points)[0] - 1)
-        t = 0.01
-        for i in n:
-            vels[i + 1, :] = (points[i + 1, :] - points[i, :]) / t
-            yield PVAT(
-                t,
-                points[i],
-                vels[i],
-                []
-            )
+    # def generate_list(self):
+    #     points = np.loadtxt('sprial.txt', delimiter=',')
+    #     vels = np.zeros(np.shape(points))
+    #     n = range(np.shape(points)[0] - 1)
+    #     t = 0.01
+    #     for i in n:
+    #         vels[i + 1, :] = (points[i + 1, :] - points[i, :]) / t
+    #         yield PVAT(
+    #             t,
+    #             points[i],
+    #             vels[i],
+    #             []
+    #         )
 
-    def test2_move_pt(self):
-        i = self.generate_list()
-        for n in list(i):
-            self.robot.move_pt(n.q, 0.1)
-        pass
+    # def test2_move_pt(self):
+    #     i = self.generate_list()
+    #     for n in list(i):
+    #         self.robot.move_pt(n.q, 0.1)
+    #     pass
 
-    def test2_move_pts(self):
-        i = self.generate_list()
-        self.robot.move_pts(i)
-        pass
+    # def test2_move_pts(self):
+    #     i = self.generate_list()
+    #     self.robot.move_pts(i)
+    #     pass
 
-    def test2_move_pvt(self):
-        i = self.generate_list()
-        for n in list(i):
-            self.robot.move_pvt(n.q, n.v, 0.1)
-        pass
+    # def test2_move_pvt(self):
+    #     i = self.generate_list()
+    #     for n in list(i):
+    #         self.robot.move_pvt(n.q, n.v, 0.1)
+    #     pass
 
-    def test2_move_pvts(self):
-        i = self.generate_list()
-        self.robot.move_pvts(i)
-        pass
+    # def test2_move_pvts(self):
+    #     i = self.generate_list()
+    #     self.robot.move_pvts(i)
+    #     pass
 
-    def test2_move_pvat(self):
-        i = self.generate_list()
-        for n in list(i):
-            self.robot.move_pvat(n.q, n.v, n.acc, 0.1)
-        pass
+    # def test2_move_pvat(self):
+    #     i = self.generate_list()
+    #     for n in list(i):
+    #         self.robot.move_pvat(n.q, n.v, n.acc, 0.1)
+    #     pass
 
-    def test2_move_pvats(self):
-        i = self.generate_list()
-        self.robot.move_pvats(i)
-        pass
+    # def test2_move_pvats(self):
+    #     i = self.generate_list()
+    #     self.robot.move_pvats(i)
+    #     pass
 
     # 状态数据
 
