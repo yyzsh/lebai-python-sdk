@@ -222,18 +222,18 @@ class TaskInfo:
     """更新时间"""
 
     def __init__(self, res):
-        self.id = getattr(res, "id")
-        self.scene_id = getattr(res, "scene_id")
-        self.execute_count = getattr(res, "execute_count")
-        self.executed_count = getattr(res, "executed_count")
-        self.name = getattr(res, "name")
-        self.status = TaskStatus(getattr(res, "status"))
-        self.comment = getattr(res, "comment")
-        self.start_time = getattr(res, "start_time")
-        self.end_time = getattr(res, "end_time")
-        self.consume_time = getattr(res, "consume_time")
-        self.create_time = getattr(res, "create_time")
-        self.update_time = getattr(res, "update_time")
+        self.id = res["id"]
+        self.scene_id = res["scene_id"]
+        self.execute_count = res["execute_count"]
+        self.executed_count = res["executed_count"]
+        self.name = res["name"]
+        self.status = TaskStatus(res["status"])
+        self.comment = res["comment"]
+        self.start_time = res["start_time"]
+        self.end_time = res["end_time"]
+        self.consume_time = res["consume_time"]
+        self.create_time = res["create_time"]
+        self.update_time = res["update_time"]
 
 
 class TasksResult:
@@ -348,7 +348,9 @@ class RobotData(RobotPoseData):
 
 class IOItem:
     pin: int
+    """针脚"""
     value: float
+    """值"""
 
     def __init__(self, pin: int, value: float):
         self.pin = pin
