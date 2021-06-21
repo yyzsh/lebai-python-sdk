@@ -829,6 +829,9 @@
 <dd class="field-even"><p>根据参数，获取手爪力或者重量</p>
 </dd>
 </dl>
+<p>示例：
+&gt;&gt;&gt; claw_force = robot.get_claw_aio(“force”)
+&gt;&gt;&gt; claw_weight = robot.get_claw_aio(“weight”)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1114,6 +1117,8 @@
 <dd class="field-even"><p>空间位置</p>
 </dd>
 </dl>
+<p>示例：
+&gt;&gt;&gt; certesianPose = robot.kinematics_forward(JointPose(0, -0.5, math.pi / 6, 0, 0, 0))</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1128,6 +1133,9 @@
 <dd class="field-even"><p>关节位置</p>
 </dd>
 </dl>
+<p>示例：
+&gt;&gt;&gt; certesianPose = robot.kinematics_forward(JointPose(0, -0.5, math.pi / 6, 0, 0, 0))
+&gt;&gt;&gt; jointPose = robot.kinematics_inverse(certesianPose)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1229,6 +1237,8 @@
 </ul>
 </dd>
 </dl>
+<p>示例
+&gt;&gt;&gt; robot.movec(JointPose(0.2, 0.5, 0.4, 0, 0, 1.57),CartesianPose(0.1,0.2,0.2,0.3,0.1,0.2),0,1,0.2,0)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1267,6 +1277,8 @@
 <dd class="field-even"><p>已弃用</p>
 </dd>
 </dl>
+<p>示例
+&gt;&gt;&gt; robot.movej(JointPose(0, -0.7853981633974483, 1.5707963267948966, -0.7853981633974483, 1.5707963267948966, 0),1.23,1.23)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1305,6 +1317,8 @@
 <dd class="field-even"><p>已弃用</p>
 </dd>
 </dl>
+<p>示例
+&gt;&gt;&gt; robot.movel(JointPose(0, -0.7853981633974483, 1.5707963267948966, -0.7853981633974483, 1.5707963267948966, 0),1.23,1.23)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1450,6 +1464,9 @@
 <dd class="field-odd"><p><strong>pin</strong> – ‘force’：手爪力，’weight’：手爪重量</p>
 </dd>
 </dl>
+<p>示例：
+&gt;&gt;&gt; robot.set_claw_aio(“force”,0)
+&gt;&gt;&gt; robot.set_claw_aio(“weight”,1)</p>
 </dd></dl>
 
 <dl class="py method">
