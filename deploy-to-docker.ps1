@@ -1,9 +1,13 @@
-$name = "leibai-python-sdk-doc";
-$dockerRegistryHost = "registry.cn-hangzhou.aliyuncs.com";
-$dockerRegistryUrl = "${dockerRegistryHost}/ecy";
-$dockerPassword = "xx";
-$dockerPassword | docker login -u moeycy --password-stdin $dockerRegistryHost;
-
+$name = "lebai-python-sdk-doc";
+# $dockerRegistryHost = "registry.cn-hangzhou.aliyuncs.com";
+# $dockerRegistryUrl = "${dockerRegistryHost}/ecy";
+# $dockerPassword = "xx";
+# user = "moeycy";
+$dockerRegistryHost = "https://docker.pkg.github.com";
+$dockerRegistryUrl = "${dockerRegistryHost}/lebai-robotics/lebai-python-sdk";
+$dockerPassword = (cat ~/.github/token.txt);
+$user = "ycysdf";
+$dockerPassword | docker login -u $user --password-stdin $dockerRegistryHost;
 
 ./make html;
 docker build . -t ${name}:latest;

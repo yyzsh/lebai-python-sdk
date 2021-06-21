@@ -6,7 +6,7 @@ import unittest
 from lebai import LebaiRobot, LebaiScene
 # n)umber
 from lebai.lebai_http_service import LebaiHttpService
-from lebai.type import PVAT
+from lebai.type import JointPose, PVAT
 
 
 class Test(unittest.TestCase):
@@ -291,6 +291,7 @@ class Test(unittest.TestCase):
             "pose_to": [0, -0.7853981633974483, 1.5707963267948966, -0.7853981633974483, 1.5707963267948966, 0],
             "is_joint_angle": True, "acceleration": 1.23, "velocity": 1.23
         }
+        
         r = self.http_service.action("movej", data)
 
         logging.info(r)

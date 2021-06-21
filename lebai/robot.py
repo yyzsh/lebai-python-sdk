@@ -300,6 +300,10 @@ class LebaiRobot:
 
         :param pin: 'force'：手爪力，'weight'：手爪重量
         :return: 根据参数，获取手爪力或者重量
+
+        示例：
+        >>> claw_force = robot.get_claw_aio("force")
+        >>> claw_weight = robot.get_claw_aio("weight")
         """
         self._sync()
         pin = pin.lower()
@@ -318,6 +322,10 @@ class LebaiRobot:
         设置手爪参数
 
         :param pin: 'force'：手爪力，'weight'：手爪重量
+
+        示例：
+        >>> robot.set_claw_aio("force",0)
+        >>> robot.set_claw_aio("weight",1)
         """
         self._sync()
         pin = pin.lower()
@@ -347,6 +355,9 @@ class LebaiRobot:
         :t: 运动时间 (s)
         :r: 交融半径 (m)
         :is_joint: 已弃用
+
+        示例
+        >>> robot.movej(JointPose(0, -0.7853981633974483, 1.5707963267948966, -0.7853981633974483, 1.5707963267948966, 0),1.23,1.23)
         """
         if type(p) is not CartesianPose and type(p) is not JointPose:
             raise Exception("请传入 CartesianPose 或 JointPose")
@@ -375,6 +386,9 @@ class LebaiRobot:
         :t: 运动时间 (s)
         :r: 交融半径 (m)
         :is_joint: 已弃用
+
+        示例
+        >>> robot.movel(JointPose(0, -0.7853981633974483, 1.5707963267948966, -0.7853981633974483, 1.5707963267948966, 0),1.23,1.23)
         """
         if type(p) is not CartesianPose and type(p) is not JointPose:
             raise Exception("请传入 CartesianPose 或 JointPose")
@@ -405,6 +419,9 @@ class LebaiRobot:
         :param t: 运动时间 (s)
         :param r: 交融半径 (m)
         :param is_joint: 已弃用
+
+        示例
+        >>> robot.movec(JointPose(0.2, 0.5, 0.4, 0, 0, 1.57),CartesianPose(0.1,0.2,0.2,0.3,0.1,0.2),0,1,0.2,0)
         """
         if type(p) is not CartesianPose and type(p) is not JointPose:
             raise Exception("p参数必须是 CartesianPose 或 JointPose 类型")
@@ -541,6 +558,9 @@ class LebaiRobot:
 
         :param p: 关节位置，类型：list[float]
         :return: 空间位置
+
+        示例：
+        >>> certesianPose = robot.kinematics_forward(JointPose(0, -0.5, math.pi / 6, 0, 0, 0))
         """
         j = JointPose(*p)
         res = self.rcs.KinematicsForward(j._to_Joint())
@@ -552,6 +572,10 @@ class LebaiRobot:
 
         :param p: 空间位置，类型：list[float]
         :return: 关节位置
+        
+        示例：
+        >>> certesianPose = robot.kinematics_forward(JointPose(0, -0.5, math.pi / 6, 0, 0, 0))
+        >>> jointPose = robot.kinematics_inverse(certesianPose)
         """
         j = CartesianPose(*p)
         res = self.rcs.KinematicsInverse(j._to_Vector())
