@@ -15,6 +15,18 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/lebai-robotics/lebai-python-sdk",
     packages=setuptools.find_packages(),
+    install_requires=[
+        "numpy",
+        "grpcio",
+        "pep517",
+        "setuptools",
+        "Sphinx",
+        "recommonmark",
+        "sphinx_rtd_theme",
+        "twine",
+        "requests",
+        "numpy"
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
