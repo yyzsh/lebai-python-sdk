@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 grpcio = "*"
+protobuf= "*"
+requests= "*"
 
 [dev-packages]
 

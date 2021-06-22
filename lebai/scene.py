@@ -20,7 +20,7 @@ class LebaiScene:
         :param cmd: 机器人命令
         :param data: 机器人命令参数
         :param sleep:
-        :return:
+        :return: 命令的返回数据
         """
         r = self.http_service.action({
             'cmd': cmd,

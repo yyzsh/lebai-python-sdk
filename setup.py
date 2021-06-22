@@ -15,6 +15,11 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/lebai-robotics/lebai-python-sdk",
     packages=setuptools.find_packages(),
+    install_requires=[
+        "grpcio",
+        "protobuf",
+        "requests"
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
