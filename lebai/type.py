@@ -159,9 +159,9 @@ class JointPose:
     """关节位置，关节旋转角度描述的机器人姿态"""
 
     def __init__(self, *j):
-        if hasattr(j[0], 'pos'):
+        if len(j) > 0 and hasattr(j[0], 'pos'):
             self.pos = list(j[0].pos)
-        elif hasattr(j[0], '__iter__'):
+        elif len(j) > 0 and hasattr(j[0], '__iter__'):
             self.pos = list(j[0])
         else:
             self.pos = list(j)

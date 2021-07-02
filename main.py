@@ -4,6 +4,7 @@
 import logging
 import math
 import sys
+import time
 
 from lebai import LebaiRobot, CartesianPose, JointPose, LebaiScene
 
@@ -48,7 +49,9 @@ def run():
 
     p = ((0.1, 0.2, 0.3), 0.12)
     rb.set_payload_mass(p[1])
-    logging.info(rb.get_payload_mass())
+    # logging.info("%f %f " % (rb.get_payload_mass(), p[1]))
+    # time.sleep(1)
+    logging.info("%f %f " % (rb.get_payload_mass(), p[1]))
     assert (rb.get_payload_mass() == p[1])
     rb.set_payload_cog(p[0])
     assert (rb.get_payload_cog() == p[0])
