@@ -4,6 +4,7 @@ import logging
 import unittest
 
 from lebai import LebaiRobot, LebaiScene
+from lebai import *
 # n)umber
 from lebai.lebai_http_service import LebaiHttpService
 from lebai.type import CartesianPose, JointPose, PVAT
@@ -32,12 +33,17 @@ class Test(unittest.TestCase):
         pass
 
 
-    def test_movej(self):
-        self.robot.movej(JointPose(0, -0.7853981633974483, 1.5707963267948966, -0.7853981633974483, 1.5707963267948966, 0),1.23,1.23)
-        pass
-    
-    def test_movec(self):
-        self.robot.movec(JointPose(0.2, 0.5, 0.4, 0, 0, 1.57),CartesianPose(0.1,0.2,0.2,0.3,0.1,0.2),0,1,0.2,0)
+    # def test_movej(self):
+    #     self.robot.movej(JointPose(0, -0.7853981633974483, 1.5707963267948966, -0.7853981633974483, 1.5707963267948966, 0),1.23,1.23)
+    #     pass
+    #
+    # def test_movec(self):
+    #     self.robot.movec(JointPose(0.2, 0.5, 0.4, 0, 0, 1.57),CartesianPose(0.1,0.2,0.2,0.3,0.1,0.2),0,1,0.2,0)
+    #     pass
+
+    def test_m(self):
+        rb = LebaiRobot("192.168.3.227")
+        rb.run_scene(10006, 1, False)
         pass
 
 if __name__ == '__main__':
