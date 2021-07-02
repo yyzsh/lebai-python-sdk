@@ -222,19 +222,18 @@ class TaskInfo:
     """更新时间"""
 
     def __init__(self, res):
-        self.id = res["id"]
-        self.scene_id = res["scene_id"]
-        self.execute_count = res["execute_count"]
-        self.executed_count = res["executed_count"]
-        self.name = res["name"]
-        self.status = TaskStatus(res["status"])
-        self.comment = res["comment"]
-        self.start_time = res["start_time"]
-        self.end_time = res["end_time"]
-        self.consume_time = res["consume_time"]
-        self.create_time = res["create_time"]
-        self.update_time = res["update_time"]
-
+        self.id = res.get("id")
+        self.scene_id = res.get("scene_id")
+        self.execute_count = res.get("execute_count")
+        self.executed_count = res.get("executed_count")
+        self.name = res.get("name")
+        self.status = TaskStatus(res.get("status"))
+        self.comment = res.get("comment")
+        self.start_time = res.get("start_time")
+        self.end_time = res.get("end_time")
+        self.consume_time = res.get("consume_time")
+        self.create_time = res.get("create_time")
+        self.update_time = res.get("update_time")
 
 class TasksResult:
     """
