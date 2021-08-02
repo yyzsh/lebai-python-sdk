@@ -11,7 +11,7 @@ from lebai.type import CartesianPose, JointPose, PVAT
 
 class Test(unittest.TestCase):
     """Test http_api_test.py"""
-    ip = "192.168.3.210"
+    ip = "192.168.3.227"
 
     @classmethod
     def setUpClass(cls):
