@@ -864,7 +864,7 @@ class LebaiRobot:
         :param color: 颜色，最多包含4个 0 ~ 15 之间的整数，类型：list[int]
         """
         self._sync()
-        self.rcs.SetLED(msg.LEDStatus(mode=mode, speed=speed, color=color))
+        self.rcs.SetLED(rc.LEDStatus(mode=mode, speed=speed, color=color))
 
     def set_voice(self, voice: int, volume: int) -> None:
         """
@@ -874,7 +874,7 @@ class LebaiRobot:
         :volume: 音量 分四个等级，0：静音、1：低、2：正常、3：高
         """
         self._sync()
-        self.rcs.SetVoice(msg.VoiceStatus(voice=voice, volume=volume))
+        self.rcs.SetVoice(rc.VoiceStatus(voice=voice, volume=volume))
 
     def set_fan(self, fan: int) -> None:
         """
@@ -883,7 +883,7 @@ class LebaiRobot:
         :param fan: 1：关闭、 2：开启
         """
         self._sync()
-        self.rcs.SetFan(msg.FanStatus(fan=fan))
+        self.rcs.SetFan(rc.FanStatus(fan=fan))
 
     def set_signal(self, pin: int, value: int) -> None:
         """
@@ -893,7 +893,7 @@ class LebaiRobot:
         :param value:  值
         """
         self._sync()
-        self.rcs.SetSignal(msg.SignalValue(index=pin, value=value))
+        self.rcs.SetSignal(rc.SignalValue(index=pin, value=value))
 
     def get_signal(self, pin: int) -> int:
         """
@@ -902,7 +902,7 @@ class LebaiRobot:
         :param pin: 针脚
         """
         self._sync()
-        res = self.rcs.GetSignal(msg.SignalValue(index=pin))
+        res = self.rcs.GetSignal(rc.SignalValue(index=pin))
         return res.value
 
     def add_signal(self, pin: int, value: int) -> None:
@@ -913,7 +913,7 @@ class LebaiRobot:
         :value: 值
         """
         self._sync()
-        self.rcs.AddSignal(msg.SignalValue(index=pin, value=value))
+        self.rcs.AddSignal(rc.SignalValue(index=pin, value=value))
 
     def enable_joint_limits(self) -> None:
         """

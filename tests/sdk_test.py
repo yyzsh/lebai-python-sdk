@@ -49,7 +49,7 @@ class Test(unittest.TestCase):
         pass
 
     def test_get_signal(self):
-        self.robot.get_signal(0)
+        self.robot.get_ao_mode(0)
         pass
 
 
