@@ -185,7 +185,6 @@ class Error(Exception):
 
 class RequestError(Error):
     def __init__(self, res):
-        print(res)
         self.code = getattr(res, 'code', -1)
         self.param = getattr(res, 'msg_params', [])
         self.data = getattr(res, 'data', None)
@@ -235,6 +234,7 @@ class TaskInfo:
         self.create_time = res.get("create_time")
         self.update_time = res.get("update_time")
 
+
 class TasksResult:
     """
     任务列表信息
@@ -251,10 +251,10 @@ class TasksResult:
     """任务列表 TaskInfo数组"""
 
     def __init__(self, res):
-        self.pi = res["pi"]
-        self.ps = res["ps"]
-        self.total = res["total"]
-        self.records = res["records"]
+        self.pi = res.get("pi")
+        self.ps = res.get("ps")
+        self.total = res.get("total")
+        self.records = res.get("records")
         pass
 
 
