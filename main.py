@@ -4,6 +4,7 @@
 import logging
 import math
 import sys
+import time
 
 from lebai import LebaiRobot, CartesianPose, JointPose, LebaiScene
 
@@ -11,7 +12,8 @@ from lebai import LebaiRobot, CartesianPose, JointPose, LebaiScene
 def run():
     ip = sys.argv[1] if len(sys.argv) > 1 else "192.168.3.218"
     kfc = LebaiScene(ip, 10001)
-    # print(kfc.run())
+
+    print(kfc.run())
 
     rb = LebaiRobot(ip)
     rb.start_sys()
@@ -48,7 +50,9 @@ def run():
 
     p = ((0.1, 0.2, 0.3), 0.12)
     rb.set_payload_mass(p[1])
-    logging.info(rb.get_payload_mass())
+    # logging.info("%f %f " % (rb.get_payload_mass(), p[1]))
+    # time.sleep(1)
+    logging.info("%f %f " % (rb.get_payload_mass(), p[1]))
     assert (rb.get_payload_mass() == p[1])
     rb.set_payload_cog(p[0])
     assert (rb.get_payload_cog() == p[0])

@@ -159,9 +159,9 @@ class JointPose:
     """关节位置，关节旋转角度描述的机器人姿态"""
 
     def __init__(self, *j):
-        if hasattr(j[0], 'pos'):
+        if len(j) > 0 and hasattr(j[0], 'pos'):
             self.pos = list(j[0].pos)
-        elif hasattr(j[0], '__iter__'):
+        elif len(j) > 0 and hasattr(j[0], '__iter__'):
             self.pos = list(j[0])
         else:
             self.pos = list(j)
@@ -185,7 +185,6 @@ class Error(Exception):
 
 class RequestError(Error):
     def __init__(self, res):
-        print(res)
         self.code = getattr(res, 'code', -1)
         self.param = getattr(res, 'msg_params', [])
         self.data = getattr(res, 'data', None)
@@ -222,18 +221,18 @@ class TaskInfo:
     """更新时间"""
 
     def __init__(self, res):
-        self.id = res["id"]
-        self.scene_id = res["scene_id"]
-        self.execute_count = res["execute_count"]
-        self.executed_count = res["executed_count"]
-        self.name = res["name"]
-        self.status = TaskStatus(res["status"])
-        self.comment = res["comment"]
-        self.start_time = res["start_time"]
-        self.end_time = res["end_time"]
-        self.consume_time = res["consume_time"]
-        self.create_time = res["create_time"]
-        self.update_time = res["update_time"]
+        self.id = res.get("id")
+        self.scene_id = res.get("scene_id")
+        self.execute_count = res.get("execute_count")
+        self.executed_count = res.get("executed_count")
+        self.name = res.get("name")
+        self.status = TaskStatus(res.get("status"))
+        self.comment = res.get("comment")
+        self.start_time = res.get("start_time")
+        self.end_time = res.get("end_time")
+        self.consume_time = res.get("consume_time")
+        self.create_time = res.get("create_time")
+        self.update_time = res.get("update_time")
 
 
 class TasksResult:
@@ -252,10 +251,10 @@ class TasksResult:
     """任务列表 TaskInfo数组"""
 
     def __init__(self, res):
-        self.pi = res["pi"]
-        self.ps = res["ps"]
-        self.total = res["total"]
-        self.records = res["records"]
+        self.pi = res.get("pi")
+        self.ps = res.get("ps")
+        self.total = res.get("total")
+        self.records = res.get("records")
         pass
 
 

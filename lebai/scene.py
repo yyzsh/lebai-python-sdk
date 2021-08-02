@@ -87,19 +87,25 @@ class LebaiScene:
             return True
         return False
 
-    def run(self, loop: int = 1) -> str:
+    def run(self, loop: int = 1, timeout: int = 0) -> str:
         """
         运行任务或者场景，直到运行完成，返回lua代码
 
-        :param loop:
+        :param loop: 执行次数
+        :param timeout: 指定运行超时时间，0: 永不超时  (默认)，单位：秒
         :return: 返回执行了的lua代码，没有执行lua代码则返回空
         """
         output = b''
+        if timeout > 0:
+            t = time.time()
+
         self.start(loop, True)
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.settimeout(0.1)
             s.connect((self.ip, 5180))
             while True:
+                if 0 < timeout < (time.time() - t):
+                    raise TimeoutError
                 if self.done():
                     break
                 try:

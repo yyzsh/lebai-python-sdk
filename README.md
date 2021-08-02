@@ -6,7 +6,7 @@
 pip install lebai
 ```
 
-[API 文档](http://lebai.py.kingfree.moe)
+[API 文档](https://docs.lebai.ltd/sdk/python/)
 
 - `LebaiRobot`：提供同步的 API。
 

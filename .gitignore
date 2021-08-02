@@ -5,3 +5,4 @@ dist/
 lebai-*/
 .idea/
 .vscode/
+build/lib/

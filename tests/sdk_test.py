@@ -32,19 +32,26 @@ class Test(unittest.TestCase):
     def tearDown(self):
         pass
 
-
-    # def test_movej(self):
-    #     self.robot.movej(JointPose(0, -0.7853981633974483, 1.5707963267948966, -0.7853981633974483, 1.5707963267948966, 0),1.23,1.23)
-    #     pass
-    #
-    # def test_movec(self):
-    #     self.robot.movec(JointPose(0.2, 0.5, 0.4, 0, 0, 1.57),CartesianPose(0.1,0.2,0.2,0.3,0.1,0.2),0,1,0.2,0)
-    #     pass
-
-    def test_m(self):
-        rb = LebaiRobot("192.168.3.227")
-        rb.run_scene(10006, 1, False)
+    def test_movej(self):
+        self.robot.movej(
+            JointPose(0, -0.7853981633974483, 1.5707963267948966, -0.7853981633974483, 1.5707963267948966, 0), 1.23,
+            1.23)
         pass
+
+    def test_movec(self):
+        self.robot.movec(JointPose(0.2, 0.5, 0.4, 0, 0, 1.57), CartesianPose(0.1, 0.2, 0.2, 0.3, 0.1, 0.2), 0, 1, 0.2,
+                         0)
+        pass
+
+    def test_scene_run(self):
+        scene = LebaiScene(self.ip, 10003)
+        scene.run(loop=1, timeout=3)
+        pass
+
+    def test_get_signal(self):
+        self.robot.get_signal(0)
+        pass
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)
