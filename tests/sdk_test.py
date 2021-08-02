@@ -47,6 +47,10 @@ class Test(unittest.TestCase):
         scene.run(loop=1, timeout=3)
         pass
 
+    def test_get_signal(self):
+        self.robot.set_fan(0)
+        pass
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)
