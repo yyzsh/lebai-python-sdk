@@ -36,3 +36,11 @@
 
 - fix`LebaiScene` `result` type error
 - 更改`tuple`到`list`
+
+## 0.7.4
+
+- 增加 LebaiScene run超时参数
+
+## 0.7.5
+
+- 修复 set_led、set_voice、set_fan、set_signal、get_signal、add_signal函数 gRpc类型错误
