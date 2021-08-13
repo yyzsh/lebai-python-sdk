@@ -6,7 +6,6 @@ from google.protobuf.empty_pb2 import Empty
 from lebai.lebai_http_service import LebaiHttpService
 from lebai.pb2 import private_controller_pb2_grpc
 from lebai.pb2 import robot_controller_pb2_grpc
-from .pb2.private_controller_pb2 import TrueOrFalse
 from .type import *
 
 
@@ -921,7 +920,7 @@ class LebaiRobot:
 
         """
         self._sync()
-        self.pcs.EnableJointLimit(TrueOrFalse(val=True))
+        self.pcs.EnableJointLimit(pc.TrueOrFalse(val=True))
 
     def disable_joint_limits(self) -> None:
         """
@@ -929,7 +928,7 @@ class LebaiRobot:
 
         """
         self._sync()
-        self.pcs.EnableJointLimit(TrueOrFalse(val=False))
+        self.pcs.EnableJointLimit(pc.TrueOrFalse(val=False))
 
     def run_scene(self, scene_id: int, execute_count: int = 1, clear: bool = True) -> int:
         """
@@ -982,3 +981,30 @@ class LebaiRobot:
         :return: 任务列表
         """
         return self.http_service.get_tasks(pi, ps)
+
+    def record_pvat(self) -> Iterator[rc.PVATRequest]:
+        """
+        记录PVAT数据点
+        """
+        # self._sync()
+
+        req = pc.RecordPVATRequest()
+        req.type = pc.RecordPVATRequest.PVATType.PVAT
+        req.duration = 200
+        req.use_duration_ts = True
+        req.save_file = False
+        req.vZeroGap.remove_gap = False
+        req.vZeroGap.threshold = 0.001
+
+        res = self.pcs.RecordPVAT(req)
+        for r in res:
+            if r.end:
+                return
+            s = rc.PVATRequest(duration=r.t, q=r.p, v=r.v, acc=r.v)
+            yield s
+
+    def stop_record_pvat(self):
+        """
+        停止记录PVAT数据点
+        """
+        self.pcs.StopRecordPVAT(Empty())
