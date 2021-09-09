@@ -793,6 +793,48 @@ class LebaiRobot:
         res = self.rcs.GetAIO(msg.IOPin(pin=pin))
         return res.value
 
+    def set_extra_do(self, pin: int, value: int) -> None:
+        """
+        设置扩展数字输出
+
+        :param pin: 针脚
+        :param value: 值
+        """
+        self._sync()
+        self.rcs.SetExtraDIO(msg.DIO(pin=pin, value=value))
+
+    def get_extra_di(self, pin: int) -> int:
+        """
+        获取扩展数字输入
+
+        :param pin: 针脚
+        :return: 数字输入值
+        """
+        self._sync()
+        res = self.rcs.GetExtraDIO(msg.IOPin(pin=pin))
+        return res.value
+
+    def set_extra_ao(self, pin: int, value: float) -> None:
+        """
+        设置扩展模拟输出
+
+        :param pin: 针脚
+        :param value: 值
+        """
+        self._sync()
+        self.rcs.SetExtraAIO(msg.AIO(pin=pin, value=value))
+
+    def get_extra_ai(self, pin: int) -> float:
+        """
+        获取扩展模拟输入
+
+        :param pin: 针脚
+        :return: 模拟输入值
+        """
+        self._sync()
+        res = self.rcs.GetExtraAIO(msg.IOPin(pin=pin))
+        return res.value
+
     def set_ai_mode(self, pin: int, mode: int) -> None:
         """
         设置模拟输入端口工作模式

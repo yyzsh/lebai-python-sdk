@@ -1,7 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import json
 import logging
+import socket
+import threading
+import time
 import unittest
+
+import numpy as np
+import requests
 
 from lebai import LebaiRobot, LebaiScene
 # n)umber
@@ -11,7 +18,7 @@ from lebai.type import JointPose, PVAT
 
 class Test(unittest.TestCase):
     """Test http_api_test.py"""
-    ip = "192.168.3.227"
+    ip = "192.168.3.218"
 
     @classmethod
     def setUpClass(cls):
@@ -291,7 +298,7 @@ class Test(unittest.TestCase):
             "pose_to": [0, -0.7853981633974483, 1.5707963267948966, -0.7853981633974483, 1.5707963267948966, 0],
             "is_joint_angle": True, "acceleration": 1.23, "velocity": 1.23
         }
-        
+
         r = self.http_service.action("movej", data)
 
         logging.info(r)
@@ -369,52 +376,59 @@ class Test(unittest.TestCase):
         # 暂不支持
         pass
 
-    # def generate_list(self):
-    #     points = np.loadtxt('sprial.txt', delimiter=',')
-    #     vels = np.zeros(np.shape(points))
-    #     n = range(np.shape(points)[0] - 1)
-    #     t = 0.01
-    #     for i in n:
-    #         vels[i + 1, :] = (points[i + 1, :] - points[i, :]) / t
-    #         yield PVAT(
-    #             t,
-    #             points[i],
-    #             vels[i],
-    #             []
-    #         )
+    def generate_list(self):
+        points = np.loadtxt('sprial.txt', delimiter=',')
+        vels = np.zeros(np.shape(points))
+        n = range(np.shape(points)[0] - 1)
+        t = 0.01
+        for i in n:
+            vels[i + 1, :] = (points[i + 1, :] - points[i, :]) / t
+            yield PVAT(
+                t,
+                points[i],
+                vels[i],
+                []
+            )
 
-    # def test2_move_pt(self):
-    #     i = self.generate_list()
-    #     for n in list(i):
-    #         self.robot.move_pt(n.q, 0.1)
-    #     pass
+    def tes2t_move_pt(self):
+        i = self.generate_list()
+        for n in list(i):
+            self.robot.move_pt(n.q, 0.1)
+        pass
 
-    # def test2_move_pts(self):
-    #     i = self.generate_list()
-    #     self.robot.move_pts(i)
-    #     pass
+    def tes2t_move_pts(self):
+        i = self.generate_list()
+        self.robot.move_pts(i)
+        pass
 
-    # def test2_move_pvt(self):
-    #     i = self.generate_list()
-    #     for n in list(i):
-    #         self.robot.move_pvt(n.q, n.v, 0.1)
-    #     pass
+    def tes2t_move_pvt(self):
+        i = self.generate_list()
+        for n in list(i):
+            self.robot.move_pvt(n.q, n.v, 0.1)
+        pass
 
-    # def test2_move_pvts(self):
-    #     i = self.generate_list()
-    #     self.robot.move_pvts(i)
-    #     pass
+    def tes2t_move_pvts(self):
+        i = self.generate_list()
+        self.robot.move_pvts(i)
+        pass
 
-    # def test2_move_pvat(self):
-    #     i = self.generate_list()
-    #     for n in list(i):
-    #         self.robot.move_pvat(n.q, n.v, n.acc, 0.1)
-    #     pass
+    def tes2t_move_pvat(self):
+        i = self.generate_list()
+        for n in list(i):
+            self.robot.move_pvat(n.q, [0.1, 0.1, 0.1, 0.1, 0.1, 0.1], [0.1, 0.1, 0.1, 0.1, 0.1, 0.1], 0.1)
+        pass
 
-    # def test2_move_pvats(self):
-    #     i = self.generate_list()
-    #     self.robot.move_pvats(i)
-    #     pass
+    def tes2t_move_pvat(self):
+        self.robot.move_pvat([-2.63517832, -1.29156902, 1.75188865, -0.11003331, 1.48833559, -0.02970000],
+                             [0.1, 0.1, 0.1, 0.1, 0.1, 0.1], [0.1, 0.1, 0.1, 0.1, 0.1, 0.1], 0.1)
+
+    def tes2t_move_pt(self):
+        self.robot.move_pt([-2.63517832, -1.29156902, 1.75188865, -0.11003331, 1.48833559, -0.02970000], 0.1)
+
+    def tes2t_move_pvats(self):
+        i = self.generate_list()
+        self.robot.move_pvats(i)
+        pass
 
     # 状态数据
 
@@ -829,6 +843,61 @@ class Test(unittest.TestCase):
         # data = {}
         # self.http_service.action("option", data)
         pass
+
+    def moves(self, markers, count):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.connect(("192.168.10.10", 31001))
+            url = bytes('/api/move?markers=' + markers + '&count=' + str(count), encoding="utf8")
+            s.sendall(url)
+            r = s.recv(1024)
+            logging.info(r)
+            data = json.loads(r)
+            while True:
+                time.sleep(0.1)
+                s.sendall(b'/api/robot_status')
+                r = s.recv(1024)
+                for n in r.split(b'\n'):
+                    if n.startswith(b'{\"command\":\"/api/robot_status\"'):
+                        logging.info(n)
+                        data = json.loads(n)
+                        logging.info('data')
+                        logging.info(data)
+                        if not data['results'] or not data['results']['move_status'] or data['results'][
+                            'move_status'] != 'running':
+                            return
+
+    def move(self, marker):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.connect(("192.168.10.10", 31001))
+            url = bytes('/api/move?marker=' + marker, encoding="utf8")
+            s.sendall(url)
+            r = s.recv(1024)
+            logging.info(r)
+            data = json.loads(r)
+            while True:
+                time.sleep(0.1)
+                s.sendall(b'/api/robot_status')
+                r = s.recv(1024)
+                for n in r.split(b'\n'):
+                    if n.startswith(b'{\"command\":\"/api/robot_status\"'):
+                        logging.info(n)
+                        data = json.loads(n)
+                        logging.info('data')
+                        logging.info(data)
+                        if not data['results'] or not data['results']['move_status'] or data['results'][
+                            'move_status'] != 'running':
+                            return
+
+    def test_option22(self):
+        self.move("1")
+
+
+# msg, options, cnt
+
+# data = {}
+# self.http_service.action("option", data)
+
+# output = ''
 
 
 if __name__ == '__main__':
