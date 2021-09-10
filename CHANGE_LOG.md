@@ -44,3 +44,7 @@
 ## 0.7.5
 
 - 修复 set_led、set_voice、set_fan、set_signal、get_signal、add_signal函数 gRpc类型错误
+
+## 0.7.7
+
+- 添加扩展io api：set_extra_do、get_extra_di、set_extra_ao、get_extra_ai
