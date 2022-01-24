@@ -6,6 +6,7 @@ from google.protobuf.empty_pb2 import Empty
 from lebai.lebai_http_service import LebaiHttpService
 from lebai.pb2 import private_controller_pb2_grpc
 from lebai.pb2 import robot_controller_pb2_grpc
+from lebai.pb2.private_controller_pb2 import DHRequest, DHt
 from .type import *
 
 
@@ -21,7 +22,8 @@ class LebaiRobot:
         self.rcs = robot_controller_pb2_grpc.RobotControllerStub(self.rcc)
 
         self.pcc = grpc.insecure_channel(f'{ip}:5182')
-        self.pcs = private_controller_pb2_grpc.RobotPrivateControllerStub(self.pcc)
+        self.pcs = private_controller_pb2_grpc.RobotPrivateControllerStub(
+            self.pcc)
         self.http_service = LebaiHttpService(ip)
 
         self._sync_flag = sync
@@ -212,7 +214,8 @@ class LebaiRobot:
             y = x[1]
             x = x[0]
         self._sync()
-        self.rcs.SetPayload(msg.Payload(mass=mass, cog=msg.Coordinate(x=x, y=y, z=z)))
+        self.rcs.SetPayload(msg.Payload(
+            mass=mass, cog=msg.Coordinate(x=x, y=y, z=z)))
 
     def get_payload(self) -> ((float, float, float), float):
         """
@@ -256,7 +259,8 @@ class LebaiRobot:
             z = x[2]
             x = x[0]
         self._sync()
-        self.rcs.SetPayloadCog(msg.PayloadCog(cog=msg.Coordinate(x=x, y=y, z=z)))
+        self.rcs.SetPayloadCog(msg.PayloadCog(
+            cog=msg.Coordinate(x=x, y=y, z=z)))
 
     def get_payload_cog(self) -> (float, float, float):
         """
@@ -477,7 +481,8 @@ class LebaiRobot:
         @param pvt_iter: 类型：list[PVAT]
         @type pvt_iter: list[PVAT]
         """
-        self.rcs.MovePVATStream((rc.PVATRequest(duration=s.duration, q=s.q, v=s.v, acc=s.acc) for s in pvt_iter))
+        self.rcs.MovePVATStream(
+            (rc.PVATRequest(duration=s.duration, q=s.q, v=s.v, acc=s.acc) for s in pvt_iter))
 
     def move_pvt(self, p: list, v: list, t: float) -> None:
         """
@@ -496,7 +501,8 @@ class LebaiRobot:
         :param pvt_iter: 类型：list[PVAT]
         :return:
         """
-        self.rcs.MovePVTStream((rc.PVATRequest(duration=s.duration, q=s.q, v=s.v) for s in pvt_iter))
+        self.rcs.MovePVTStream(
+            (rc.PVATRequest(duration=s.duration, q=s.q, v=s.v) for s in pvt_iter))
 
     def move_pt(self, p: list, t: float) -> None:
         """
@@ -514,7 +520,8 @@ class LebaiRobot:
         :param pt_iter: 类型：list[PVAT]
         :return:
         """
-        self.rcs.MovePTStream((rc.PVATRequest(duration=s.duration, q=s.q) for s in pt_iter))
+        self.rcs.MovePTStream(
+            (rc.PVATRequest(duration=s.duration, q=s.q) for s in pt_iter))
 
     def movej_until(self, p, a=0, v=0, t=0, cb=None) -> None:
         """
@@ -579,7 +586,7 @@ class LebaiRobot:
 
         :param p: 空间位置，类型：list[float]
         :return: 关节位置
-        
+
         示例：
 
         >>> certesianPose = self.kinematics_forward(JointPose(0, -0.5, math.pi / 6, 0, 0, 0))
@@ -1050,3 +1057,15 @@ class LebaiRobot:
         停止记录PVAT数据点
         """
         self.pcs.StopRecordPVAT(Empty())
+
+    def get_dh_params(self, get_theoretical: bool = False) -> Iterator[DHItem]:
+        """
+        获取当前 DH 参数
+        :param get_theoretical: 是否获取理论dh参数
+        """
+
+        res = self.pcs.GetDHParams(DHRequest(get_theoretical=get_theoretical))
+
+        for r in res.params:
+            s = DHItem(r)
+            yield s

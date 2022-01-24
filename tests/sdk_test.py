@@ -59,6 +59,16 @@ class Test(unittest.TestCase):
         requests.post()
         pass
 
+    
+    def test_get_dh_params(self):
+        r = self.robot.get_dh_params()
+        for s in r:
+            print(s.a)
+            print(s.alpha)
+            print(s.d)
+            print(s.theta)
+        pass
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)

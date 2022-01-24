@@ -48,3 +48,7 @@
 ## 0.7.7
 
 - 添加扩展io api：set_extra_do、get_extra_di、set_extra_ao、get_extra_ai
+
+## 0.7.8
+
+- 添加 get_dh_params

@@ -88,7 +88,8 @@ class CartesianPose:
     def __init__(self, x=0, y=0, z=0, rz=0, ry=0, rx=0, base=None):
         # print(x, hasattr(x, '__iter__'), hasattr(x, '__iter__'), type(x))
         if type(x) is msg.PR:
-            self.pos = [x.position.x, x.position.y, x.position.z, x.rotation.r, x.rotation.p, x.rotation.y]
+            self.pos = [x.position.x, x.position.y, x.position.z,
+                        x.rotation.r, x.rotation.p, x.rotation.y]
         elif hasattr(x, 'pos'):
             self.pos = list(x.pos[:])
             if hasattr(x, 'base'):
@@ -99,7 +100,8 @@ class CartesianPose:
             self.pos = [x, y, z, rz, ry, rx]
         self.is_joint = False
         # 要求 base 是元组或列表而不是 CartesianPose 对象
-        self.base = list(getattr(base, 'pos', base)) if base is not None else None
+        self.base = list(getattr(base, 'pos', base)
+                         ) if base is not None else None
 
     def __str__(self):
         if self.base is None:
@@ -189,6 +191,23 @@ class RequestError(Error):
         self.code = getattr(res, 'code', -1)
         self.param = getattr(res, 'msg_params', [])
         self.data = getattr(res, 'data', None)
+
+
+class DHItem:
+    d: float
+    """D"""
+    a: float
+    """A"""
+    alpha: float
+    """Alpha"""
+    theta: float
+    """Theta"""
+
+    def __init__(self, res):
+        self.d = res.d
+        self.a = res.a
+        self.alpha = res.alpha
+        self.theta = res.theta
 
 
 class TaskInfo:
@@ -372,9 +391,15 @@ class RobotIOData:
     """所有tcp数字量的输出值 IOItem 数组"""
 
     def __init__(self, io):
-        self.di = list(map(lambda dio: IOItem(dio.pin, dio.value), io.robotDIOIn))
-        self.do = list(map(lambda dio: IOItem(dio.pin, dio.value), io.robotDIOOut))
-        self.ai = list(map(lambda aio: IOItem(aio.pin, aio.value), io.robotAIOIn))
-        self.ao = list(map(lambda aio: IOItem(aio.pin, aio.value), io.robotAIOOut))
-        self.flange_di = list(map(lambda dio: IOItem(dio.pin, dio.value), io.tcpDIOIn))
-        self.flange_do = list(map(lambda dio: IOItem(dio.pin, dio.value), io.tcpDIOOut))
+        self.di = list(map(lambda dio: IOItem(
+            dio.pin, dio.value), io.robotDIOIn))
+        self.do = list(map(lambda dio: IOItem(
+            dio.pin, dio.value), io.robotDIOOut))
+        self.ai = list(map(lambda aio: IOItem(
+            aio.pin, aio.value), io.robotAIOIn))
+        self.ao = list(map(lambda aio: IOItem(
+            aio.pin, aio.value), io.robotAIOOut))
+        self.flange_di = list(
+            map(lambda dio: IOItem(dio.pin, dio.value), io.tcpDIOIn))
+        self.flange_do = list(
+            map(lambda dio: IOItem(dio.pin, dio.value), io.tcpDIOOut))
