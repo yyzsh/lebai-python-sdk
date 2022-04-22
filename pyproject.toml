@@ -2,8 +2,6 @@
 requires = [
     "setuptools",
     "wheel",
-    "grpcio",
-    "requests",
-    "protobuf"
+    "websocket-client"
 ]
 build-backend = "setuptools.build_meta"
