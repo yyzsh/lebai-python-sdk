@@ -8,3 +8,4 @@ sphinx_rtd_theme
 twine
 protobuf
 requests~=2.25.1
+websocket-client

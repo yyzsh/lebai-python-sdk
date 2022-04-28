@@ -6,34 +6,35 @@ import math
 import sys
 import time
 
-from lebai import LebaiRobot, CartesianPose, JointPose, LebaiScene
+from lebai import LebaiRobotV3, CartesianPose, JointPose, LebaiScene
 
 
 def run():
     ip = sys.argv[1] if len(sys.argv) > 1 else "192.168.3.218"
-    kfc = LebaiScene(ip, 10001)
+    port = sys.argv[2] if len(sys.argv) > 2 else 3030
 
-    print(kfc.run())
+    # kfc = LebaiScene(ip, 10001)
+    # print(kfc.run())
 
-    rb = LebaiRobot(ip)
-    rb.start_sys()
-    logging.info(rb.get_robot_mode())
-    logging.info(rb.is_connected())
+    rb = LebaiRobotV3(ip, port=port, debug=True)
+    # rb.start_sys()
+    # logging.info(rb.get_robot_mode())
+    # logging.info(rb.is_connected())
 
     rb.set_velocity_factor(60)
     logging.info(rb.get_velocity_factor())
-    logging.info(rb.get_di(1))
-    rb.set_do(1, 1)
+    # logging.info(rb.get_di(1))
+    # rb.set_do(1, 1)
 
-    logging.info(rb.get_actual_joint_torques())
-    logging.info(rb.get_target_joint_torques())
-    logging.info(rb.get_joint_temperatures())
+    # logging.info(rb.get_actual_joint_torques())
+    # logging.info(rb.get_target_joint_torques())
+    # logging.info(rb.get_joint_temperatures())
 
     p1 = JointPose(0, -0.5, math.pi / 6, 0, 0, 0)
     logging.info(p1)
     p1_c = rb.kinematics_forward(p1)
     logging.info(p1_c)
-    logging.info(rb.get_actual_joint_positions())
+    # logging.info(rb.get_actual_joint_positions())
     p1_j = rb.kinematics_inverse(p1_c)
     logging.info(p1_j)
     logging.info(rb.kinematics_forward(p1_j))
@@ -51,7 +52,6 @@ def run():
     p = ((0.1, 0.2, 0.3), 0.12)
     rb.set_payload_mass(p[1])
     # logging.info("%f %f " % (rb.get_payload_mass(), p[1]))
-    # time.sleep(1)
     logging.info("%f %f " % (rb.get_payload_mass(), p[1]))
     assert (rb.get_payload_mass() == p[1])
     rb.set_payload_cog(p[0])
@@ -108,5 +108,5 @@ def run():
 
 if __name__ == '__main__':
     LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
-    logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
+    logging.basicConfig(level=logging.DEBUG, format=LOG_FORMAT)
     run()

@@ -1,4 +1,7 @@
-from typing import Optional, Iterator
+
+import time
+
+from typing import Optional, Iterator, Tuple
 
 import grpc
 from google.protobuf.empty_pb2 import Empty
@@ -42,6 +45,7 @@ class LebaiRobot:
     def _sync(self):
         if self._sync_flag:
             self.sync()
+        time.sleep(0.01)
 
     def sync(self) -> None:
         """
@@ -186,7 +190,7 @@ class LebaiRobot:
         self._sync()
         self.rcs.SetGravity(msg.Coordinate(x=x, y=y, z=z))
 
-    def get_gravity(self) -> (float, float, float):
+    def get_gravity(self) -> Tuple[float, float, float]:
         """
         获取重力
 
@@ -217,7 +221,7 @@ class LebaiRobot:
         self.rcs.SetPayload(msg.Payload(
             mass=mass, cog=msg.Coordinate(x=x, y=y, z=z)))
 
-    def get_payload(self) -> ((float, float, float), float):
+    def get_payload(self) -> Tuple[Tuple[float, float, float], float]:
         """
         获取负荷
 
@@ -262,7 +266,7 @@ class LebaiRobot:
         self.rcs.SetPayloadCog(msg.PayloadCog(
             cog=msg.Coordinate(x=x, y=y, z=z)))
 
-    def get_payload_cog(self) -> (float, float, float):
+    def get_payload_cog(self) -> Tuple[float, float, float]:
         """
         获取负荷的质心
 
@@ -351,7 +355,7 @@ class LebaiRobot:
         self.rcs.SetClawForce(rc.Force(force=force))
         self.rcs.SetClawAmplitude(rc.Amplitude(amplitude=amplitude))
 
-    def movej(self, p: object, a: int = 0, v: int = 0, t: int = 0, r: int = 0, is_joint=None) -> None:
+    def movej(self, p: object, a: float = 0, v: float = 0, t: float = 0, r: float = 0, is_joint: bool = False) -> None:
         """
         线性移动（关节空间）
 
@@ -383,7 +387,7 @@ class LebaiRobot:
             p._base_set_PR(req.pose_base)
         self.rcs.MoveJ(req)
 
-    def movel(self, p: object, a: int = 0, v: int = 0, t: int = 0, r: int = 0, is_joint: bool = None) -> None:
+    def movel(self, p: object, a: float = 0, v: float = 0, t: float = 0, r: float = 0, is_joint: bool = None) -> None:
         """
         线性移动（工具空间）
 
@@ -415,7 +419,7 @@ class LebaiRobot:
             p._base_set_PR(req.pose_base)
         self.rcs.MoveL(req)
 
-    def movec(self, via: object, p: object, rad: int = 0, a: int = 0, v: int = 0, t: int = 0, r: int = 0,
+    def movec(self, via: object, p: object, rad: float = 0, a: float = 0, v: float = 0, t: float = 0, r: int = 0,
               is_joint: bool = None) -> None:
         """
         圆弧移动（工具空间）
@@ -523,48 +527,6 @@ class LebaiRobot:
         self.rcs.MovePTStream(
             (rc.PVATRequest(duration=s.duration, q=s.q) for s in pt_iter))
 
-    def movej_until(self, p, a=0, v=0, t=0, cb=None) -> None:
-        """
-        todo: 待实现
-
-        """
-        pass
-
-    def movej_until_rt(self, p, a=0, v=0, t=0, logic='AND', io={}, cb=None) -> None:
-        """
-        todo: 待实现
-
-        """
-        pass
-
-    def movel_until(self, p, a=0, v=0, t=0, cb=None) -> None:
-        """
-        todo: 待实现
-
-        """
-        pass
-
-    def movel_until_rt(self, p, a=0, v=0, t=0, logic='AND', io={}, cb=None) -> None:
-        """
-        todo: 待实现
-
-        """
-        pass
-
-    def movec_until(self, via, p, rad=0, a=0, v=0, t=0, cb=None) -> None:
-        """
-        todo: 待实现
-
-        """
-        pass
-
-    def movec_until_rt(self, via, p, rad=0, a=0, v=0, t=0, logic='AND', io={}, cb=None) -> None:
-        """
-        todo: 待实现
-
-        """
-        pass
-
     def kinematics_forward(self, *p: list) -> CartesianPose:
         """
         机器人正解
@@ -595,20 +557,6 @@ class LebaiRobot:
         j = CartesianPose(*p)
         res = self.rcs.KinematicsInverse(j._to_Vector())
         return JointPose(*res.joints)
-
-    def pose_times(self) -> None:
-        """
-        todo: 待实现
-
-        """
-        pass
-
-    def pose_inverse(self) -> None:
-        """
-        todo: 待实现
-
-        """
-        pass
 
     def get_actual_joint_positions(self) -> JointPose:
         """
