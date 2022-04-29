@@ -1,22 +1,15 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+from curses import has_key
 import logging
 import math
 import sys
-import time
 
-from lebai import LebaiRobotV3, CartesianPose, JointPose, LebaiScene
+from lebai import LebaiRobotV3, LebaiRobot, CartesianPose, JointPose, LebaiScene
 
 
-def run():
-    ip = sys.argv[1] if len(sys.argv) > 1 else "192.168.3.218"
-    port = sys.argv[2] if len(sys.argv) > 2 else 3030
-
-    # kfc = LebaiScene(ip, 10001)
-    # print(kfc.run())
-
-    rb = LebaiRobotV3(ip, port=port, debug=True)
+def run(rb):
     # rb.start_sys()
     # logging.info(rb.get_robot_mode())
     # logging.info(rb.is_connected())
@@ -35,13 +28,14 @@ def run():
     p1_c = rb.kinematics_forward(p1)
     logging.info(p1_c)
     # logging.info(rb.get_actual_joint_positions())
-    p1_j = rb.kinematics_inverse(p1_c)
-    logging.info(p1_j)
-    logging.info(rb.kinematics_forward(p1_j))
+    # p1_j = rb.kinematics_inverse(p1_c)
+    # logging.info(p1_j)
+    # logging.info(rb.kinematics_forward(p1_j))
 
-    for x in rb.get_robot_io_data():
-        logging.info(x)
-    logging.info(rb.get_robot_data())
+    # for x in rb.get_robot_io_data():
+    #     logging.info(x)
+    # data = rb.get_robot_data()
+    # logging.info(data)
 
     g = rb.get_gravity()
     rb.set_gravity(g)
@@ -109,4 +103,15 @@ def run():
 if __name__ == '__main__':
     LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
     logging.basicConfig(level=logging.DEBUG, format=LOG_FORMAT)
-    run()
+    
+    ip = sys.argv[1] if len(sys.argv) > 1 else "192.168.3.218"
+    port = sys.argv[2] if len(sys.argv) > 2 else 3030
+
+    # kfc = LebaiScene(ip, 10001)
+    # print(kfc.run())
+
+    # rb = LebaiRobot(ip)
+    # run(rb)
+
+    rb = LebaiRobotV3(ip, port=port, debug=True)
+    run(rb)

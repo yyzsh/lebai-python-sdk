@@ -326,11 +326,17 @@ class RobotPoseData:
     actual_pose: list
     """实际tcp位置 float 数组"""
 
-    def __init__(self, res):
-        self.target_joint = list(res.targetJoint.joints)
-        self.actual_joint = list(res.actualJoint.joints)
-        self.target_pose = list(res.targetTcpPose.vector)
-        self.actual_pose = list(res.actualTcpPose.vector)
+    def __init__(self, res, v3=None):
+        if v3 is not None:
+            self.target_joint = list(v3['target_joint'])
+            self.actual_joint = list(v3['actual_joint'])
+            self.target_pose = list(v3['target_pose'])
+            self.actual_pose = list(v3['actual_pose'])
+        else:
+            self.target_joint = list(res.targetJoint.joints)
+            self.actual_joint = list(res.actualJoint.joints)
+            self.target_pose = list(res.targetTcpPose.vector)
+            self.actual_pose = list(res.actualTcpPose.vector)
 
 
 class RobotData(RobotPoseData):
@@ -354,16 +360,24 @@ class RobotData(RobotPoseData):
     temp: list
     """关节温度 float 数组"""
 
-    def __init__(self, res):
-        super().__init__(res)
-        self.target_torque = list(res.targetTorque.joints)
-        self.actual_torque = list(res.actualTorque.joints)
-        self.target_vel = list(res.targetJointSpeed.joints)
-        self.actual_vel = list(res.actualJointSpeed.joints)
-        self.target_acc = list(res.targetJointAcc.joints)
-        self.actual_acc = list(res.actualJointAcc.joints)
-        self.temp = list(res.jointTemps.joints)
-
+    def __init__(self, res, v3=None):
+        super().__init__(res, v3)
+        if v3 is not None:
+            self.target_torque = list(v3['target_torque'])
+            self.actual_torque = list(v3['actual_torque'])
+            self.target_vel = list(v3['target_vel'])
+            self.actual_vel = list(v3['actual_vel'])
+            self.target_acc = list(v3['target_acc'])
+            self.actual_acc = list(v3['actual_acc'])
+            self.temp = list(v3['temp'])
+        else:
+            self.target_torque = list(res.targetTorque.joints)
+            self.actual_torque = list(res.actualTorque.joints)
+            self.target_vel = list(res.targetJointSpeed.joints)
+            self.actual_vel = list(res.actualJointSpeed.joints)
+            self.target_acc = list(res.targetJointAcc.joints)
+            self.actual_acc = list(res.actualJointAcc.joints)
+            self.temp = list(res.jointTemps.joints)
 
 class IOItem:
     pin: int

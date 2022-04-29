@@ -64,3 +64,21 @@ class LebaiRobotV3:
         if hasattr(p, 'pos'):
             c = p.pos
         return self.send('kinematics_inverse', [c])
+
+    def get_robot_io_data(self):
+        id = self.send('sub_robot_io_data')
+        yield self.ws.recv()
+        self.send('unsub_robot_io_data', [id])
+
+    def get_robot_data(self):
+        return RobotData(None, self.send('get_robot_data'))
+
+    def set_gravity(self, x = 0, y = 0, z = -9.8) -> None:
+        if type(x) is tuple or type(x) is list:
+            y = x[1]
+            z = x[2]
+            x = x[0]
+        return self.send('set_gravity', [x, y, z])
+
+    def get_gravity(self):
+        return self.send('get_gravity')

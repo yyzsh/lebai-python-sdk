@@ -18,7 +18,7 @@ from lebai.type import JointPose, PVAT
 
 class Test(unittest.TestCase):
     """Test http_api_test.py"""
-    ip = "192.168.3.218"
+    ip = "localhost"
 
     @classmethod
     def setUpClass(cls):
