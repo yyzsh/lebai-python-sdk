@@ -6,5 +6,5 @@ Sphinx
 recommonmark
 sphinx_rtd_theme
 twine
-protobuf
+protobuf~=3.19.4
 requests~=2.25.1

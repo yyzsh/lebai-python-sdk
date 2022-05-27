@@ -4,6 +4,6 @@ requires = [
     "wheel",
     "grpcio",
     "requests",
-    "protobuf"
+    "protobuf ~= 3.19.4"
 ]
 build-backend = "setuptools.build_meta"
