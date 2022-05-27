@@ -1,11 +1,11 @@
 [[source]]
-url = "https://pypi.org/simple"
+url = "https://pypi.org/project/lebai/"
 verify_ssl = true
-name = "pypi"
+name = "lebai"
 
 [packages]
 grpcio = "*"
-protobuf= "*"
+protobuf= "~=3.19.4"
 requests= "*"
 
 [dev-packages]

@@ -17,7 +17,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         "grpcio",
-        "protobuf",
+        "protobuf ~= 3.19.4",
         "requests"
     ],
     classifiers=[
